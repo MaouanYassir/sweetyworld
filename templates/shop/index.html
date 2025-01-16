@@ -1,0 +1,222 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="home-section">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="overlay"></div>
+        <div class="hero-content">
+            {% if user.is_authenticated %}
+                <p class="welcome-message">Bienvenue {{ user.username }}</p>
+            {% endif %}
+            <h1>SweetyWorld</h1>
+            <p>Les meilleurs gâteaux faits avec amour et passion</p>
+            <a href="{% url 'categories_view' %}" class="cta-button">Découvrir nos gâteaux</a>
+        </div>
+    </section>
+
+    <!-- Featured Cakes Section -->
+    <section class="featured-cakes">
+        <h2 class="section-title">Nos Gâteaux Vedettes</h2>
+        <p class="section-subtitle">Découvrez nos meilleures créations</p>
+        <div class="cake-grid">
+            <!-- Cake 1 -->
+            <div class="cake-item">
+                <img src="{% static 'images/cake1.jpg' %}" alt="Cake 1" class="cake-img">
+                <h3 class="cake-title">Gâteau au Chocolat</h3>
+                <p class="cake-price">15.00€</p>
+            </div>
+
+            <!-- Cake 2 -->
+            <div class="cake-item">
+                <img src="{% static 'images/cake2.jpg' %}" alt="Cake 2" class="cake-img">
+                <h3 class="cake-title">Tarte aux Fruits</h3>
+                <p class="cake-price">12.00€</p>
+            </div>
+
+            <!-- Cake 3 -->
+            <div class="cake-item">
+                <img src="{% static 'images/cake3.jpg' %}" alt="Cake 3" class="cake-img">
+                <h3 class="cake-title">Cheesecake</h3>
+                <p class="cake-price">18.00€</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <h2 class="section-title">À propos de nous</h2>
+        <p class="section-subtitle">
+            Chez SweetyWorld, nous nous engageons à offrir les gâteaux les plus délicieux, faits à partir des ingrédients les plus frais. Nous avons une passion pour la pâtisserie, et chaque gâteau est conçu avec soin pour satisfaire vos papilles.
+        </p>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <h2 class="section-title">Prêt à commander ?</h2>
+        <a href="{% url 'categories_view' %}" class="cta-button">Voir notre Menu</a>
+    </section>
+</div>
+
+<!-- Styles -->
+<style>
+    .home-section {
+        font-family: Arial, sans-serif;
+    }
+
+    .hero {
+        background-image: url('{% static 'images/hero-bg.jpg' %}');
+        background-size: cover;
+        height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        color: white;
+        text-align: center;
+    }
+
+    .overlay {
+        background-color: rgba(0, 0, 0, 0.5);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        animation: fadeIn 1.5s ease-in-out;
+    }
+
+    /* Welcome message styling */
+.welcome-message {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffdd57; /* Bright color for contrast */
+    margin-bottom: 10px;
+}
+
+    .hero-content h1 {
+        font-size: 4rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        margin: 0;
+    }
+
+    .hero-content p {
+        font-size: 1.8rem;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+        margin: 10px 0 20px;
+    }
+
+    .cta-button {
+        background-color: #ff9800;
+        color: white;
+        padding: 15px 30px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 1.2rem;
+        transition: background-color 0.3s ease-in-out;
+        display: inline-block;
+    }
+
+    .cta-button:hover {
+        background-color: #e68900;
+    }
+
+    .featured-cakes {
+        padding: 50px 20px;
+        text-align: center;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .section-subtitle {
+        font-size: 1.2rem;
+        color: #666;
+        margin-bottom: 40px;
+    }
+
+    .cake-grid {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .cake-item {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease-in-out;
+        width: 250px;
+        text-align: center;
+    }
+
+    .cake-item:hover {
+        transform: translateY(-10px);
+    }
+
+    .cake-img {
+        width: 100%;
+        height: auto;
+        border-bottom: 3px solid #ff9800;
+    }
+
+    .cake-title {
+        color: #333;
+        font-size: 1.5rem;
+        padding: 10px 0;
+    }
+
+    .cake-price {
+        color: #ff9800;
+        font-size: 1.2rem;
+        padding-bottom: 10px;
+    }
+
+    .about {
+        padding: 50px 20px;
+        background-color: #f9f9f9;
+        text-align: center;
+    }
+
+    .cta {
+        padding: 50px 20px;
+        text-align: center;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<!-- JavaScript for smooth scroll effect (optional) -->
+<script>
+    // If you need to add smooth scrolling for anchors
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+{% endblock %}

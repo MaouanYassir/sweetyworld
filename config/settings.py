@@ -41,12 +41,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'sweetyworld.urls'
+ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -59,7 +59,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'sweetyworld.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="categories-section">
+        <h1>Nos Catégories</h1>
+        <p>Explorez nos différentes catégories de gâteaux.</p>
+
+        <div class="category-list">
+            {% for category in categories %}
+                <div class="category-item">
+                    <h2><a href="{% url 'categories_view' %}">{{ category.name }}</a></h2>
+                    <p>{{ category.description }}</p>
+                </div>
+            {% empty %}
+                <p>Aucune catégorie disponible pour le moment.</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <style>
+        .categories-section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .category-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .category-item {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 250px;
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .category-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .category-item h2 a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1.8rem;
+        }
+
+        .category-item h2 a:hover {
+            color: #ff9800;
+        }
+
+        .category-item p {
+            font-size: 1rem;
+            color: #666;
+        }
+    </style>
+{% endblock %}
