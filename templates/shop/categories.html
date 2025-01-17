@@ -3,62 +3,87 @@
 
 {% block content %}
     <div class="categories-section">
-        <h1>Nos Catégories</h1>
-        <p>Explorez nos différentes catégories de gâteaux.</p>
-
-        <div class="category-list">
+        <h2 style="text-align: center; margin-bottom: 40px;">Nos Catégories de Gâteaux</h2>
+        <div class="categories-grid">
             {% for category in categories %}
+            <a href="{% url 'category_view' category.slug %}">
                 <div class="category-item">
-                    <h2><a href="{% url 'categories_view' %}">{{ category.name }}</a></h2>
+                    <div class="category-image">
+                        <img src="{{ category.image.url }}" alt="{{ category.name }}">
+                    </div>
+                    <h3>{{ category.name }}</h3>
                     <p>{{ category.description }}</p>
                 </div>
-            {% empty %}
-                <p>Aucune catégorie disponible pour le moment.</p>
+            </a>
             {% endfor %}
         </div>
     </div>
 
-    <style>
-        .categories-section {
-            padding: 50px 20px;
-            text-align: center;
-        }
 
-        .category-list {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 30px;
-        }
 
-        .category-item {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            width: 250px;
-            transition: transform 0.3s ease;
-            text-align: center;
-        }
+<!-- Custom styles and JS for categories -->
+<style>
+    .categories-section {
+        padding: 50px;
+        background-color: #f9f9f9;
+    }
 
-        .category-item:hover {
-            transform: translateY(-10px);
-        }
+    .categories-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
 
-        .category-item h2 a {
-            text-decoration: none;
-            color: #333;
-            font-size: 1.8rem;
-        }
+    .category-item {
+        text-align: center;
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-        .category-item h2 a:hover {
-            color: #ff9800;
-        }
+    .category-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
 
-        .category-item p {
-            font-size: 1rem;
-            color: #666;
-        }
-    </style>
+    .category-image img {
+        max-width: 250px;
+        height: auto;
+        border-radius: 8px;
+        transition: filter 0.3s ease;
+    }
+
+    .category-image img:hover {
+        filter: brightness(0.8);
+    }
+
+    .category-item h3 {
+        font-size: 1.5rem;
+        color: #333;
+        margin: 10px 0;
+    }
+
+    .category-item p {
+        color: #777;
+        font-size: 1rem;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const categoryItems = document.querySelectorAll('.category-item');
+
+        categoryItems.forEach(item => {
+            item.addEventListener('mouseover', function() {
+                this.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.2)';
+            });
+
+            item.addEventListener('mouseleave', function() {
+                this.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)';
+            });
+        });
+    });
+</script>
 {% endblock %}

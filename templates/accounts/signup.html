@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="signup-container">
+    <div class="signup-box">
+        <h2>Inscription</h2>
+
+        <form method="POST" action="{% url 'signup' %}">
+            {% csrf_token %}
+            <!-- Email field -->
+            <div class="form-group">
+                <label for="email">Adresse e-mail</label>
+                <input type="email" name="email" id="email" required>
+            </div>
+
+            <!-- Username field -->
+            <div class="form-group">
+                <label for="username">Nom d'utilisateur</label>
+                <input type="text" name="username" id="username" required>
+            </div>
+
+            <!-- Password field -->
+            <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input type="password" name="password" id="password" required>
+            </div>
+
+            <!-- Submit button -->
+            <div class="form-group">
+                <button type="submit">S'inscrire</button>
+            </div>
+        </form>
+
+        <div>
+            <p>Vous avez déjà un compte ? <a href="{% url 'signin' %}">Connectez-vous ici</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block styles %}
+<style>
+    .signup-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f9f9f9;
+    }
+
+    .signup-box {
+        background-color: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 400px;
+    }
+
+    .signup-box h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #333;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        color: #333;
+        font-weight: 500;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .form-group button {
+        background-color: #ff9800;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 500;
+        width: 100%;
+    }
+
+    .signup-box p {
+        text-align: center;
+        color: #666;
+    }
+
+    .signup-box a {
+        color: #ff9800;
+    }
+</style>
+{% endblock %}

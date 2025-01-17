@@ -1,0 +1,54 @@
+{% load static %}
+<footer class="bg-dark text-white py-4">
+    <div class="container">
+        <div class="row">
+            <!-- About Us Section -->
+            <div class="col-md-4">
+                <h5>À propos de nous</h5>
+                <p>Nous créons des gâteaux délicieux pour toutes les occasions. Que ce soit un anniversaire, un mariage ou simplement pour se faire plaisir, nous avons ce qu'il vous faut !</p>
+            </div>
+
+
+
+            <!-- Quick Links Section -->
+            <div class="col-md-4">
+                <h5>Liens rapides</h5>
+                <ul class="list-unstyled">
+                    <li><a href="{% url 'index_view' %}" class="text-white">Accueil</a></li>
+                    <li><a href="{% url 'categories_view' %}" class="text-white">Nos Gâteaux</a></li>
+                    <li><a href="#" class="text-white">À propos</a></li>
+                    <li><a href="#" class="text-white">Contact</a></li>
+                </ul>
+            </div>
+
+
+            <!-- Contact Info Section -->
+            <div class="col-md-4">
+                <h5>Contactez-nous</h5>
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Rue des Gâteaux, Paris</li>
+                    <li><i class="fas fa-phone"></i> +33 1 23 45 67 89</li>
+                    <li><i class="fas fa-envelope"></i> contact@gateauxdeluxe.com</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Social Media Links -->
+        <div class="row mt-4">
+            <div class="col text-center">
+                <a href="#" class="text-white mx-2"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-white mx-2"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white mx-2"><i class="fab fa-pinterest"></i></a>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="row mt-3">
+            <div class="col text-center">
+                <p>&copy; 2025 SweetyWorld. Tous droits réservés.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer End -->

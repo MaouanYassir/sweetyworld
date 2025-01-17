@@ -1,0 +1,32 @@
+{% load static %}
+<header style="background-color: #ff9800; padding: 20px; position: relative;">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <nav>
+            <ul style="list-style: none; display: flex; margin: 0; padding: 0;">
+                <li style="margin-right: 20px;"><a href="{% url 'index_view' %}" style="color: white; text-decoration: none; font-size: 1rem; font-weight: 500;">Accueil</a></li>
+                <li style="margin-right: 20px;"><a href="{% url 'categories_view' %}" style="color: white; text-decoration: none; font-size: 1rem; font-weight: 500;">Nos Gâteaux</a></li>
+                <li style="margin-right: 20px;"><a href="#" style="color: white; text-decoration: none; font-size: 1rem; font-weight: 500;">À propos</a></li>
+                <li><a href="#" style="color: white; text-decoration: none; font-size: 1rem; font-weight: 500;">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Buttons for Sign Up and Login -->
+        <div style="display: flex;">
+            {% if not user.is_authenticated %}
+                <a href="{% url 'signin' %}" style="background-color: white; color: #ff9800; padding: 10px 20px; text-decoration: none; font-weight: 500; border-radius: 5px; margin-right: 10px;">Se connecter</a>
+                <a href="{% url 'signup' %}" style="background-color: white; color: #ff9800; padding: 10px 20px; text-decoration: none; font-weight: 500; border-radius: 5px; margin-right: 10px;">S'inscrire</a>
+            {% else %}
+                <a href="{% url 'logout_user' %}" style="background-color: white; color: #ff9800; padding: 10px 20px; text-decoration: none; font-weight: 500; border-radius: 5px; margin-right: 10px">Se déconnecter</a>
+                <a href="#" style="background-color: white; color: #ff9800; padding: 10px 20px; text-decoration: none; font-weight: 500; border-radius: 5px; margin-right: 10px">Mon panier</a>
+                <a href="#" style="background-color: white; color: #ff9800; padding: 10px 20px; text-decoration: none; font-weight: 500; border-radius: 5px; margin-right: 10px">Mes commandes</a>
+            {% endif %}
+        </div>
+    </div>
+</header>
+
+<script>
+    document.getElementById('menu-btn').addEventListener('click', function() {
+        const dropdown = document.getElementById('dropdown-menu');
+        dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+    });
+</script>
