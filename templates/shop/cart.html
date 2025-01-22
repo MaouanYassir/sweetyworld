@@ -1,0 +1,192 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h2>Mon Panier</h2>
+    {% if cart_items %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Produit</th>
+                    <th>Quantité</th>
+                    <th>Prix Unitaire</th>
+                    <th>Prix Total</th>
+                    <th>Modifier Quantité</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart_items %}
+                <tr>
+                    <td>{{ item.product.name }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.product.price }}€</td>
+                    <td>{{ item.total_price_item|floatformat:2 }}€</td>
+                    <td>
+                        <div class="quantity-buttons">
+                            <!-- Bouton pour diminuer la quantité -->
+                            <a href="{% url 'remove_from_cart_view' slug=item.product.slug %}" class="btn btn-quantity">-</a>
+                            <!-- Bouton pour augmenter la quantité -->
+                            <a href="{% url 'add_to_cart_view' slug=item.product.slug %}" class="btn btn-quantity">+</a>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="3"><strong>Montant Total</strong></td>
+                    <td colspan="2"><strong>{{ total_price|floatformat:2 }}€</strong></td>
+                </tr>
+
+            </tbody>
+        </table>
+
+
+
+
+
+        {% if messages %}
+            <div class="alert-container">
+                {% for message in messages %}
+                    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                        <p>{{ message }}</p>
+                    </div>
+
+                    {% if message.tags == 'success' %}
+                        <script>
+                            // Rediriger après 3 secondes si le message est un succès
+                            setTimeout(function() {
+                                window.location.href = "{% url 'index_view' %}";
+                            }, 3000);  // 3000 millisecondes = 3 secondes
+                        </script>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+
+
+
+        {% if cart_items %}
+            <a href="{% url 'clear_cart_view' %}"><button style="background-color: #ff9800; color: white; padding: 10px 20px; border: none; font-weight: 500; border-radius: 5px; cursor: pointer; margin-bottom: 10px">Vider mon panier</button></a>
+        {% endif %}
+
+
+    {% else %}
+        <p>Il n'y a aucun article dans votre panier.</p>
+    {% endif %}
+</div>
+
+<style>
+    .container {
+        margin: 20px;
+        font-family: Arial, sans-serif;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    .quantity-buttons {
+        display: flex;
+        gap: 10px;
+    }
+    .btn-quantity {
+        display: inline-block;
+        padding: 5px 10px;
+        background-color: #ff9800;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 1.2rem;
+        transition: background-color 0.3s;
+    }
+    .btn-quantity:hover {
+        background-color: #e68900;
+    }
+
+    .alert-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    }
+
+    .alert {
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        color: white;
+        font-weight: bold;
+        opacity: 0;
+        transform: translateY(-20px);
+        animation: fadeIn 0.5s forwards, fadeOut 0.5s 3s forwards;
+    }
+
+    /* Success messages */
+    .alert-success {
+        background-color: #4caf50;
+    }
+
+    /* Error messages */
+    .alert-error, .alert-danger {
+        background-color: #f44336;
+    }
+
+    /* Warning messages */
+    .alert-warning {
+        background-color: #ff9800;
+    }
+
+    /* Information messages */
+    .alert-info {
+        background-color: #2196f3;
+    }
+
+    @keyframes fadeIn {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeOut {
+        to {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+    }
+
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tableRows = document.querySelectorAll('tbody tr');
+        tableRows.forEach(row => {
+            row.addEventListener('mouseover', function() {
+                row.style.backgroundColor = '#eaeaea';
+            });
+            row.addEventListener('mouseout', function() {
+                row.style.backgroundColor = '';
+            });
+        });
+
+        const totalPriceElement = document.querySelector('.total-price');
+        if (totalPriceElement) {
+            totalPriceElement.style.opacity = 0;
+            setTimeout(() => {
+                totalPriceElement.style.transition = 'opacity 1s';
+                totalPriceElement.style.opacity = 1;
+            }, 500);
+        }
+    });
+</script>
+
+{% endblock %}

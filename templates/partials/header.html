@@ -17,7 +17,7 @@
                 <a href="{% url 'signup' %}" style="background-color: white; color: #ff9800; padding: 10px 20px; text-decoration: none; font-weight: 500; border-radius: 5px; margin-right: 10px;">S'inscrire</a>
             {% else %}
                 <a href="{% url 'logout_user' %}" style="background-color: white; color: #ff9800; padding: 10px 20px; text-decoration: none; font-weight: 500; border-radius: 5px; margin-right: 10px">Se déconnecter</a>
-                <a href="#" style="background-color: white; color: #ff9800; padding: 10px 20px; text-decoration: none; font-weight: 500; border-radius: 5px; margin-right: 10px">Mon panier</a>
+                <a href="{% url 'cart_view' %}" style="background-color: white; color: #ff9800; padding: 10px 20px; text-decoration: none; font-weight: 500; border-radius: 5px; margin-right: 10px">Mon panier</a>
                 <a href="#" style="background-color: white; color: #ff9800; padding: 10px 20px; text-decoration: none; font-weight: 500; border-radius: 5px; margin-right: 10px">Mes commandes</a>
             {% endif %}
         </div>

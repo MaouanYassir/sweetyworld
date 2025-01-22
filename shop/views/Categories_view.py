@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from ..models import Category
+from shop.models import Category
 
 
 def categories_view(request):
