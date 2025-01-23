@@ -17,11 +17,14 @@ def cart_view(request):
 
     # Vérifier si le panier contient des articles
     if not cart_items.exists():
-        messages.warning(request, "Votre panier est vide.")
         total_price = 0
     else:
         # Calculer le prix total du panier
         total_price = sum(item.product.price * item.quantity for item in cart_items)
+
+    # calculer le total par article
+    for item in cart_items:
+        item.total_price_item = item.product.price * item.quantity
 
     # Rendre le template avec les données du panier
     return render(request, "shop/cart.html", context={
@@ -30,8 +33,6 @@ def cart_view(request):
         "total_price": total_price,
 
     })
-
-
 
 
 def add_to_cart_view(request, slug):

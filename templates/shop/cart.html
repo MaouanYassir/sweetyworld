@@ -69,6 +69,14 @@
             <a href="{% url 'clear_cart_view' %}"><button style="background-color: #ff9800; color: white; padding: 10px 20px; border: none; font-weight: 500; border-radius: 5px; cursor: pointer; margin-bottom: 10px">Vider mon panier</button></a>
         {% endif %}
 
+    <!-- Sélection de la date de retrait -->
+        <div class="form-group">
+            <label for="pick_up_date">Choisir une date de retrait :</label>
+            <input type="date" id="pick_up_date" name="pick_up_date" class="form-control">
+        </div>
+
+        <button type="button" id="confirm_date_button" class="btn btn-primary" style="background-color: #ff9800; color: white; padding: 10px 20px; border: none; font-weight: 500; border-radius: 5px; cursor: pointer; margin-top: 20px ">Confirmer la date de retrait</button>
+
 
     {% else %}
         <p>Il n'y a aucun article dans votre panier.</p>
