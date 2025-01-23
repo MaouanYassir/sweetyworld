@@ -6,13 +6,11 @@ from config import settings
 from . import Product
 
 
-
-
-
 class Cart(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     created_date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(auto_now=True)
+    pick_up_date = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
         return f"panier de {self.user.email}"
@@ -33,7 +31,8 @@ class CartItem(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.SET_NULL, null=True, blank=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
-    order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True, blank=True, related_name='order_items')  # Lien avec Order
+    order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True, blank=True,
+                              related_name='order_items')  # Lien avec Order
 
     def __str__(self):
         return f"{self.quantity} {self.product.name} dans le panier de {self.cart.user.email}"

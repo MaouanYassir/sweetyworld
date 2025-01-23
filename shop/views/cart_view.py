@@ -2,9 +2,39 @@ from django.contrib.auth.decorators import login_required
 from django.db import models
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
+from django.utils.dateparse import parse_date
 
-from shop.models import Cart, CartItem, Product
+from shop.models import Cart, CartItem, Product, Order
 from django.contrib import messages
+
+
+# @login_required
+# def cart_view(request):
+#     # Récupérer ou créer un panier pour l'utilisateur connecté
+#     cart_user, created = Cart.objects.get_or_create(user=request.user)
+#
+#     # Récupérer tous les articles du panier de l'utilisateur
+#     cart_items = CartItem.objects.filter(cart=cart_user)
+#
+#     # Vérifier si le panier contient des articles
+#     if not cart_items.exists():
+#         total_price = 0
+#     else:
+#         # Calculer le prix total du panier
+#         total_price = sum(item.product.price * item.quantity for item in cart_items)
+#
+#     # calculer le total par article
+#     for item in cart_items:
+#         item.total_price_item = item.product.price * item.quantity
+#
+#     # Rendre le template avec les données du panier
+#     return render(request, "shop/cart.html", context={
+#         "cart_user": cart_user,
+#         "cart_items": cart_items,
+#         "total_price": total_price,
+#
+#     })
+
 
 
 @login_required
@@ -15,24 +45,48 @@ def cart_view(request):
     # Récupérer tous les articles du panier de l'utilisateur
     cart_items = CartItem.objects.filter(cart=cart_user)
 
-    # Vérifier si le panier contient des articles
-    if not cart_items.exists():
-        total_price = 0
-    else:
-        # Calculer le prix total du panier
-        total_price = sum(item.product.price * item.quantity for item in cart_items)
+    # Calculer le prix total du panier
+    total_price = sum(item.product.price * item.quantity for item in cart_items)
 
     # calculer le total par article
     for item in cart_items:
         item.total_price_item = item.product.price * item.quantity
+
+    # Si la requête est une soumission POST (pour la date de retrait)
+    if request.method == 'POST':
+        pick_up_date_str = request.POST.get('pick_up_date')  # Récupérer la date de retrait depuis POST
+        if pick_up_date_str:
+            pick_up_date = parse_date(pick_up_date_str)  # Convertir la chaîne en objet date
+
+            if not pick_up_date:
+                messages.error(request, "Date de retrait invalide. Veuillez choisir une date correcte.")
+                return redirect('cart_view')
+
+            # Enregistrer la date de retrait dans le panier
+            cart_user.pick_up_date = pick_up_date
+            cart_user.save()
+
+            # Vérification du quota des 30 gâteaux pour cette date
+            orders_on_date = Order.objects.filter(pick_up_date=pick_up_date)
+            total_quantity = sum(sum(item.quantity for item in order.order_items.all()) for order in orders_on_date)
+
+            # Ajouter les articles du panier de l'utilisateur en cours au total
+            total_quantity += sum(item.quantity for item in cart_items)
+
+            if total_quantity >= 30:
+                messages.error(request, f"Le quota des 30 gâteaux a été atteint pour la date {pick_up_date}. Veuillez choisir une autre date.")
+                return redirect('cart_view')
+
+            # Si le quota n'est pas atteint, afficher un message de succès
+            messages.success(request, f"Date de retrait {pick_up_date} confirmée. Vous pouvez maintenant procéder au paiement.")
 
     # Rendre le template avec les données du panier
     return render(request, "shop/cart.html", context={
         "cart_user": cart_user,
         "cart_items": cart_items,
         "total_price": total_price,
-
     })
+
 
 
 def add_to_cart_view(request, slug):
