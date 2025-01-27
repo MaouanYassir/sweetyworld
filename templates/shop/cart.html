@@ -36,29 +36,27 @@
                     <td colspan="3"><strong>Montant Total</strong></td>
                     <td colspan="2"><strong>{{ total_price|floatformat:2 }}€</strong></td>
                 </tr>
-
             </tbody>
         </table>
 
-            {% if messages %}
-                <div class="alert-container">
-                    {% for message in messages %}
-                        <div class="alert alert-{{ message.tags }}">
-                            <p>{{ message }}</p>
-                        </div>
+        {% if messages %}
+            <div class="alert-container">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        <p>{{ message }}</p>
+                    </div>
 
+                    {% if message.tags == 'success' %}
                         <script>
                             // Rediriger après 3 secondes si le message est un succès
-                            {% if message.tags == 'success' %}
-                                setTimeout(function() {
-                                    window.location.href = "{% url 'index_view' %}";
-                                }, 3000);  // 3000 millisecondes = 3 secondes
-                            {% endif %}
+                            setTimeout(function() {
+                                window.location.href = "{% url 'create_checkout_session' cart_id=cart_user.id %}";
+                            }, 3000);  // 3000 millisecondes = 3 secondes
                         </script>
-                    {% endfor %}
-                </div>
-            {% endif %}
-
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
 
         {% if cart_items %}
             <a href="{% url 'clear_cart_view' %}"><button style="background-color: #ff9800; color: white; padding: 10px 20px; border: none; font-weight: 500; border-radius: 5px; cursor: pointer; margin-bottom: 10px">Vider mon panier</button></a>

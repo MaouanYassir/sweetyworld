@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+     <div style="text-align: center; margin-top: 50px;">
+        <h1 style="color: red;">Paiement annulé</h1>
+        <p>Vous avez annulé le paiement pour la commande n°{{ order.id }}.</p>
+        <a href="{% url 'user_orders_view' %}" class="btn btn-warning" style="margin-top: 20px;">Retour aux commandes</a>
+    </div>
+
+{% endblock %}

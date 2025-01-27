@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+     <div style="text-align: center; margin-top: 50px;">
+        <h1 style="color: green;">Merci pour votre commande !</h1>
+        <p>Votre paiement pour la commande n°{{ order.id }} a été effectué avec succès.</p>
+        <a href="{% url 'home' %}" class="btn btn-primary" style="margin-top: 20px;">Retour à l'accueil</a>
+    </div>
+
+{% endblock %}

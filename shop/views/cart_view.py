@@ -36,7 +36,6 @@ from django.contrib import messages
 #     })
 
 
-
 @login_required
 def cart_view(request):
     # Récupérer ou créer un panier pour l'utilisateur connecté
@@ -74,11 +73,14 @@ def cart_view(request):
             total_quantity += sum(item.quantity for item in cart_items)
 
             if total_quantity >= 30:
-                messages.error(request, f"Le quota des 30 gâteaux a été atteint pour la date {pick_up_date}. Veuillez choisir une autre date.")
+                messages.error(request,
+                               f"Le quota des 30 gâteaux a été atteint pour la date {pick_up_date}. Veuillez choisir une autre date.")
                 return redirect('cart_view')
 
             # Si le quota n'est pas atteint, afficher un message de succès
-            messages.success(request, f"Date de retrait {pick_up_date} confirmée. Vous pouvez maintenant procéder au paiement.")
+            messages.success(request,
+                             f"Date de retrait {pick_up_date} confirmée. Vous pouvez maintenant procéder au paiement.")
+            return redirect('create_checkout_session', order_id=cart_user.id)  # Redirection vers Stripe
 
     # Rendre le template avec les données du panier
     return render(request, "shop/cart.html", context={
@@ -86,7 +88,6 @@ def cart_view(request):
         "cart_items": cart_items,
         "total_price": total_price,
     })
-
 
 
 def add_to_cart_view(request, slug):
@@ -141,3 +142,35 @@ def clear_cart_view(request):
     cart_user.cartitem_set.all().delete()
 
     return redirect("cart_view")
+
+
+# Fonction pour créer l'ordre après un paiement réussi
+def create_order(request, cart_id):
+    # Récupérer le panier
+    cart = get_object_or_404(Cart, id=cart_id, user=request.user)
+
+    # Créer une commande avec les articles du panier
+    order = Order.objects.create(
+        user=request.user,
+        cart=cart,  # Associe la commande avec le panier
+        total_price=cart.total_price,  # Assure-toi d'ajouter le prix total de la commande
+        pick_up_date=cart.pick_up_date,  # Si tu utilises cette date
+    )
+
+    # Associer les items du panier à la commande
+    for item in cart.cartitem_set.all():
+        CartItem.objects.create(
+            order=order,  # Associer l'item à la commande
+            product=item.product,
+            quantity=item.quantity,
+        )
+
+    # Vider le panier après la création de la commande
+    cart.cartitem_set.all().delete()
+
+    # Marquer la commande comme payée
+    order.is_paid = True
+    order.save()
+
+    # Retourner ou rediriger après la création
+    return redirect('index_view')

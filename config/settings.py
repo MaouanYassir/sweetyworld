@@ -125,3 +125,9 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 # user personnalisé
 AUTH_USER_MODEL = 'accounts.Shopper'
+
+
+
+# les clé stripe (la premiere est pour le backend et la 2eme est celle a mettre ds le script javascript dans la page user_orders.html)
+STRIPE_SECRET_KEY = 'sk_test_51QMQIRFzkLwpXRndzsaIAzzr3atN3rbOsgYdq0afnM4u5TEpuxPuDhHowFYzICbMnYWFKZiMyEUrdgtPimEBAjAU00VPloTj6J'
+STRIPE_PUBLISHABLE_KEY = "pk_test_51QMQIRFzkLwpXRndHrv4cEF348SeNqZwKgQ68sWR52Ax1SCyoYE4ziDYN0MWVfDKs8cypUtM3Fgw01iBVMORzOl2000vmyMj8s"
