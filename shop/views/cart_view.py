@@ -87,6 +87,7 @@ def cart_view(request):
         "cart_user": cart_user,
         "cart_items": cart_items,
         "total_price": total_price,
+        "cart": cart_user
     })
 
 

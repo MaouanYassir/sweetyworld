@@ -50,7 +50,7 @@
                         <script>
                             // Rediriger après 3 secondes si le message est un succès
                             setTimeout(function() {
-                                window.location.href = "{% url 'create_checkout_session' cart_id=cart_user.id %}";
+                                window.location.href = "{% url 'create_checkout_session' cart_id=cart.id %}";
                             }, 3000);  // 3000 millisecondes = 3 secondes
                         </script>
                     {% endif %}
