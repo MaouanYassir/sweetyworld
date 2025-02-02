@@ -36,13 +36,24 @@
                     <td colspan="3"><strong>Montant Total</strong></td>
                     <td colspan="2"><strong>{{ total_price|floatformat:2 }}€</strong></td>
                 </tr>
+
             </tbody>
         </table>
+
+
+        <form method="post" action="{% url 'create-order' %}">
+            {% csrf_token %}
+<!--            <p>Veuillez choisir une date supérieure {{ min_pick_up_date|date:"d/m/Y" }} 9h00</p>-->
+            <label for="pick_up_date">Choisissez la date de retrait :</label>
+            <input type="date" name="pick_up_date" id="pick_up_date" required>
+            <button type="submit">Enregistrer la date</button>
+        </form>
+
 
         {% if messages %}
             <div class="alert-container">
                 {% for message in messages %}
-                    <div class="alert alert-{{ message.tags }}">
+                    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
                         <p>{{ message }}</p>
                     </div>
 
@@ -50,7 +61,7 @@
                         <script>
                             // Rediriger après 3 secondes si le message est un succès
                             setTimeout(function() {
-                                window.location.href = "{% url 'create_checkout_session' cart_id=cart.id %}";
+                                window.location.href = "{% url 'index_view' %}";
                             }, 3000);  // 3000 millisecondes = 3 secondes
                         </script>
                     {% endif %}
@@ -58,19 +69,12 @@
             </div>
         {% endif %}
 
+
+
         {% if cart_items %}
             <a href="{% url 'clear_cart_view' %}"><button style="background-color: #ff9800; color: white; padding: 10px 20px; border: none; font-weight: 500; border-radius: 5px; cursor: pointer; margin-bottom: 10px">Vider mon panier</button></a>
         {% endif %}
 
-        <!-- Sélection de la date de retrait -->
-        <form method="post">
-            {% csrf_token %}
-            <label for="pick_up_date">Choisissez la date de retrait :</label>
-            <input type="date" name="pick_up_date" id="pick_up_date" required>
-            <button type="submit" style="background-color: #ff9800; color: white; padding: 10px 20px; border: none; font-weight: 500; border-radius: 5px; cursor: pointer; margin-bottom: 10px">
-                Confirmer la date de retrait
-            </button>
-        </form>
 
     {% else %}
         <p>Il n'y a aucun article dans votre panier.</p>
@@ -125,11 +129,11 @@
         border-radius: 5px;
         margin-bottom: 10px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        color: white;
+        color: black;
         font-weight: bold;
         opacity: 0;
         transform: translateY(-20px);
-        animation: fadeIn 0.5s forwards, fadeOut 0.5s 3s forwards;
+        animation: fadeIn 0.5s forwards, fadeOut 0.5s 10s forwards;
     }
 
     /* Success messages */

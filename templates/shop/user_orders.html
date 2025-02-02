@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+    <h2>Mes Commandes</h2>
+
+    {% if orders %}
+        <ul>
+            {% for order in orders %}
+                <li class="order-item" style="margin-bottom: 20px; border: 1px solid #ccc; padding: 10px; border-radius: 5px;">
+                    <strong>Commande n°{{ order.id }} - date de la commande: {{ order.order_date|date:"d/m/Y" }}</strong><br>
+                    Total : {{ order.total_price }} €<br>
+                    Statut du paiement :
+                    {% if order.is_paid %}
+                        <span style="color: green;">Commande payée</span><br>
+                    {% else %}
+                        <span style="color: red;">Commande non payée</span><br>
+                    {% endif %}
+
+                    Date de retrait souhaitée: {{ order.pick_up_date|date:"d/m/Y" }}
+
+                    {% if order.is_pick_up_date_validated %}
+
+                        <span style="color: green;">Validée</span><br>
+
+                        {% if not order.is_paid %}
+
+                            <a href="{% url 'create_checkout_session' order.id %}" class="btn btn-primary" style="margin-top: 10px;">Procéder au paiement</a>
+
+                        {% endif %}
+
+                    {% else %}
+
+                        <span style="color: red;">Non validée</span><br>
+
+                    {% endif %}
+                        <button class="btn btn-info toggle-details" data-target="details-{{ order.id }}" style="margin-top: 10px;">Voir détails</button>
+
+<!--                        <button class="toggle-details" data-target="details-{{ order.id }}" style="margin-top: 10px;">Voir détails</button>-->
+                    <div class="order-details" id="details-{{ order.id }}" style="display: none;">
+                        <strong>Articles :</strong>
+                        <ul>
+                            {% for item in order.order_items.all %}
+                                <li>{{ item.product.name }} - Quantité : {{ item.quantity }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Vous n'avez pas encore passé de commandes.</p>
+    {% endif %}
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Récupérer tous les boutons qui permettent de basculer l'affichage des détails
+        const toggleButtons = document.querySelectorAll(".toggle-details");
+
+        // Ajouter un écouteur d'événements "click" à chaque bouton
+        toggleButtons.forEach(button => {
+            button.addEventListener("click", function() {
+                // Récupérer l'ID de la div cible à partir de l'attribut "data-target" du bouton
+                const targetId = button.getAttribute("data-target");
+                const detailsDiv = document.getElementById(targetId);
+
+                if (detailsDiv) {
+                    // Bascule entre "block" et "none" pour afficher ou masquer les détails
+                    if (detailsDiv.style.display === "none" || detailsDiv.style.display === "") {
+                        detailsDiv.style.display = "block";
+                        button.textContent = "Masquer détails";
+                    } else {
+                        detailsDiv.style.display = "none";
+                        button.textContent = "Voir détails";
+                    }
+                }
+            });
+        });
+    });
+</script>
+
+
+
+{% endblock %}
+
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const paymentButton = document.querySelector(".payment-button");
+        if (paymentButton) {
+            paymentButton.addEventListener("click", function() {
+                // Créer une nouvelle instance de Stripe avec la clé publique
+                var stripe = Stripe("{{ stripe_publishable_key }}");
+
+                // Envoyer la requête pour créer la session de paiement
+                fetch("/create-checkout-session/{{ order.id }}/", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRFToken": "{{ csrf_token }}"
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.sessionId) {
+                        stripe.redirectToCheckout({ sessionId: data.sessionId });
+                    } else {
+                        console.error("Erreur : Aucune session Stripe trouvée.");
+                    }
+                });
+            });
+        }
+    });
+</script>
+
+

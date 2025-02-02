@@ -1,15 +1,31 @@
-from django.contrib import messages
-from django.shortcuts import get_object_or_404, redirect
-from shop.models import Order, Cart, CartItem
-from .cart_view import create_order
+# from django.contrib import messages
+# from django.shortcuts import get_object_or_404, redirect, render
+# from shop.models import Order, Cart, CartItem
+# from .cart_view import create_order
+#
+#
+# def payment_success(request, cart_id):
+#     # Récupérer le panier à partir du cart_id
+#     cart = get_object_or_404(Cart, id=cart_id, user=request.user)
+#
+#     total_price = sum(item.product.price * item.quantity for item in CartItem.objects.filter(cart=cart))
+#
+#
+#     # Passer la variable 'cart' au template pour afficher des informations supplémentaires
+#     return render(request, 'shop/payment_success.html', {'cart': cart, 'total_price': total_price})
 
 
-def payment_success(request, cart_id):
-    # Récupérer le panier à partir du cart_id
-    cart = get_object_or_404(Cart, id=cart_id, user=request.user)
+from django.shortcuts import get_object_or_404, render
 
-    # Afficher un message de succès
-    messages.success(request, "Paiement réussi et commande créée ! Votre panier a été vidé.")
+from shop.models import Order
 
-    # Rediriger vers la page de confirmation
-    return redirect('payment_success', cart_id=cart.id)
+
+def payment_success(request, order_id):
+    # recupere la commande
+    order = get_object_or_404(Order, id=order_id, user=request.user)
+
+    # marquer la commande comme payée
+    order.is_paid = True
+    order.save()
+
+    return render(request, "shop/payment_success.html", {'order': order})
