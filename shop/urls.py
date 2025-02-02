@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import payment_success, payment_cancel, user_orders_view
+from .views import payment_success, payment_cancel, user_orders_view, contact_view
 from .views.cart_view import cart_view, add_to_cart_view, remove_from_cart_view, clear_cart_view, create_order
 from .views.category_view import category_view
 from .views.Categories_view import categories_view
@@ -20,6 +20,8 @@ urlpatterns = [
     path('order/success/<int:order_id>/', payment_success, name='payment_success'),
     path('order/cancel/<int:order_id>/', payment_cancel, name='payment_cancel'),
     path('user_orders/', user_orders_view, name='user_orders_view'),
+    path('contact/', contact_view, name='contact_view'),
+
 ]
 
 
