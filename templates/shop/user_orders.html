@@ -10,34 +10,17 @@
         <ul>
             {% for order in orders %}
                 <li class="order-item" style="margin-bottom: 20px; border: 1px solid #ccc; padding: 10px; border-radius: 5px;">
-                    <strong>Commande n°{{ order.id }} - date de la commande: {{ order.order_date|date:"d/m/Y" }}</strong><br>
-                    Total : {{ order.total_price }} €<br>
-                    Statut du paiement :
-                    {% if order.is_paid %}
-                        <span style="color: green;">Commande payée</span><br>
-                    {% else %}
-                        <span style="color: red;">Commande non payée</span><br>
-                    {% endif %}
 
-                    Date de retrait souhaitée: {{ order.pick_up_date|date:"d/m/Y" }}
+                    <strong>
+                        Commande n°{{ order.id }} - date de création de la commande: {{ order.order_date|date:"d/m/Y" }}<br>
+                        Total : {{ order.total_price }} €<br>
+                        Date de retrait : {{ order.pick_up_date|date:"d/m/Y" }}
+                    </strong>
 
-                    {% if order.is_pick_up_date_validated %}
 
-                        <span style="color: green;">Validée</span><br>
-
-                        {% if not order.is_paid %}
-
-                            <a href="{% url 'create_checkout_session' order.id %}" class="btn btn-primary" style="margin-top: 10px;">Procéder au paiement</a>
-
-                        {% endif %}
-
-                    {% else %}
-
-                        <span style="color: red;">Non validée</span><br>
-
-                    {% endif %}
+                    <p>
                         <button class="btn btn-info toggle-details" data-target="details-{{ order.id }}" style="margin-top: 10px;">Voir détails</button>
-
+                    </p>
 <!--                        <button class="toggle-details" data-target="details-{{ order.id }}" style="margin-top: 10px;">Voir détails</button>-->
                     <div class="order-details" id="details-{{ order.id }}" style="display: none;">
                         <strong>Articles :</strong>

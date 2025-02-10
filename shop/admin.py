@@ -1,25 +1,3 @@
-# from django.contrib import admin
-#
-# from .models import Category, Product
-#
-#
-# class CategoryAdmin(admin.ModelAdmin):
-#     prepopulated_fields = {'slug': ('name',)}
-#     list_display = ('name',)
-#     list_display_links = ('name',)
-#
-#
-# class ProductAdmin(admin.ModelAdmin):
-#     prepopulated_fields = {'slug': ('name',)}
-#     list_filter = ('category',)
-#     list_display = ('name', 'category', 'price',)
-#     list_display_links = ('name',)
-#
-#
-# admin.site.register(Category, CategoryAdmin)
-# admin.site.register(Product, ProductAdmin)
-# # Register your models here.
-
 from django.contrib import admin
 from django.core.mail import send_mail
 
@@ -28,7 +6,7 @@ from django.utils.html import format_html
 from .models.ContactMessage import ContactMessage
 from .models.Product_model import Product
 from .models.Category_model import Category
-from .models.Cart_model import CartItem, Order
+from .models.Cart_model import Cart, CartItem, Order
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -39,8 +17,8 @@ class CategoryAdmin(admin.ModelAdmin):
 
 class ProductAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
-    list_filter = ('category',)
-    list_display = ('name', 'category', 'price',)
+    list_filter = ('categories',)
+    list_display = ('name', 'categories', 'price',)
     list_display_links = ('name',)
 
 
@@ -62,8 +40,8 @@ class CartItemInline(admin.TabularInline):
 
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('user', "is_paid", "pick_up_date", "is_pick_up_date_validated", 'total_price', 'get_cart_items')
-    list_filter = ['is_paid', 'is_pick_up_date_validated', "pick_up_date"]
+    list_display = ('id', 'user', "pick_up_date",  'total_price', 'get_cart_items')
+    list_filter = ['is_paid',  "pick_up_date"]
     actions = ["mark_as_paid"]
     inlines = [CartItemInline]  # Inline pour afficher le panier associé à la commande
 
@@ -80,14 +58,7 @@ class OrderAdmin(admin.ModelAdmin):
 
 
 
-    def mark_as_paid(self, request, queryset):
-        """Action pour marquer les commandes comme payées."""
-        for order in queryset:
-            order.is_paid = True
-            order.save()
-            self.message_user(request, f"La commande {order.id} a été marquée comme payée.")
 
-    mark_as_paid.short_description = "Marquer les commandes sélectionnées comme payées"
 
 
 admin.site.register(ContactMessage, ContactMessageAdmin)

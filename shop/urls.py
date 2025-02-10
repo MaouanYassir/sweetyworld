@@ -1,28 +1,32 @@
 from django.urls import path
+from shop.views.payment_cancel_view import payment_cancel
+from shop.views.payment_success_confirmation_view import payment_success_confirmation
+from shop.views.create_order_view import create_order
+from shop.views.stirpe_view import create_checkout_session
+from shop.views.user_orders_view import user_orders_view
+from shop.views.about_view import about_view
+from shop.views.cart_view import cart_view, add_to_cart_view, remove_from_cart_view, clear_cart_view, check_quota
+from shop.views.categories_view import categories_view
+from shop.views.category_view import category_view
+from shop.views.contact_view import contact_view
 
-from .views import payment_success, payment_cancel, user_orders_view, contact_view, about_view
-from .views.cart_view import cart_view, add_to_cart_view, remove_from_cart_view, clear_cart_view, create_order
-from .views.category_view import category_view
-from .views.Categories_view import categories_view
-from .views.index_view import index_view
-from .views.stripe_view import create_checkout_session
+from shop.views.shop_view import index_view
 
 urlpatterns = [
-    path('', index_view, name='index_view'),
+    path('', index_view, name='home'),
     path('categories/', categories_view, name='categories_view'),
-    path('category/<slug:slug>/', category_view, name='category_view'),
+    path('categories/<slug:slug>/', category_view, name='category_view'),
+    path('about/', about_view, name='about_view'),
+    path('contact/', contact_view, name='contact_view'),
     path('cart/', cart_view, name='cart_view'),
-    path('cart/create-order/', create_order, name='create-order'),
+    path('cart/check_quota/', check_quota, name='check_quota'),
     path('add_to_cart/<slug:slug>/', add_to_cart_view, name='add_to_cart_view'),
     path('remove_from_cart/<slug:slug>/', remove_from_cart_view, name='remove_from_cart_view'),
     path('clear_cart/', clear_cart_view, name='clear_cart_view'),
-    path('create_checkout_session/<int:order_id>/', create_checkout_session, name='create_checkout_session'),
-    path('order/success/<int:order_id>/', payment_success, name='payment_success'),
-    path('order/cancel/<int:order_id>/', payment_cancel, name='payment_cancel'),
     path('user_orders/', user_orders_view, name='user_orders_view'),
-    path('contact/', contact_view, name='contact_view'),
-    path('about/', about_view, name='about_view'),
+    path('create-checkout-session/<int:cart_id>/', create_checkout_session, name='create_checkout_session'),
+    path('order/success/<int:cart_id>/', create_order, name='create_order'),
+    path('order/success/confirmation/<int:order_id>/', payment_success_confirmation, name='payment_success_confirmation'),
+    path('order/cancel/<int:cart_id>/', payment_cancel, name='payment_cancel'),
 
 ]
-
-

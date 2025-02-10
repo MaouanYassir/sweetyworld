@@ -21,7 +21,7 @@ def signup(request):
         login(request, user)
 
         # Redirection vers la page d'accueil après l'inscription
-        return redirect('index_view')
+        return redirect('home')
 
     # Si la requête n'est pas de type POST, on affiche simplement la page d'inscription
     return render(request, 'accounts/signup.html')
@@ -42,7 +42,7 @@ def signin(request):
             # Connexion de l'utilisateur (création de la session)
             login(request, user)
             # Redirection vers la page d'accueil (ou une autre page)
-            return redirect('index_view')
+            return redirect('home')
 
         else:
             # Si l'authentification échoue, afficher un message d'erreur
@@ -59,7 +59,7 @@ def logout_user(request):
     logout(request)
 
     # Redirection vers la page d'accueil (ou une autre page de ton choix)
-    return redirect('index_view')
+    return redirect('home')
 
 
 # Create your views here.

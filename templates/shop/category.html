@@ -2,9 +2,7 @@
 {% load static %}
 
 {% block content %}
-<h1>Nos {{ category.name|title }}</h1>
-
-
+<h1>Nos {{ category_name|title }}</h1>
 
 <div class="category-grid">
     {% for product in products %}

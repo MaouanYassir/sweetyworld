@@ -1,14 +1,11 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import render, get_object_or_404
 
-from ..models import Category, Product
+from shop.models import Category, Product
+
 
 
 def category_view(request, slug):
-    # Récupérer la catégorie par son slug
     category = get_object_or_404(Category, slug=slug)
-    # Filtrer les produits associés à cette catégorie
-    products = Product.objects.filter(category=category)
-
-    # Passer l'objet category et les produits au template
+    products = Product.objects.filter(categories=category)
     return render(request, 'shop/category.html', {'products': products,
-                                                  'category': category})
+                                                  'category_name': category.name})
