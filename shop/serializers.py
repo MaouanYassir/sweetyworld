@@ -1,11 +1,12 @@
 from rest_framework import serializers
-from .models import CartItem, Order
+from .models import CartItem, Order, Product
 
 
+# ----------------------------- serializer pour OrderListView--------------------------------------------------------
 class CartItemSerializer(serializers.ModelSerializer):
     product_name = serializers.CharField(source='product.name')
     product_price = serializers.DecimalField(source='product.price', max_digits=10, decimal_places=2)
-    total_price_item = serializers.DecimalField( max_digits=10, decimal_places=2)
+    total_price_item = serializers.DecimalField(max_digits=10, decimal_places=2)
 
     class Meta:
         model = CartItem
@@ -20,3 +21,10 @@ class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = ['id', 'user_email', 'order_date', 'is_paid', 'pick_up_date', 'total_price', 'order_items']
+
+
+# --------------------------------------serializer pour ProductViewSet-------------------------------------------------
+class ProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = ['id', 'name', 'description', 'slug', 'image', 'price', 'categories', 'created_date', 'modified_date']
