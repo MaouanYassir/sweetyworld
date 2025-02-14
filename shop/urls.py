@@ -1,4 +1,6 @@
 from django.urls import path, include
+from rest_framework import permissions
+from rest_framework.permissions import IsAdminUser
 from rest_framework.routers import DefaultRouter
 
 from shop.views.API_view import OrderListView, ProductViewSet
@@ -13,6 +15,21 @@ from shop.views.categories_view import categories_view
 from shop.views.category_view import category_view
 from shop.views.contact_view import contact_view
 from shop.views.shop_view import index_view
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+
+# vue de documentation Swagger
+schema_view = get_schema_view(
+    openapi.Info(
+        title="API projet de vente de gâteaux",
+        default_version='v1',
+        description="Document détaillant les endpoints de l'API",
+        terms_of_service="https://www.google.com/policies/terms/",
+        license=openapi.License(name="BSD License"),
+    ),
+    public=False,
+    permission_classes=[IsAdminUser],
+)
 
 # Créer un router et enregistrer le ProductViewSet
 router = DefaultRouter()
@@ -42,4 +59,9 @@ urlpatterns = [
     # http://127.0.0.1:8000/api/products/ pour afficher la liste de produits (get), et en créer un nouveau (post)
     # http://127.0.0.1:8000/api/products/6/ pour afficher un produit spécifique de par son id et pouvoir le  modifier(put) ou le supprimer(delete)
     path('api/', include(router.urls)),  # Toutes les URL générées par le router pour les produits
+
+
+    # tester avec: http://127.0.0.1:8000/swagger/
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='swagger-docs'),  # URL de la documentation Swagger
+
 ]

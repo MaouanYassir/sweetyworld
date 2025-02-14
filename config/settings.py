@@ -1,8 +1,4 @@
-
-
 from pathlib import Path
-
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -30,6 +26,7 @@ INSTALLED_APPS = [
     'accounts',
     'shop',
     'rest_framework',
+    'drf_yasg'
 ]
 
 MIDDLEWARE = [
@@ -123,11 +120,8 @@ MEDIA_URL = '/media/'
 # Les fichiers téléchargés seront enregistrés dans un dossier 'media' à la racine du projet.
 MEDIA_ROOT = BASE_DIR / 'media'
 
-
 # user personnalisé
 AUTH_USER_MODEL = 'accounts.Shopper'
-
-
 
 # les clé stripe (la premiere est pour le backend et la 2eme est celle a mettre ds le script javascript dans la page user_orders.html)
 STRIPE_SECRET_KEY = 'sk_test_51QMQIRFzkLwpXRndzsaIAzzr3atN3rbOsgYdq0afnM4u5TEpuxPuDhHowFYzICbMnYWFKZiMyEUrdgtPimEBAjAU00VPloTj6J'
