@@ -1,12 +1,7 @@
 from django.contrib import admin
-from django.core.mail import send_mail
-
 from django.utils.html import format_html
-
-from .models.ContactMessage import ContactMessage
-from .models.Product_model import Product
-from .models.Category_model import Category
-from .models.Cart_model import Cart, CartItem, Order
+from .models.contactMessage import ContactMessage
+from shop.models import Product, Category, CartItem, Order
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -40,8 +35,8 @@ class CartItemInline(admin.TabularInline):
 
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', "pick_up_date",  'total_price', 'get_cart_items')
-    list_filter = ['is_paid',  "pick_up_date"]
+    list_display = ('id', 'user', "pick_up_date", 'total_price', 'get_cart_items')
+    list_filter = ['is_paid', "pick_up_date"]
     actions = ["mark_as_paid"]
     inlines = [CartItemInline]  # Inline pour afficher le panier associé à la commande
 
@@ -57,12 +52,7 @@ class OrderAdmin(admin.ModelAdmin):
     get_cart_items.short_description = "Articles dans la commande"  # Titre de la colonne
 
 
-
-
-
-
 admin.site.register(ContactMessage, ContactMessageAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Order, OrderAdmin)
-

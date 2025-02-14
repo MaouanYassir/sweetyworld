@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.utils import timezone
 from django.conf import settings
 from shop.models import Product
-from shop.models.Cart_model import Cart, CartItem, Order
+from shop.models.cart_model import Cart, CartItem, Order
 
 
 @login_required

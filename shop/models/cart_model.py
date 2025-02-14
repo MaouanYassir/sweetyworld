@@ -34,9 +34,6 @@
 #
 #     def __str__(self):
 #         return f"{self.quantity} {self.product.name} dans le panier de {self.cart.user.email if self.cart else 'commande'}"
-
-
-
 from django.db import models
 from django.core.exceptions import ValidationError
 from config import settings

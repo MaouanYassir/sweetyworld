@@ -1,7 +1,7 @@
 
 from django.shortcuts import render, redirect
 
-from shop.models.ContactMessage import ContactMessage
+from shop.models.contactMessage import ContactMessage
 
 
 def contact_view(request):

@@ -1,8 +1,10 @@
 from django.urls import path
+
+from shop.views.API_view import OrderListView
 from shop.views.payment_cancel_view import payment_cancel
 from shop.views.payment_success_confirmation_view import payment_success_confirmation
 from shop.views.create_order_view import create_order
-from shop.views.stirpe_view import create_checkout_session
+from shop.views.stripe_view import create_checkout_session
 from shop.views.user_orders_view import user_orders_view
 from shop.views.about_view import about_view
 from shop.views.cart_view import cart_view, add_to_cart_view, remove_from_cart_view, clear_cart_view, check_quota
@@ -28,5 +30,5 @@ urlpatterns = [
     path('order/success/<int:cart_id>/', create_order, name='create_order'),
     path('order/success/confirmation/<int:order_id>/', payment_success_confirmation, name='payment_success_confirmation'),
     path('order/cancel/<int:cart_id>/', payment_cancel, name='payment_cancel'),
-
+    path('api/orders/', OrderListView.as_view(), name='order_list'),
 ]

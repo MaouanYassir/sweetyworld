@@ -18,7 +18,7 @@
 
 from django.db import models
 
-from shop.models.Category_model import Category
+from shop.models.category_model import Category
 
 
 class Product(models.Model):
