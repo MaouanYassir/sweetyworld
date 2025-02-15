@@ -35,7 +35,7 @@ class CartItemInline(admin.TabularInline):
 
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', "pick_up_date", 'total_price', 'get_cart_items')
+    list_display = ('id', 'user', 'is_paid' , "pick_up_date", 'total_price', 'get_cart_items')
     list_filter = ['is_paid', "pick_up_date"]
     actions = ["mark_as_paid"]
     inlines = [CartItemInline]  # Inline pour afficher le panier associé à la commande

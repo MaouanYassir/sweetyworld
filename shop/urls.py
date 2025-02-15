@@ -3,7 +3,7 @@ from rest_framework import permissions
 from rest_framework.permissions import IsAdminUser
 from rest_framework.routers import DefaultRouter
 
-from shop.views.API_view import OrderListView, ProductViewSet
+from shop.views.API_view import OrderListView, ProductViewSet, OrderDetailView
 from shop.views.payment_cancel_view import payment_cancel
 from shop.views.payment_success_confirmation_view import payment_success_confirmation
 from shop.views.create_order_view import create_order
@@ -52,8 +52,12 @@ urlpatterns = [
     path('order/success/confirmation/<int:order_id>/', payment_success_confirmation, name='payment_success_confirmation'),
     path('order/cancel/<int:cart_id>/', payment_cancel, name='payment_cancel'),
 
-    # api des commandes
+    # api des commandes http://127.0.0.1:8000/api/orders/
     path('api/orders/', OrderListView.as_view(), name='order_list'),
+
+    # L'endpoint pour obtenir une commande spécifique par son ID http://127.0.0.1:8000/api/orders/1/
+    path('api/orders/<int:order_id>/', OrderDetailView.as_view(), name='order_detail'),
+
 
     # API des produits (get = liste ou produit spécifique, post= ajouter un produits , delete= supprimer un produit, put= modifier un produit
     # http://127.0.0.1:8000/api/products/ pour afficher la liste de produits (get), et en créer un nouveau (post)
