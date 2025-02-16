@@ -4,6 +4,7 @@ from rest_framework.permissions import IsAdminUser
 from rest_framework.routers import DefaultRouter
 
 from shop.views.API_view import OrderListView, ProductViewSet, OrderDetailView
+from shop.views.generate_invoice_view import generate_invoice
 from shop.views.payment_cancel_view import payment_cancel
 from shop.views.payment_success_confirmation_view import payment_success_confirmation
 from shop.views.create_order_view import create_order
@@ -21,7 +22,7 @@ from drf_yasg import openapi
 # vue de documentation Swagger
 schema_view = get_schema_view(
     openapi.Info(
-        title="API projet de vente de gâteaux",
+        title="API SweetyWorld",
         default_version='v1',
         description="Document détaillant les endpoints de l'API",
         terms_of_service="https://www.google.com/policies/terms/",
@@ -51,6 +52,7 @@ urlpatterns = [
     path('order/success/<int:cart_id>/', create_order, name='create_order'),
     path('order/success/confirmation/<int:order_id>/', payment_success_confirmation, name='payment_success_confirmation'),
     path('order/cancel/<int:cart_id>/', payment_cancel, name='payment_cancel'),
+    path('invoice/<int:order_id>/', generate_invoice, name='generate_invoice'),
 
     # api des commandes http://127.0.0.1:8000/api/orders/
     path('api/orders/', OrderListView.as_view(), name='order_list'),
