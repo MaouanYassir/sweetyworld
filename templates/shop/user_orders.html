@@ -21,9 +21,7 @@
                     <p>
                         <button class="btn btn-info toggle-details" data-target="details-{{ order.id }}" style="margin-top: 10px;">Voir détails</button>
                     </p>
-                    <p>
-                        <a href="{% url 'generate_invoice' order.id %}" class="btn btn-primary">Télécharger ma facture</a>
-                    </p>
+
 <!--                        <button class="toggle-details" data-target="details-{{ order.id }}" style="margin-top: 10px;">Voir détails</button>-->
                     <div class="order-details" id="details-{{ order.id }}" style="display: none;">
                         <strong>Articles :</strong>
@@ -32,6 +30,9 @@
                                 <li>{{ item.product.name }} - Quantité : {{ item.quantity }}</li>
                             {% endfor %}
                         </ul>
+                        <p>
+                        <a href="{% url 'generate_invoice' order.id %}" class="btn btn-primary">Télécharger ma facture</a>
+                        </p>
                     </div>
                 </li>
             {% endfor %}
