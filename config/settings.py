@@ -134,4 +134,4 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'sweetyworld1180@gmail.com'
 EMAIL_HOST_PASSWORD = 'vzuo yxhv mzuh vlws'
-DEFAULT_FROM_EMAIL = 'noreply@sweetyworld.com'
+DEFAULT_FROM_EMAIL = 'sweetyworld1180@gmail.com'
