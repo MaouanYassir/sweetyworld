@@ -1,3 +1,4 @@
+from decimal import Decimal
 from django.http import HttpResponse
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
@@ -9,13 +10,19 @@ def generate_invoice(request, order_id):
     # Récupérer l'objet commande par son ID
     order = get_object_or_404(Order, id=order_id)
 
+    # Calcul du prix HT (Hors Taxes) en retirant la TVA de 21%
+    tva_rate = Decimal('0.21')  # TVA de 21%
+    price_without_vat = order.total_price / (1 + tva_rate)  # Prix sans TVA (HT)
+    price_with_vat = order.total_price  # Prix avec TVA (TTC)
+    vat_amount = price_with_vat - price_without_vat  # Montant de la TVA
+
     # Créer une réponse HTTP de type PDF
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = f'attachment; filename="facture_{order.id}.pdf"'
 
     # Créer le PDF
     p = canvas.Canvas(response, pagesize=letter)
-    width, height = letter  # Dimensions de la page PDF (lettre est une taille standard)
+    width, height = letter  # Taille de la page (Lettre)
 
     # Titre et en-tête de la facture
     p.setFont("Helvetica-Bold", 18)
@@ -32,7 +39,7 @@ def generate_invoice(request, order_id):
 
     # Informations sur la facture
     p.setFont("Helvetica", 12)
-    p.drawString(100, height - 140, f"Facture #{order.id}")
+    p.drawString(100, height - 140, f"Numéro de facture: {order.id}")
     p.drawString(100, height - 160, f"Date de la commande: {order.order_date.strftime('%d/%m/%Y')}")
 
     # Formater la date de retrait pour ne pas afficher l'heure
@@ -40,10 +47,14 @@ def generate_invoice(request, order_id):
     p.drawString(100, height - 180, f"Date de retrait: {pick_up_date_str}")
 
     p.drawString(100, height - 200, f"Client: {order.user.email}")
-    p.drawString(100, height - 220, f"Montant total: {order.total_price}€")
+
+    # Afficher prix HT, TVA et prix TTC
+    p.drawString(100, height - 220, f"Montant sans TVA (HT): {price_without_vat:.2f}€")
+    p.drawString(100, height - 240, f"Montant TVA (21%): {vat_amount:.2f}€")
+    p.drawString(100, height - 260, f"Montant total (TTC): {price_with_vat:.2f}€")
 
     # Détails des articles de la commande
-    y_position = height - 240
+    y_position = height - 280
     p.setFont("Helvetica-Bold", 12)
     p.drawString(100, y_position, "Description des produits :")
     y_position -= 20
@@ -57,10 +68,6 @@ def generate_invoice(request, order_id):
     p.setLineWidth(0.5)
     p.line(50, y_position, width - 50, y_position)
     y_position -= 10
-
-    # Total
-    p.setFont("Helvetica-Bold", 12)
-    p.drawString(100, y_position, f"Total : {order.total_price}€")
 
     # Sauvegarder le PDF
     p.showPage()

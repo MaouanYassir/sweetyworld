@@ -94,7 +94,7 @@ def check_quota(request):   # fonction qui controle le quota sans créé l'order
         else:
             # Si la date est dans le passé ou avant 3 jours, ajouter un message d'erreur
             messages.error(request,
-                           f"Veuillez choisir une date supérieure au {min_pick_up_date.strftime('%d/%m/%Y')}.")
+                           f"Veuillez choisir une date à partir du {min_pick_up_date.strftime('%d/%m/%Y')}.")
 
     return render(request, "shop/cart.html", {
         "cart_user": cart_user,
