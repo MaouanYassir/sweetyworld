@@ -1,8 +1,6 @@
 from django.urls import path, include
-from rest_framework import permissions
 from rest_framework.permissions import IsAdminUser
 from rest_framework.routers import DefaultRouter
-
 from shop.views.API_view import OrderListView, ProductViewSet, OrderDetailView
 from shop.views.generate_invoice_view import generate_invoice
 from shop.views.payment_cancel_view import payment_cancel

@@ -16,32 +16,21 @@
     </section>
 
     <!-- Featured Cakes Section -->
-    <section class="featured-cakes">
-        <h2 class="section-title">Nos Gâteaux Vedettes</h2>
-        <p class="section-subtitle">Découvrez nos meilleures créations</p>
-        <div class="cake-grid">
-            <!-- Cake 1 -->
-            <div class="cake-item">
-                <img src="{% static 'images/cake1.jpg' %}" alt="Cake 1" class="cake-img">
-                <h3 class="cake-title">Gâteau au Chocolat</h3>
-                <p class="cake-price">15.00€</p>
-            </div>
-
-            <!-- Cake 2 -->
-            <div class="cake-item">
-                <img src="{% static 'images/cake2.jpg' %}" alt="Cake 2" class="cake-img">
-                <h3 class="cake-title">Tarte aux Fruits</h3>
-                <p class="cake-price">12.00€</p>
-            </div>
-
-            <!-- Cake 3 -->
-            <div class="cake-item">
-                <img src="{% static 'images/cake3.jpg' %}" alt="Cake 3" class="cake-img">
-                <h3 class="cake-title">Cheesecake</h3>
-                <p class="cake-price">18.00€</p>
-            </div>
+<section class="featured-cakes">
+    <h2 class="section-title">Nos Gâteaux Vedettes</h2>
+    <p class="section-subtitle">Découvrez nos meilleures ventes</p>
+    <div class="cake-grid">
+        {% for product in products %}
+        <div class="cake-item">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="cake-img">
+            <h3 class="cake-title">{{ product.name }}</h3>
+            <p class="cake-price">{{ product.price }}€</p>
+            <p class="cake-sales">Ventes totales : {{ product.total_sales }}</p>  <!-- Affiche les ventes totales -->
         </div>
-    </section>
+        {% endfor %}
+    </div>
+</section>
+
 </div>
 
 <!-- Styles -->

@@ -154,7 +154,7 @@ class ProductAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
     list_filter = ('categories',)  # Appliquer un filtre pour les catégories
     list_display = (
-    'name', 'categories', 'price', 'total_sales_last_month', 'total_sales_last_6_months', 'total_sales_future')
+        'name', 'categories', 'price', 'total_sales_last_month', 'total_sales_last_6_months', 'total_sales_future')
     list_display_links = ('name',)
 
     def total_sales_last_month(self, obj):
@@ -217,6 +217,7 @@ class ProductAdmin(admin.ModelAdmin):
         ).order_by('-last_month_sales')  # Trier par les ventes du dernier mois
 
         return queryset
+
 
 class ContactMessageAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'subject', 'date_sent', 'reply_link')
