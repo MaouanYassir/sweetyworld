@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block content %}
+
     <div class="categories-section">
-        <h2 style="text-align: center; margin-bottom: 40px;">Nos Catégories de Gâteaux</h2>
+        <h2 style="text-align: center; margin-bottom: 40px;">{% trans "Nos Catégories de Gâteaux" %}</h2>
         <div class="categories-grid">
             {% for category in categories %}
             <a href="{% url 'category_view' category.slug %}">
@@ -19,9 +21,10 @@
         </div>
     </div>
 
+{% endblock %}
 
+{% block styles %}
 
-<!-- Custom styles and JS for categories -->
 <style>
     .categories-section {
         padding: 50px;
@@ -69,6 +72,14 @@
         color: #777;
         font-size: 1rem;
     }
+
+    h2 {
+        text-align: center;
+        padding: 20px;
+        color: #ff9800;
+        font-size: 3rem;
+        margin-bottom: 40px;
+    }
 </style>
 
 <script>
@@ -86,4 +97,5 @@
         });
     });
 </script>
+
 {% endblock %}

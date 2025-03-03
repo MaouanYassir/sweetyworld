@@ -1,18 +1,19 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block content %}
 <div class="container">
-    <h2>Mon Panier</h2>
+    <h2>{% trans "Mon Panier" %}</h2>
     {% if cart_items %}
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Produit</th>
-                    <th>Quantité</th>
-                    <th>Prix Unitaire</th>
-                    <th>Prix Total</th>
-                    <th>Modifier Quantité</th>
+                    <th>{% trans "Produit" %}</th>
+                    <th>{% trans "Quantité" %}</th>
+                    <th>{% trans "Prix Unitaire" %}</th>
+                    <th>{% trans "Prix Total" %}</th>
+                    <th>{% trans "Modifier Quantité" %}</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,7 +34,7 @@
                 </tr>
                 {% endfor %}
                 <tr>
-                    <td colspan="3"><strong>Montant Total</strong></td>
+                    <td colspan="3"><strong>{% trans "Montant Total" %}</strong></td>
                     <td colspan="2"><strong>{{ total_price|floatformat:2 }}€</strong></td>
                 </tr>
 
@@ -43,11 +44,11 @@
 
         <form method="post" action="{% url 'check_quota' %}">
             {% csrf_token %}
-<!--            <p>Veuillez choisir une date supérieure {{ min_pick_up_date|date:"d/m/Y" }} 9h00</p>-->
-            <label for="pick_up_date">Choisissez la date de retrait :</label>
+            <!-- <p>Veuillez choisir une date supérieure {{ min_pick_up_date|date:"d/m/Y" }} 9h00</p> -->
+            <label for="pick_up_date">{% trans "Choisissez la date de retrait :" %}</label>
             <input type="date" name="pick_up_date" id="pick_up_date" required>
             <p>
-            <button type="submit" style="background-color: #ff9800; color: white; padding: 10px 20px; border: none; font-weight: 500; border-radius: 5px; cursor: pointer; margin-top: 10px;">Paiement</button>
+            <button type="submit" style="background-color: #ff9800; color: white; padding: 10px 20px; border: none; font-weight: 500; border-radius: 5px; cursor: pointer; margin-top: 10px;">{% trans "Paiement" %}</button>
             </p>
         </form>
 
@@ -74,15 +75,17 @@
 
 
         {% if cart_items %}
-            <a href="{% url 'clear_cart_view' %}"><button style="background-color: #ff9800; color: white; padding: 10px 20px; border: none; font-weight: 500; border-radius: 5px; cursor: pointer; margin-bottom: 10px">Vider mon panier</button></a>
+            <a href="{% url 'clear_cart_view' %}"><button style="background-color: #ff9800; color: white; padding: 10px 20px; border: none; font-weight: 500; border-radius: 5px; cursor: pointer; margin-bottom: 10px">{% trans "Vider mon panier" %}</button></a>
         {% endif %}
 
 
     {% else %}
-        <p>Il n'y a aucun article dans votre panier.</p>
+        <p>{% trans "Il n'y a aucun article dans votre panier." %}</p>
     {% endif %}
 </div>
+{% endblock %}
 
+{% block styles %}
 <style>
     .container {
         margin: 20px;

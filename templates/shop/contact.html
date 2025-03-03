@@ -1,42 +1,42 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block content %}
 
 <section class="contact" style="padding: 50px 0; background-color: #f9f9f9; text-align: center;">
-    <h2 class="section-title">Contactez-nous</h2>
+    <h2 class="section-title">{% trans "Contactez-nous" %}</h2>
     <div class="contact-info" style="max-width: 800px; margin: 0 auto; text-align: left;">
         <p style="font-size: 1.2rem; color: #666;">
-            Pour toute question ou demande, n'hésitez pas à nous contacter via les informations ci-dessous ou en remplissant le formulaire de contact.
+            {% trans "Pour toute question ou demande, n'hésitez pas à nous contacter via les informations ci-dessous ou en remplissant le formulaire de contact." %}
         </p>
         <p style="font-size: 1.2rem; color: #666;">
-            <strong>Adresse :</strong> 123 Rue des Gâteaux, 1180 Bruxelles, Belgique
+            <strong>{% trans "Adresse :" %}</strong> {% trans "123 Rue des Gâteaux, 1180 Bruxelles, Belgique" %}
         </p>
         <p style="font-size: 1.2rem; color: #666;">
-            <strong>Téléphone :</strong> +32 485 56 87 56
+            <strong>{% trans "Téléphone :" %}</strong> +32 485 56 87 56
         </p>
-
 
         <!-- Formulaire de Contact -->
         <form method="post" action="{% url 'contact_view' %}" style="margin-top: 30px;">
             {% csrf_token %}
             <div style="margin-bottom: 15px;">
-                <label for="name" style="display: block; margin-bottom: 5px; font-size: 1rem; color: #333;">Nom :</label>
+                <label for="name" style="display: block; margin-bottom: 5px; font-size: 1rem; color: #333;">{% trans "Nom :" %}</label>
                 <input type="text" id="name" name="name" required style="width: 100%; padding: 10px; font-size: 1rem; border: 1px solid #ddd; border-radius: 5px;">
             </div>
             <div style="margin-bottom: 15px;">
-                <label for="email" style="display: block; margin-bottom: 5px; font-size: 1rem; color: #333;">Email :</label>
+                <label for="email" style="display: block; margin-bottom: 5px; font-size: 1rem; color: #333;">{% trans "Email :" %}</label>
                 <input type="email" id="email" name="email" required style="width: 100%; padding: 10px; font-size: 1rem; border: 1px solid #ddd; border-radius: 5px;">
             </div>
             <div style="margin-bottom: 15px;">
-                <label for="subject" style="display: block; margin-bottom: 5px; font-size: 1rem; color: #333;">Sujet :</label>
+                <label for="subject" style="display: block; margin-bottom: 5px; font-size: 1rem; color: #333;">{% trans "Sujet :" %}</label>
                 <input type="text" id="subject" name="subject" required style="width: 100%; padding: 10px; font-size: 1rem; border: 1px solid #ddd; border-radius: 5px;">
             </div>
             <div style="margin-bottom: 15px;">
-                <label for="message" style="display: block; margin-bottom: 5px; font-size: 1rem; color: #333;">Message :</label>
+                <label for="message" style="display: block; margin-bottom: 5px; font-size: 1rem; color: #333;">{% trans "Message :" %}</label>
                 <textarea id="message" name="message" rows="5" required style="width: 100%; padding: 10px; font-size: 1rem; border: 1px solid #ddd; border-radius: 5px;"></textarea>
             </div>
-            <button type="submit" style="background-color: #ff9800; color: white; padding: 15px 30px; border: none; border-radius: 5px; font-size: 1.2rem; cursor: pointer;">Envoyer</button>
+            <button type="submit" style="background-color: #ff9800; color: white; padding: 15px 30px; border: none; border-radius: 5px; font-size: 1.2rem; cursor: pointer;">{% trans "Envoyer" %}</button>
         </form>
     </div>
 

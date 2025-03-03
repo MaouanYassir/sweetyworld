@@ -37,6 +37,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -90,11 +91,24 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'fr-fr'
+# pour définir le multilinguisme
+LANGUAGES = [
+    ('fr', 'Français'),
+    ('nl', 'Nederlands'),
+]
+
+# Langue par défaut
+LANGUAGE_CODE = 'fr'
+
+# Répertoire où se trouvent les fichiers de traduction .po et .mo
+LOCALE_PATHS = [
+    BASE_DIR / 'locale',
+]
 
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
+LANGUAGE_COOKIE_NAME = 'django_language'
 
 USE_TZ = True
 
@@ -126,7 +140,6 @@ AUTH_USER_MODEL = 'accounts.Shopper'
 # les clé stripe (la premiere est pour le backend et la 2eme est celle a mettre ds le script javascript dans la page user_orders.html)
 STRIPE_SECRET_KEY = 'sk_test_51QMQIRFzkLwpXRndzsaIAzzr3atN3rbOsgYdq0afnM4u5TEpuxPuDhHowFYzICbMnYWFKZiMyEUrdgtPimEBAjAU00VPloTj6J'
 STRIPE_PUBLISHABLE_KEY = "pk_test_51QMQIRFzkLwpXRndHrv4cEF348SeNqZwKgQ68sWR52Ax1SCyoYE4ziDYN0MWVfDKs8cypUtM3Fgw01iBVMORzOl2000vmyMj8s"
-
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'

@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block content %}
 <div class="home-section">
@@ -8,31 +9,33 @@
         <div class="overlay"></div>
         <div class="hero-content">
             {% if user.is_authenticated %}
-                <p class="welcome-message">Bienvenue {{ user.username }}</p>
+                <p class="welcome-message">{% trans "Bienvenue" %} {{ user.username }}</p>
             {% endif %}
             <h1>SweetyWorld</h1>
-            <p>Gâteaux artisanaux faits avec amour et passion</p>
+            <p>{% trans "Gâteaux artisanaux faits avec amour et passion" %}</p>
         </div>
     </section>
 
+
     <!-- Featured Cakes Section -->
-<section class="featured-cakes">
-    <h2 class="section-title">Nos Gâteaux Vedettes</h2>
-    <p class="section-subtitle">Découvrez nos meilleures ventes</p>
-    <div class="cake-grid">
-        {% for product in products %}
-        <div class="cake-item">
-            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="cake-img">
-            <h3 class="cake-title">{{ product.name }}</h3>
-            <p class="cake-price">{{ product.price }}€</p>
-            <p class="cake-sales">Ventes totales : {{ product.total_sales }}</p>  <!-- Affiche les ventes totales -->
+    <section class="featured-cakes">
+        <h2 class="section-title">{% trans "Nos Gâteaux Vedettes" %}</h2>
+        <p class="section-subtitle">{% trans "Découvrez nos meilleures ventes" %}</p>
+        <div class="cake-grid">
+            {% for product in products %}
+            <div class="cake-item">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="cake-img">
+                <h3 class="cake-title">{{ product.name }}</h3>
+                <p class="cake-price">{{ product.price }}€</p>
+                <p class="cake-sales">{% trans "Ventes totales" %} : {{ product.total_sales }}</p>  <!-- Affiche les ventes totales -->
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-    </div>
-</section>
+    </section>
 
 </div>
-
+{% endblock %}
+{% block styles %}
 <!-- Styles -->
 <style>
     .home-section {

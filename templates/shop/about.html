@@ -1,21 +1,22 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block content %}
 
 <section class="about" style="padding: 50px 0; background-color: #f9f9f9; text-align: center;">
-    <h2 class="section-title">À propos de Ouassima</h2>
+    <h2 class="section-title">{% trans "À propos de Ouassima" %}</h2>
     <div class="about-content" style="max-width: 800px; margin: 0 auto;">
         <!-- Ajoute une image pour Ouassima ici -->
-        <img src="{% static 'images/ouassima.jpg' %}" alt="Ouassima" style="border-radius: 50%; width: 200px; height: 200px; object-fit: cover; margin-bottom: 20px;">
+        <img src="{% static 'images/ouassima.jpg' %}" alt="{% trans 'Ouassima' %}" style="border-radius: 50%; width: 200px; height: 200px; object-fit: cover; margin-bottom: 20px;">
         <p style="font-size: 1.2rem; color: #666; line-height: 1.6;">
-            Bonjour ! Je suis Ouassima, passionnée par la pâtisserie depuis mon plus jeune âge. L'amour pour les gâteaux et les douceurs m'a conduite à créer mon propre atelier de pâtisserie. Chaque gâteau que je prépare est une œuvre d'amour, conçue avec soin et dévouement.
+            {% trans "Bonjour ! Je suis Ouassima, passionnée par la pâtisserie depuis mon plus jeune âge. L'amour pour les gâteaux et les douceurs m'a conduite à créer mon propre atelier de pâtisserie. Chaque gâteau que je prépare est une œuvre d'amour, conçue avec soin et dévouement." %}
         </p>
         <p style="font-size: 1.2rem; color: #666; line-height: 1.6;">
-            Après avoir passé des années à perfectionner mes recettes et à explorer les subtilités de la pâtisserie, j'ai décidé de partager ma passion avec vous. Mon objectif est de vous offrir des créations délicieuses et élégantes, idéales pour toutes les occasions spéciales.
+            {% trans "Après avoir passé des années à perfectionner mes recettes et à explorer les subtilités de la pâtisserie, j'ai décidé de partager ma passion avec vous. Mon objectif est de vous offrir des créations délicieuses et élégantes, idéales pour toutes les occasions spéciales." %}
         </p>
         <p style="font-size: 1.2rem; color: #666; line-height: 1.6;">
-            Chaque gâteau que vous trouverez ici est fabriqué avec les meilleurs ingrédients et un soupçon de magie. J'espère que mes créations ajouteront une touche de douceur à vos moments précieux. Merci de me permettre de faire partie de vos célébrations !
+            {% trans "Chaque gâteau que vous trouverez ici est fabriqué avec les meilleurs ingrédients et un soupçon de magie. J'espère que mes créations ajouteront une touche de douceur à vos moments précieux. Merci de me permettre de faire partie de vos célébrations !" %}
         </p>
 
     </div>

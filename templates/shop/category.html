@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block content %}
-<h1>Nos {{ category_name|title }}</h1>
+<h1>{% trans "Nos" %} {{ category_name|title }}</h1>
 
 <div class="category-grid">
     {% for product in products %}
     <div class="category-item">
         <div class="category-image">
-            <img src="{{ product.image.url }}" alt="Image de {{ product.name }}">
+            <img src="{{ product.image.url }}">
         </div>
         <div class="category-info">
             <h3>{{ product.name }}</h3>
@@ -18,16 +19,18 @@
 
         {% if user.is_authenticated %}
             <div class="button-container">
-                <button type="button" onclick="addToCart('{{ product.slug }}')">Ajouter au panier</button>
+                <button type="button" onclick="addToCart('{{ product.slug }}')">{% trans "Ajouter au panier" %}</button>
             </div>
         {% endif %}
 
     </div>
     {% empty %}
-    <p>Aucun produit disponible dans cette catégorie.</p>
+    <p>{% trans "Aucun produit disponible dans cette catégorie." %}</p>
     {% endfor %}
 </div>
+{% endblock %}
 
+{% block styles %}
 <style>
     body {
         font-family: Arial, sans-serif;

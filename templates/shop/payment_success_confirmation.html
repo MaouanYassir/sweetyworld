@@ -1,22 +1,23 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block content %}
 
      <div style="text-align: center; margin-top: 50px;">
-        <h1 style="color: green;">Merci pour votre commande n° {{ order.id }}!</h1>
+        <h1 style="color: green;">{% trans "Merci pour votre commande n°" %} {{ order.id }}!</h1>
 
-        <p>Votre paiement de {{ order.total_price|floatformat:2  }}€ a été effectué avec succès.</p>
+        <p>{% trans "Votre paiement de" %} {{ order.total_price|floatformat:2 }}€ {% trans "a été effectué avec succès." %}</p>
 
-         <h3>Détails de votre commande :</h3>
+         <h3>{% trans "Détails de votre commande :" %}</h3>
             <ul>
                 {% for item in order.order_items.all %}
-                    <li>{{ item.product.name }} - Quantité: {{ item.quantity }} - Prix unitaire: {{  item.product.price|floatformat:2  }}€</li>
+                    <li>{{ item.product.name }} - {% trans "Quantité:" %} {{ item.quantity }} - {% trans "Prix unitaire:" %} {{ item.product.price|floatformat:2 }}€</li>
                 {% endfor %}
             </ul>
 
-         <h3>Date de retrait : {{ order.pick_up_date|date:"d/m/Y" }}</h3>
-        <a href="{% url 'home' %}" class="btn btn-primary" style="margin-top: 20px;">Retour à l'accueil</a>
+         <h3>{% trans "Date de retrait :" %} {{ order.pick_up_date|date:"d/m/Y" }}</h3>
+        <a href="{% url 'home' %}" class="btn btn-primary" style="margin-top: 20px;">{% trans "Retour à l'accueil" %}</a>
     </div>
 
 {% endblock %}

@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block content %}
 
-
-    <h2>Mes Commandes</h2>
+    <h2>{% trans "Mes Commandes" %}</h2>
 
     {% if orders %}
         <ul>
@@ -12,35 +12,35 @@
                 <li class="order-item" style="margin-bottom: 20px; border: 1px solid #ccc; padding: 10px; border-radius: 5px;">
 
                     <strong>
-                        Commande n°{{ order.id }} - date de création de la commande: {{ order.order_date|date:"d/m/Y" }}<br>
-                        Total : {{ order.total_price }} €<br>
-                        Date de retrait : {{ order.pick_up_date|date:"d/m/Y" }}
+                        {% trans "Commande n°" %}{{ order.id }} - {% trans "date de création de la commande" %}: {{ order.order_date|date:"d/m/Y" }}<br>
+                        {% trans "Total" %} : {{ order.total_price }} €<br>
+                        {% trans "Date de retrait" %} : {{ order.pick_up_date|date:"d/m/Y" }}
                     </strong>
 
-
                     <p>
-                        <button class="btn btn-info toggle-details" data-target="details-{{ order.id }}" style="margin-top: 10px;">Voir détails</button>
+                        <button class="btn btn-info toggle-details" data-target="details-{{ order.id }}" style="margin-top: 10px;">{% trans "Voir détails" %}</button>
                     </p>
 
-<!--                        <button class="toggle-details" data-target="details-{{ order.id }}" style="margin-top: 10px;">Voir détails</button>-->
                     <div class="order-details" id="details-{{ order.id }}" style="display: none;">
-                        <strong>Articles :</strong>
+                        <strong>{% trans "Articles" %} :</strong>
                         <ul>
                             {% for item in order.order_items.all %}
-                                <li>{{ item.product.name }} - Quantité : {{ item.quantity }}</li>
+                                <li>{{ item.product.name }} - {% trans "Quantité" %} : {{ item.quantity }}</li>
                             {% endfor %}
                         </ul>
                         <p>
-                        <a href="{% url 'generate_invoice' order.id %}" class="btn btn-primary">Télécharger ma facture</a>
+                        <a href="{% url 'generate_invoice' order.id %}" class="btn btn-primary">{% trans "Télécharger ma facture" %}</a>
                         </p>
                     </div>
                 </li>
             {% endfor %}
         </ul>
     {% else %}
-        <p>Vous n'avez pas encore passé de commandes.</p>
+        <p>{% trans "Vous n'avez pas encore passé de commandes." %}</p>
     {% endif %}
+{% endblock %}
 
+{% block styles %}
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         // Récupérer tous les boutons qui permettent de basculer l'affichage des détails
@@ -70,7 +70,8 @@
 
 
 
-{% endblock %}
+
+
 
 <script src="https://js.stripe.com/v3/"></script>
 <script>
@@ -102,4 +103,4 @@
     });
 </script>
 
-
+{% endblock %}

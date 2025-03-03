@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block content %}
 
      <div style="text-align: center; margin-top: 50px;">
-        <h1 style="color: red;">Paiement annulé</h1>
-        <p>Vous avez annulé le paiement pour la commande n°.</p>
-        <a href="{% url 'user_orders_view' %}" class="btn btn-warning" style="margin-top: 20px;">Retour aux commandes</a>
+        <h1 style="color: red;">{% trans "Paiement annulé" %}</h1>
+        <p>{% trans "Le paiement pour la commande n°" %} {{ order.id }} {% trans "a été annulé." %}</p>
+        <a href="{% url 'user_orders_view' %}" class="btn btn-warning" style="margin-top: 20px;">{% trans "Retour aux commandes" %}</a>
     </div>
 
 {% endblock %}
+
