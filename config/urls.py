@@ -27,3 +27,8 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),  # Les URLs de l'app accounts seront traduites
     path('i18n/', include('django.conf.urls.i18n')),  # Ajouter cette ligne
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+
+#!!!!!!!!!!!!!!!!!!!!!!!! regler le problem de la page succes qui devient enfrançais et traduction de la page admin(produits et description)
+#et du bouton de selection de langue qui ne fonctionne pas(je dois changer l'url manuellement')

@@ -1,6 +1,6 @@
-
 from django.shortcuts import get_object_or_404, redirect
 from shop.models import Cart, CartItem, Order
+from django.utils import translation  # Importer translation
 
 
 def create_order(request, cart_id):
@@ -31,5 +31,8 @@ def create_order(request, cart_id):
     # Vider le panier après le paiement
     cart_user.delete()
 
-    # return redirect('payment_success', cart_id=cart_user.id)
+    # Activer la langue de l'utilisateur
+    user_language = request.LANGUAGE_CODE  # Récupère la langue actuelle de l'utilisateur
+    translation.activate(user_language)  # Active la langue dans la session
+
     return redirect('payment_success_confirmation', order_id=order.id)

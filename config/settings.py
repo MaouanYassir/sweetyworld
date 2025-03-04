@@ -100,6 +100,10 @@ LANGUAGES = [
 # Langue par défaut
 LANGUAGE_CODE = 'fr'
 
+# Paramètres de session pour gérer la langue
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+LANGUAGE_COOKIE_NAME = 'django_language'
+
 # Répertoire où se trouvent les fichiers de traduction .po et .mo
 LOCALE_PATHS = [
     BASE_DIR / 'locale',
