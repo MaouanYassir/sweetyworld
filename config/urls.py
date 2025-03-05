@@ -30,5 +30,5 @@ urlpatterns = [
 
 
 
-#!!!!!!!!!!!!!!!!!!!!!!!! regler le problem de la page succes qui devient enfrançais et traduction de la page admin(produits et description)
+#!!!!!!!!!!!!!!!!!!!!!!!! regler la traduction de la page admin(produits et description)
 #et du bouton de selection de langue qui ne fonctionne pas(je dois changer l'url manuellement')

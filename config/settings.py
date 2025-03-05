@@ -100,6 +100,10 @@ LANGUAGES = [
 # Langue par défaut
 LANGUAGE_CODE = 'fr'
 
+USE_I18N = True
+USE_L10N = True
+USE_TZ = True
+
 # Paramètres de session pour gérer la langue
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 LANGUAGE_COOKIE_NAME = 'django_language'
