@@ -12,8 +12,21 @@
             <img src="{{ product.image.url }}">
         </div>
         <div class="category-info">
-            <h3>{{ product.name }}</h3>
-            <p>{{ product.description }}</p>
+            <h3>
+                {% get_current_language as LANGUAGE %}
+                {% if LANGUAGE == 'fr' %}
+                    {{ product.name }}  <!-- Affiche le nom du produit en français -->
+                {% else %}
+                    {{ product.name_nl }}  <!-- Affiche le nom du produit en néerlandais -->
+                {% endif %}
+            </h3>
+            <p>
+                {% if LANGUAGE == 'fr' %}
+                    {{ product.description }}  <!-- Affiche la description du produit en français -->
+                {% else %}
+                    {{ product.description_nl }}  <!-- Affiche la description du produit en néerlandais -->
+                {% endif %}
+            </p>
             <p class="price">{{ product.price }} €</p>
         </div>
 
@@ -29,6 +42,7 @@
     {% endfor %}
 </div>
 {% endblock %}
+
 
 {% block styles %}
 <style>
