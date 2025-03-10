@@ -115,10 +115,6 @@ LOCALE_PATHS = [
 
 TIME_ZONE = 'UTC'
 
-USE_I18N = True
-LANGUAGE_COOKIE_NAME = 'django_language'
-
-USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
@@ -149,6 +145,8 @@ AUTH_USER_MODEL = 'accounts.Shopper'
 STRIPE_SECRET_KEY = 'sk_test_51QMQIRFzkLwpXRndzsaIAzzr3atN3rbOsgYdq0afnM4u5TEpuxPuDhHowFYzICbMnYWFKZiMyEUrdgtPimEBAjAU00VPloTj6J'
 STRIPE_PUBLISHABLE_KEY = "pk_test_51QMQIRFzkLwpXRndHrv4cEF348SeNqZwKgQ68sWR52Ax1SCyoYE4ziDYN0MWVfDKs8cypUtM3Fgw01iBVMORzOl2000vmyMj8s"
 
+
+# infos pour l'adresse email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587

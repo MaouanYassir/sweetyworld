@@ -4,8 +4,10 @@ from shop.models.category_model import Category
 
 
 class Product(models.Model):
-    name = models.CharField(max_length=60, blank=False, null=False)
-    description = models.TextField(blank=False, null=False)
+    name = models.CharField(max_length=60, blank=False, null=False, default="")
+    description = models.TextField(blank=False, null=False, default="")
+    name_nl = models.CharField(max_length=60, blank=False, null=False, default="")
+    description_nl = models.TextField(blank=False, null=False, default="")
     slug = models.SlugField(max_length=60, blank=False, null=False)
     image = models.ImageField(upload_to="images", blank=False, null=False)
     price = models.DecimalField(max_digits=10, decimal_places=2, blank=False, null=False)
