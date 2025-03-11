@@ -12,7 +12,12 @@
          <h3>{% trans "Détails de votre commande :" %}</h3>
             <ul>
                 {% for item in order.order_items.all %}
-                    <li>{{ item.product.name }} - {% trans "Quantité:" %} {{ item.quantity }} - {% trans "Prix unitaire:" %} {{ item.product.price|floatformat:2 }}€</li>
+                    <li>{% get_current_language as LANGUAGE %}
+                {% if LANGUAGE == 'fr' %}
+                    {{ item.item.product.name }}  <!-- Affiche le nom du produit en français -->
+                {% else %}
+                    {{ product.name_nl }}  <!-- Affiche le nom du produit en néerlandais -->
+                {% endif %} - {% trans "Quantité:" %} {{ item.quantity }} - {% trans "Prix unitaire:" %} {{ item.product.price|floatformat:2 }}€</li>
                 {% endfor %}
             </ul>
 

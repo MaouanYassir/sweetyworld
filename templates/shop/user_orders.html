@@ -25,7 +25,12 @@
                         <strong>{% trans "Articles" %} :</strong>
                         <ul>
                             {% for item in order.order_items.all %}
-                                <li>{{ item.product.name }} - {% trans "Quantité" %} : {{ item.quantity }}</li>
+                                <li>{% get_current_language as LANGUAGE %}
+                                    {% if LANGUAGE == 'fr' %}
+                                        {{ item.product.name }}  <!-- Affiche le nom du produit en français -->
+                                    {% else %}
+                                        {{ item.product.name_nl }}  <!-- Affiche le nom du produit en néerlandais -->
+                                    {% endif %} - {% trans "Quantité" %} : {{ item.quantity }}</li>
                             {% endfor %}
                         </ul>
                         <p>

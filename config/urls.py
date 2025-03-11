@@ -30,5 +30,3 @@ urlpatterns = [
 
 
 
-#!!!!!!!!!!!!!!!!!!!!!!!! regler la traduction de la page admin(produits et description)
-#et du bouton de selection de langue qui ne fonctionne pas(je dois changer l'url manuellement')

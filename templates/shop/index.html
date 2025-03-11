@@ -25,7 +25,14 @@
             {% for product in products %}
             <div class="cake-item">
                 <img src="{{ product.image.url }}" alt="{{ product.name }}" class="cake-img">
-                <h3 class="cake-title">{{ product.name }}</h3>
+                <h3>
+                {% get_current_language as LANGUAGE %}
+                {% if LANGUAGE == 'fr' %}
+                    {{ product.name }}  <!-- Affiche le nom du produit en français -->
+                {% else %}
+                    {{ product.name_nl }}  <!-- Affiche le nom du produit en néerlandais -->
+                {% endif %}
+                </h3>
                 <p class="cake-price">{{ product.price }}€</p>
                 <p class="cake-sales">{% trans "Ventes totales" %} : {{ product.total_sales }}</p>  <!-- Affiche les ventes totales -->
             </div>
