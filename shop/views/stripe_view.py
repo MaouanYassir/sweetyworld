@@ -15,7 +15,7 @@ def create_checkout_session(request, cart_id):
     # Calculer le prix total du panier
     total_price = sum(item.product.price * item.quantity for item in cart_items)
 
-    # Récupérer la langue de l'utilisateur
+    # Récupérer la langue de l'utilisateur après le paiement
     user_language = request.LANGUAGE_CODE  # 'fr' ou 'nl' selon la langue choisie
 
     # Créer la session de paiement Stripe

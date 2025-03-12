@@ -24,7 +24,9 @@
         <div class="cake-grid">
             {% for product in products %}
             <div class="cake-item">
+
                 <img src="{{ product.image.url }}" alt="{{ product.name }}" class="cake-img">
+
                 <h3>
                 {% get_current_language as LANGUAGE %}
                 {% if LANGUAGE == 'fr' %}
@@ -33,8 +35,15 @@
                     {{ product.name_nl }}  <!-- Affiche le nom du produit en néerlandais -->
                 {% endif %}
                 </h3>
-                <p class="cake-price">{{ product.price }}€</p>
-                <p class="cake-sales">{% trans "Ventes totales" %} : {{ product.total_sales }}</p>  <!-- Affiche les ventes totales -->
+
+                <p class="cake-price">
+                    {{ product.price }}€
+                </p>
+
+                <p class="cake-sales">
+                    {% trans "Ventes totales" %} : {{ product.total_sales_combined }}
+                </p>  <!-- Affiche les ventes totales -->
+
             </div>
             {% endfor %}
         </div>

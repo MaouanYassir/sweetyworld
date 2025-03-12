@@ -17,10 +17,15 @@ class Product(models.Model):
 
     def total_sales(self):
         # Importation différée pour éviter les problèmes d'importation circulaire
-        from shop.models.cart_model import CartItem  # Importation ici pour éviter l'importation circulaire
-        # Compter le nombre de ventes d'un produit en fonction des CartItem
-        # Nous comptons les articles associés à ce produit dans les CartItem
-        return CartItem.objects.filter(product=self).aggregate(total_sales=Sum('quantity'))['total_sales'] or 0
+        from shop.models.cart_model import CartItem
+
+        # Nous filtrons les CartItems associés à des commandes payées (is_paid=True)
+        sales = CartItem.order.objects.filter(
+            product=self,
+            order__is_paid=True  # Seulement les produits dans des commandes payées
+        ).aggregate(total_sales=Sum('quantity'))
+
+        return sales['total_sales'] if sales['total_sales'] is not None else 0
 
     def __str__(self):
         return self.name
