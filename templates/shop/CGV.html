@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="text-center">{% trans "Conditions Générales de Vente - SweetyWorld" %}</h1>
+
+    <h2>{% trans "Informations du Vendeur" %}</h2>
+    <p><strong>SweetyWorld</strong><br>
+    {% trans "Adresse du siège social : 123 Rue des Gâteaux, Bruxelles" %}<br>
+    {% trans "Numéro d’entreprise (BCE) : xxxx.xxx.xxx" %}<br>
+    {% trans "Numéro de TVA : BE0xxx.xxx.xxx" %}<br>
+    {% trans "E-mail : sweetyworld1180@gmail.com" %}<br>
+    {% trans "Téléphone : +32 (0)xxx xx xx xx" %}</p>
+
+    <h2>{% trans "Dernière mise à jour : 13/03/2025" %}</h2>
+    <p>{% trans "Les présentes Conditions Générales de Vente (CGV) régissent les relations contractuelles entre SweetyWorld et tout utilisateur effectuant une commande sur le site  http://www.sweetyworld.be." %}</p>
+
+    <h3>{% trans "1. Objet" %}</h3>
+    <p>{% trans "Les présentes CGV définissent les droits et obligations des parties dans le cadre de la vente en ligne de produits proposés par SweetyWorld, notamment des gâteaux artisanaux." %}</p>
+
+    <h3>{% trans "2. Produits" %}</h3>
+    <ul>
+        <li>{% trans "Les gâteaux proposés sont fabriqués de manière artisanale avec des ingrédients frais." %}</li>
+        <li>{% trans "Les produits ne sont ni personnalisables ni modifiables." %}</li>
+        <li>{% trans "Les photos des produits sont non contractuelles et peuvent légèrement différer du produit final." %}</li>
+    </ul>
+
+    <h3>{% trans "3. Commandes" %}</h3>
+    <ul>
+        <li>{% trans "Toute commande passée sur SweetyWorld implique l’acceptation pleine et entière des présentes CGV." %}</li>
+        <li>{% trans "Les commandes sont validées après paiement intégral." %}</li>
+        <li>{% trans "Un e-mail de confirmation avec facture est envoyé après validation de la commande." %}</li>
+    </ul>
+
+    <h3>{% trans "4. Prix et Paiement" %}</h3>
+    <ul>
+        <li>{% trans "Les prix affichés sur le site sont en euros et incluent toutes taxes applicables." %}</li>
+        <li>{% trans "Les paiements sont sécurisés et s’effectuent exclusivement via Stripe avec une carte bancaire." %}</li>
+    </ul>
+
+    <h3>{% trans "5. Retrait des Commandes" %}</h3>
+    <ul>
+        <li>{% trans "Le client doit choisir une date de retrait au moment de la commande." %}</li>
+        <li>{% trans "La disponibilité des dates de retrait dépend du quota journalier fixé à 30 gâteaux." %}</li>
+        <li>{% trans "Une fois la date choisie et la commande validée, elle ne peut plus être modifiée." %}</li>
+    </ul>
+
+    <h4>{% trans "5.1 Non-retrait des Commandes" %}</h4>
+    <ul>
+        <li>{% trans "Le client est tenu de récupérer sa commande à la date et au lieu convenus." %}</li>
+        <li>{% trans "En cas de non-retrait à la date prévue, la commande ne pourra ni être remboursée ni reportée à une date ultérieure." %}</li>
+        <li>{% trans "SweetyWorld ne pourra être tenu responsable de la détérioration du produit due au non-retrait dans les délais impartis." %}</li>
+        <li>{% trans "Pour toute situation exceptionnelle, le client doit contacter SweetyWorld au moins 24 heures avant la date de retrait afin d’envisager une solution alternative dans la mesure du possible." %}</li>
+    </ul>
+
+    <h3>{% trans "6. Annulation et Remboursement" %}</h3>
+    <ul>
+        <li>{% trans "Les produits commercialisés par SweetyWorld étant des produits alimentaires périssables, aucune annulation ni remboursement ne sera accordé après validation de la commande, quel que soit le délai avant la date de retrait choisie par le client." %}</li>
+        <li>{% trans "Toutefois, si l’annulation intervient au moins 30 jours avant la date de retrait par email, une commande directement en magasin qui respecte toutes les conditions de vente pourra être proposée au client." %}</li>
+    </ul>
+
+    <h3>{% trans "7. Droit de Rétractation" %}</h3>
+    <p>{% trans "Conformément à la législation en vigueur, les produits alimentaires périssables ne bénéficient pas du droit de rétractation. Ainsi, aucune annulation ou remboursement ne sera possible après validation de la commande. Toutefois, une modification de commande en magasin peut être envisagée sous certaines conditions." %}</p>
+
+    <h3>{% trans "8. Responsabilité" %}</h3>
+    <ul>
+        <li>{% trans "SweetyWorld ne peut être tenu responsable des dommages résultant d’une mauvaise conservation des produits après leur retrait." %}</li>
+        <li>{% trans "En cas de problème avec une commande, le client doit contacter le service client par email ou par téléphone dans un délai de 24 heures après le retrait." %}</li>
+    </ul>
+
+    <h3>{% trans "9. Données Personnelles" %}</h3>
+    <p>{% trans "Les données personnelles des clients sont collectées uniquement dans le cadre de la gestion des commandes et ne sont en aucun cas revendues à des tiers. Conformément à la réglementation en vigueur, le client dispose d’un droit d’accès, de rectification et de suppression de ses données personnelles." %}</p>
+
+    <h3>{% trans "10. Litiges et Droit Applicable" %}</h3>
+    <p>{% trans "Les présentes CGV sont soumises au droit belge. En cas de litige, une solution amiable sera privilégiée avant toute action en justice. À défaut, les tribunaux compétents seront ceux du siège social de SweetyWorld." %}</p>
+</div>
+{% endblock %}

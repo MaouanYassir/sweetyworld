@@ -2,6 +2,7 @@ from django.urls import path, include
 from rest_framework.permissions import IsAdminUser
 from rest_framework.routers import DefaultRouter
 from shop.views.API_view import OrderListView, ProductViewSet, OrderDetailView
+from shop.views.CGV_view import CGV_view
 from shop.views.generate_invoice_view import generate_invoice
 from shop.views.payment_cancel_view import payment_cancel
 from shop.views.payment_success_confirmation_view import payment_success_confirmation
@@ -51,6 +52,7 @@ urlpatterns = [
     path('order/success/confirmation/<int:order_id>/', payment_success_confirmation, name='payment_success_confirmation'),
     path('order/cancel/<int:cart_id>/', payment_cancel, name='payment_cancel'),
     path('invoice/<int:order_id>/', generate_invoice, name='generate_invoice'),
+    path('CGV/', CGV_view, name='CGV_view'),
 
     # api des commandes http://127.0.0.1:8000/api/orders/
     path('api/orders/', OrderListView.as_view(), name='order_list'),
