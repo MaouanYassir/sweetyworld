@@ -39,11 +39,18 @@ class CartItem(models.Model):
 
     @property
     def total_price_item(self):
+        # Calcul du prix total pour un article dans le panier
+        # Le prix total de l'article est calculé en multipliant le prix du produit par la quantité
         return self.product.price * self.quantity
 
     def save(self, *args, **kwargs):
+        # Cette méthode `save` est appelée avant de sauvegarder un objet CartItem dans la base de données
+
         if not self.cart:
+            # Si l'objet CartItem n'est pas associé à un panier (cart), une erreur de validation est levée
             raise ValidationError("Un CartItem doit être associé à un Cart.")
+
+        # Appel de la méthode `save` de la classe parente pour sauvegarder l'objet dans la base de données
         super().save(*args, **kwargs)
 
     def __str__(self):

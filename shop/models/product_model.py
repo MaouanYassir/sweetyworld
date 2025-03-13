@@ -15,17 +15,6 @@ class Product(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
 
-    def total_sales(self):
-        # Importation différée pour éviter les problèmes d'importation circulaire
-        from shop.models.cart_model import CartItem
-
-        # Nous filtrons les CartItems associés à des commandes payées (is_paid=True)
-        sales = CartItem.order.objects.filter(
-            product=self,
-            order__is_paid=True  # Seulement les produits dans des commandes payées
-        ).aggregate(total_sales=Sum('quantity'))
-
-        return sales['total_sales'] if sales['total_sales'] is not None else 0
 
     def __str__(self):
         return self.name
