@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-03 13:32+0100\n"
+"POT-Creation-Date: 2025-03-13 17:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -98,17 +98,21 @@ msgstr "Over"
 msgid "Contact"
 msgstr "Contact"
 
-#: .\templates\partials\footer.html:25 .\templates\shop\contact.html:8
+#: .\templates\partials\footer.html:20
+msgid "Nos conditions générales de vente"
+msgstr "Onze algemene verkoopvoorwaarden"
+
+#: .\templates\partials\footer.html:26 .\templates\shop\contact.html:8
 msgid "Contactez-nous"
 msgstr "Contacteer ons"
 
-#: .\templates\partials\footer.html:27
+#: .\templates\partials\footer.html:28
 #, fuzzy
 #| msgid "123 Rue des Gâteaux, 1180 Bruxelles, Belgique"
 msgid "123 Rue des Gâteaux, Bruxelles"
 msgstr "123 Taartenstraat, 1180 Brussel, België"
 
-#: .\templates\partials\footer.html:48
+#: .\templates\partials\footer.html:49
 msgid "Tous droits réservés."
 msgstr "Alle rechten voorbehouden."
 
@@ -123,6 +127,242 @@ msgstr "Mijn winkelwagentje"
 #: .\templates\partials\header.html:22
 msgid "Mes commandes"
 msgstr "Mijn bestellingen"
+
+#: .\templates\shop\CGV.html:7
+msgid "Conditions Générales de Vente - SweetyWorld"
+msgstr "Algemene Verkoopvoorwaarden - SweetyWorld"
+
+#: .\templates\shop\CGV.html:9
+msgid "Informations du Vendeur"
+msgstr "Verkopersinformatie"
+
+#: .\templates\shop\CGV.html:11
+msgid "Adresse du siège social : 123 Rue des Gâteaux, Bruxelles"
+msgstr "Adres van het hoofdkantoor: 123 Taartenstraat, Brussel"
+
+#: .\templates\shop\CGV.html:12
+msgid "Numéro d’entreprise (BCE) : xxxx.xxx.xxx"
+msgstr "Ondernemingsnummer (KBO): xxxx.xxx.xxx"
+
+#: .\templates\shop\CGV.html:13
+msgid "Numéro de TVA : BE0xxx.xxx.xxx"
+msgstr "BTW-nummer: BE0xxx.xxx.xxx"
+
+#: .\templates\shop\CGV.html:14
+msgid "E-mail : sweetyworld1180@gmail.com"
+msgstr "E-mail: sweetyworld1180@gmail.com"
+
+#: .\templates\shop\CGV.html:15
+msgid "Téléphone : +32 (0)xxx xx xx xx"
+msgstr "Telefoon: +32 (0)xxx xx xx xx"
+
+#: .\templates\shop\CGV.html:17
+msgid "Dernière mise à jour : 13/03/2025"
+msgstr "Laatste update: 13/03/2025"
+
+#: .\templates\shop\CGV.html:18
+msgid "Les présentes Conditions Générales de Vente (CGV) régissent les relations contractuelles entre SweetyWorld et tout utilisateur effectuant une commande sur le site  http://www.sweetyworld.be."
+msgstr "Deze Algemene Verkoopvoorwaarden (AVV) regelen de contractuele relaties tussen SweetyWorld en elke gebruiker die een bestelling plaatst op de website http://www.sweetyworld.be."
+
+
+#: .\templates\shop\CGV.html:20
+msgid "1. Objet"
+msgstr "1. Doel"
+
+#: .\templates\shop\CGV.html:21
+msgid ""
+"Les présentes CGV définissent les droits et obligations des parties dans le "
+"cadre de la vente en ligne de produits proposés par SweetyWorld, notamment "
+"des gâteaux artisanaux."
+msgstr ""
+"Deze AVV bepalen de rechten en verplichtingen van de partijen in het kader "
+"van de online verkoop van producten aangeboden door SweetyWorld, met name "
+"ambachtelijke taarten."
+
+#: .\templates\shop\CGV.html:23
+msgid "2. Produits"
+msgstr "2. Producten"
+
+#: .\templates\shop\CGV.html:25
+msgid ""
+"Les gâteaux proposés sont fabriqués de manière artisanale avec des "
+"ingrédients frais."
+msgstr "De aangeboden taarten worden ambachtelijk gemaakt met verse ingrediënten."
+
+#: .\templates\shop\CGV.html:26
+msgid "Les produits ne sont ni personnalisables ni modifiables."
+msgstr "De producten zijn niet aanpasbaar en niet te wijzigen."
+
+#: .\templates\shop\CGV.html:27
+msgid ""
+"Les photos des produits sont non contractuelles et peuvent légèrement "
+"différer du produit final."
+msgstr ""
+"De foto's van de producten zijn niet bindend en kunnen enigszins afwijken "
+"van het uiteindelijke product."
+
+#: .\templates\shop\CGV.html:30
+msgid "3. Commandes"
+msgstr "3. Bestellingen"
+
+#: .\templates\shop\CGV.html:32
+msgid ""
+"Toute commande passée sur SweetyWorld implique l’acceptation pleine et "
+"entière des présentes CGV."
+msgstr ""
+"Elke bestelling geplaatst op SweetyWorld impliceert de volledige en "
+"onvoorwaardelijke aanvaarding van deze AVV."
+
+#: .\templates\shop\CGV.html:33
+msgid "Les commandes sont validées après paiement intégral."
+msgstr "Bestellingen worden gevalideerd na volledige betaling."
+
+#: .\templates\shop\CGV.html:34
+msgid ""
+"Un e-mail de confirmation avec facture est envoyé après validation de la "
+"commande."
+msgstr ""
+"Een bevestigingsmail met factuur wordt verzonden na validatie van de bestelling."
+
+#: .\templates\shop\CGV.html:37
+msgid "4. Prix et Paiement"
+msgstr "4. Prijs en Betaling"
+
+#: .\templates\shop\CGV.html:39
+msgid ""
+"Les prix affichés sur le site sont en euros et incluent toutes taxes "
+"applicables."
+msgstr ""
+"De op de website vermelde prijzen zijn in euro en inclusief alle toepasselijke belastingen."
+
+#: .\templates\shop\CGV.html:40
+msgid ""
+"Les paiements sont sécurisés et s’effectuent exclusivement via Stripe avec "
+"une carte bancaire."
+msgstr ""
+"Betalingen zijn beveiligd en worden uitsluitend via Stripe met een bankkaart uitgevoerd."
+
+#: .\templates\shop\CGV.html:43
+msgid "5. Retrait des Commandes"
+msgstr "5. Afhaling van Bestellingen"
+
+#: .\templates\shop\CGV.html:45
+msgid "Le client doit choisir une date de retrait au moment de la commande."
+msgstr "De klant moet een afhaaldatum kiezen bij het plaatsen van de bestelling."
+
+#: .\templates\shop\CGV.html:46
+msgid ""
+"La disponibilité des dates de retrait dépend du quota journalier fixé à 30 "
+"gâteaux."
+msgstr ""
+"De beschikbaarheid van afhaaldatums is afhankelijk van het dagquotum van 30 taarten."
+
+#: .\templates\shop\CGV.html:47
+msgid ""
+"Une fois la date choisie et la commande validée, elle ne peut plus être "
+"modifiée."
+msgstr ""
+"Zodra de datum is gekozen en de bestelling is gevalideerd, kan deze niet meer worden gewijzigd."
+
+#: .\templates\shop\CGV.html:50
+msgid "5.1 Non-retrait des Commandes"
+msgstr "5.1 Niet-afgehaalde Bestellingen"
+
+#: .\templates\shop\CGV.html:52
+msgid ""
+"Le client est tenu de récupérer sa commande à la date et au lieu convenus."
+msgstr ""
+"De klant is verplicht zijn bestelling op de afgesproken datum en plaats af te halen."
+
+#: .\templates\shop\CGV.html:53
+msgid ""
+"En cas de non-retrait à la date prévue, la commande ne pourra ni être "
+"remboursée ni reportée à une date ultérieure."
+msgstr ""
+"Indien de bestelling niet op de afgesproken datum wordt afgehaald, kan deze "
+"niet worden terugbetaald of verplaatst naar een latere datum."
+
+#: .\templates\shop\CGV.html:58
+msgid "6. Annulation et Remboursement"
+msgstr "6. Annulering en Terugbetaling"
+
+#: .\templates\shop\CGV.html:60
+msgid "Les produits commercialisés par SweetyWorld étant des produits alimentaires périssables, aucune annulation ni remboursement ne sera accordé après validation de la commande, quel que soit le délai avant la date de retrait choisie par le client."
+msgstr "De producten die door SweetyWorld worden verkocht, zijn bederfelijke voedingsmiddelen. Daarom is annulering of terugbetaling niet mogelijk na bevestiging van de bestelling, ongeacht de termijn voor de gekozen afhaaldatum."
+
+#: .\templates\shop\CGV.html:61
+msgid "Toutefois, si l’annulation intervient au moins 30 jours avant la date de retrait par email, une commande directement en magasin qui respecte toutes les conditions de vente pourra être proposée au client."
+msgstr "Als de annulering echter minstens 30 dagen voor de afhaaldatum per e-mail plaatsvindt, kan een directe bestelling in de winkel worden aangeboden, mits deze aan alle verkoopvoorwaarden voldoet."
+
+
+#: .\templates\shop\CGV.html:64
+msgid "7. Droit de Rétractation"
+msgstr "7. Herroepingsrecht"
+
+#: .\templates\shop\CGV.html:65
+msgid ""
+"Conformément à la législation en vigueur, les produits alimentaires "
+"périssables ne bénéficient pas du droit de rétractation. Ainsi, aucune "
+"annulation ou remboursement ne sera possible après validation de la "
+"commande. Toutefois, une modification de commande en magasin peut être "
+"envisagée sous certaines conditions."
+msgstr ""
+"Volgens de geldende wetgeving geldt er geen herroepingsrecht voor bederfelijke voedingsproducten. "
+"Bijgevolg is annulering of terugbetaling na bevestiging van de bestelling niet mogelijk. "
+"Een wijziging van de bestelling in de winkel kan echter onder bepaalde voorwaarden worden overwogen."
+
+#: .\templates\shop\CGV.html:67
+msgid "8. Responsabilité"
+msgstr "8. Aansprakelijkheid"
+
+#: .\templates\shop\CGV.html:69
+msgid ""
+"SweetyWorld ne peut être tenu responsable des dommages résultant d’une "
+"mauvaise conservation des produits après leur retrait."
+msgstr ""
+"SweetyWorld kan niet verantwoordelijk worden gehouden voor schade die het gevolg is "
+"van een slechte bewaring van de producten na afhaling."
+
+#: .\templates\shop\CGV.html:70
+msgid ""
+"En cas de problème avec une commande, le client doit contacter le service "
+"client par email ou par téléphone dans un délai de 24 heures après le "
+"retrait."
+msgstr ""
+"In geval van een probleem met een bestelling moet de klant binnen 24 uur na "
+"de afhaling contact opnemen met de klantenservice via e-mail of telefoon."
+
+#: .\templates\shop\CGV.html:73
+msgid "9. Données Personnelles"
+msgstr "9. Persoonsgegevens"
+
+#: .\templates\shop\CGV.html:74
+msgid ""
+"Les données personnelles des clients sont collectées uniquement dans le "
+"cadre de la gestion des commandes et ne sont en aucun cas revendues à des "
+"tiers. Conformément à la réglementation en vigueur, le client dispose d’un "
+"droit d’accès, de rectification et de suppression de ses données "
+"personnelles."
+msgstr ""
+"De persoonsgegevens van klanten worden uitsluitend verzameld voor het beheer "
+"van bestellingen en worden in geen geval doorverkocht aan derden. "
+"In overeenstemming met de geldende regelgeving heeft de klant het recht op "
+"toegang, rectificatie en verwijdering van zijn persoonsgegevens."
+
+#: .\templates\shop\CGV.html:76
+msgid "10. Litiges et Droit Applicable"
+msgstr "10. Geschillen en Toepasselijk Recht"
+
+#: .\templates\shop\CGV.html:77
+msgid ""
+"Les présentes CGV sont soumises au droit belge. En cas de litige, une "
+"solution amiable sera privilégiée avant toute action en justice. À défaut, "
+"les tribunaux compétents seront ceux du siège social de SweetyWorld."
+msgstr ""
+"Deze AVV zijn onderworpen aan het Belgische recht. In geval van een geschil "
+"wordt een minnelijke schikking vooropgesteld alvorens juridische stappen te ondernemen. "
+"Bij gebrek aan een oplossing zijn de bevoegde rechtbanken die van de zetel van SweetyWorld."
+
 
 #: .\templates\shop\about.html:8
 msgid "À propos de Ouassima"
@@ -176,7 +416,7 @@ msgstr "Mijn winkelwagentje"
 msgid "Produit"
 msgstr "Product"
 
-#: .\templates\shop\cart.html:13 .\templates\shop\user_orders.html:28
+#: .\templates\shop\cart.html:13 .\templates\shop\user_orders.html:33
 msgid "Quantité"
 msgstr "Hoeveelheid"
 
@@ -192,23 +432,23 @@ msgstr "Totale prijs"
 msgid "Modifier Quantité"
 msgstr "Hoeveelheid aanpassen"
 
-#: .\templates\shop\cart.html:37
+#: .\templates\shop\cart.html:44
 msgid "Montant Total"
 msgstr "Totaalbedrag"
 
-#: .\templates\shop\cart.html:48
+#: .\templates\shop\cart.html:53
 msgid "Choisissez la date de retrait :"
 msgstr "Kies de afhaaldatum:"
 
-#: .\templates\shop\cart.html:51
+#: .\templates\shop\cart.html:56
 msgid "Paiement"
 msgstr "Betaling"
 
-#: .\templates\shop\cart.html:78
+#: .\templates\shop\cart.html:80
 msgid "Vider mon panier"
 msgstr "Leeg mijn winkelwagentje"
 
-#: .\templates\shop\cart.html:83
+#: .\templates\shop\cart.html:84
 msgid "Il n'y a aucun article dans votre panier."
 msgstr "Er zit geen product in je winkelwagentje."
 
@@ -220,11 +460,11 @@ msgstr "Onze Taartcategorieën"
 msgid "Nos"
 msgstr "Onze"
 
-#: .\templates\shop\category.html:22
+#: .\templates\shop\category.html:35
 msgid "Ajouter au panier"
 msgstr "Toevoegen aan winkelwagentje"
 
-#: .\templates\shop\category.html:28
+#: .\templates\shop\category.html:41
 msgid "Aucun produit disponible dans cette catégorie."
 msgstr "Geen producten beschikbaar in deze categorie."
 
@@ -284,7 +524,7 @@ msgstr "Onze Beste Taarten"
 msgid "Découvrez nos meilleures ventes"
 msgstr "Ontdek onze bestsellers"
 
-#: .\templates\shop\index.html:30
+#: .\templates\shop\index.html:44
 msgid "Ventes totales"
 msgstr "Totale verkopen"
 
@@ -320,19 +560,19 @@ msgstr "is succesvol afgerond."
 msgid "Détails de votre commande :"
 msgstr "Bestelgegevens:"
 
-#: .\templates\shop\payment_success_confirmation.html:15
+#: .\templates\shop\payment_success_confirmation.html:20
 msgid "Quantité:"
 msgstr "Hoeveelheid:"
 
-#: .\templates\shop\payment_success_confirmation.html:15
+#: .\templates\shop\payment_success_confirmation.html:20
 msgid "Prix unitaire:"
 msgstr "Prijs per stuk:"
 
-#: .\templates\shop\payment_success_confirmation.html:19
+#: .\templates\shop\payment_success_confirmation.html:24
 msgid "Date de retrait :"
 msgstr "Afhaaldatum:"
 
-#: .\templates\shop\payment_success_confirmation.html:20
+#: .\templates\shop\payment_success_confirmation.html:25
 msgid "Retour à l'accueil"
 msgstr "Terug naar home"
 
@@ -364,11 +604,11 @@ msgstr "Bekijk details"
 msgid "Articles"
 msgstr "Artikelen"
 
-#: .\templates\shop\user_orders.html:32
+#: .\templates\shop\user_orders.html:37
 msgid "Télécharger ma facture"
 msgstr "Download mijn factuur"
 
-#: .\templates\shop\user_orders.html:39
+#: .\templates\shop\user_orders.html:44
 msgid "Vous n'avez pas encore passé de commandes."
 msgstr "Je hebt nog geen bestellingen geplaatst."
 
