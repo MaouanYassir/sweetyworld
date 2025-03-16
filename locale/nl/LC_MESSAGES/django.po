@@ -107,8 +107,6 @@ msgid "Contactez-nous"
 msgstr "Contacteer ons"
 
 #: .\templates\partials\footer.html:28
-#, fuzzy
-#| msgid "123 Rue des Gâteaux, 1180 Bruxelles, Belgique"
 msgid "123 Rue des Gâteaux, Bruxelles"
 msgstr "123 Taartenstraat, 1180 Brussel, België"
 
@@ -281,6 +279,13 @@ msgid ""
 msgstr ""
 "Indien de bestelling niet op de afgesproken datum wordt afgehaald, kan deze "
 "niet worden terugbetaald of verplaatst naar een latere datum."
+
+msgid "SweetyWorld ne pourra être tenu responsable de la détérioration du produit due au non-retrait dans les délais impartis."
+msgstr "SweetyWorld kan niet verantwoordelijk worden gehouden voor de verslechtering van het product als gevolg van niet-afhaling binnen de gestelde termijnen."
+
+msgid "Pour toute situation exceptionnelle, le client doit contacter SweetyWorld au moins 24 heures avant la date de retrait afin d’envisager une solution alternative dans la mesure du possible."
+msgstr "Voor elke uitzonderlijke situatie moet de klant SweetyWorld minstens 24 uur voor de afhaaldatum contacteren om, indien mogelijk, een alternatieve oplossing te overwegen."
+
 
 #: .\templates\shop\CGV.html:58
 msgid "6. Annulation et Remboursement"

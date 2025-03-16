@@ -15,16 +15,16 @@
             <h3>
                 {% get_current_language as LANGUAGE %}
                 {% if LANGUAGE == 'fr' %}
-                    {{ product.name }}  <!-- Affiche le nom du produit en français -->
+                    {{ product.name }}
                 {% else %}
-                    {{ product.name_nl }}  <!-- Affiche le nom du produit en néerlandais -->
+                    {{ product.name_nl }}
                 {% endif %}
             </h3>
             <p>
                 {% if LANGUAGE == 'fr' %}
-                    {{ product.description }}  <!-- Affiche la description du produit en français -->
+                    {{ product.description }}
                 {% else %}
-                    {{ product.description_nl }}  <!-- Affiche la description du produit en néerlandais -->
+                    {{ product.description_nl }}
                 {% endif %}
             </p>
             <p class="price">{{ product.price }} €</p>
@@ -42,7 +42,6 @@
     {% endfor %}
 </div>
 {% endblock %}
-
 
 {% block styles %}
 <style>
@@ -70,8 +69,8 @@
     }
 
     .category-item {
-        display: flex; /* Ajouté pour utiliser Flexbox */
-        flex-direction: column; /* Colonne pour aligner les éléments verticalement */
+        display: flex;
+        flex-direction: column;
         background-color: white;
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -86,7 +85,7 @@
     }
 
     .category-image img {
-        display: block; /* Changer à 'block' pour éviter les espaces indésirables */
+        display: block;
         width: 100%;
         max-height: 250px;
         border-top-left-radius: 8px;
@@ -96,7 +95,7 @@
     .category-info {
         padding: 20px;
         text-align: center;
-        flex-grow: 1; /* Permet au contenu d'occuper tout l'espace disponible */
+        flex-grow: 1;
     }
 
     .category-info h3 {
@@ -116,9 +115,31 @@
     }
 
     .button-container {
-        margin-top: auto; /* Pousse le bouton vers le bas */
-        padding: 20px; /* Ajoute un peu d'espace autour du bouton */
-        text-align: center; /* Centre le bouton */
+        margin-top: auto;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .button-container button {
+        background-color: #ff9800;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .button-container button:hover {
+        background-color: #e68900;
+        transform: scale(1.05);
+    }
+
+    .button-container button:active {
+        transform: scale(0.95);
     }
 
     .fade-in {
@@ -126,7 +147,9 @@
         transform: translateY(0);
     }
 </style>
+{% endblock %}
 
+{% block scripts %}
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const items = document.querySelectorAll('.category-item');
@@ -141,36 +164,28 @@
     });
 
     function addToCart(slug) {
-    const url = "{% url 'add_to_cart_view' slug='slug_placeholder' %}".replace('slug_placeholder', slug);
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'X-CSRFToken': '{{ csrf_token }}',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({})
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            let cartCountElement = document.getElementById('cart-count');
-            if (cartCountElement) {
-                cartCountElement.innerText = parseInt(cartCountElement.innerText) + 1;
+        const url = "{% url 'add_to_cart_view' slug='slug_placeholder' %}".replace('slug_placeholder', slug);
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({})
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                let cartCountElement = document.getElementById('cart-count');
+                if (cartCountElement) {
+                    cartCountElement.innerText = parseInt(cartCountElement.innerText) + 1;
+                }
             }
-
-            // Afficher la notification
-            const notification = document.getElementById('notification');
-            notification.style.display = 'block'; // Affiche le message
-            setTimeout(() => {
-                notification.style.display = 'none'; // Cache le message après 3 secondes
-            }, 3000);
-        }
-    })
-    .catch(error => {
-        console.error("Erreur dans la requête fetch :", error);
-    });
-}
-
+        })
+        .catch(error => {
+            console.error("Erreur dans la requête fetch :", error);
+        });
+    }
 </script>
-
 {% endblock %}
