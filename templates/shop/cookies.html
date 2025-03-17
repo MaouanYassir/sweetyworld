@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<div class="container">
+    <h1>{% trans "Politique des Cookies" %}</h1>
+
+    <p>{% trans "Cette page explique comment nous utilisons les cookies sur SweetyWorld afin d'améliorer votre expérience utilisateur et de garantir le bon fonctionnement du site." %}</p>
+
+    <h2>{% trans "1. Qu'est-ce qu'un cookie ?" %}</h2>
+    <p>{% trans "Un cookie est un petit fichier texte stocké sur votre appareil lorsque vous visitez un site Web. Il permet au site de se souvenir de vos préférences et d'améliorer votre navigation." %}</p>
+
+    <h2>{% trans "2. Quels types de cookies utilisons-nous ?" %}</h2>
+
+    <h3>{% trans "Cookies essentiels" %}</h3>
+    <p>{% trans "Ces cookies sont nécessaires au bon fonctionnement du site. Ils permettent de gérer votre connexion, votre panier et votre session utilisateur." %}</p>
+
+    <h3>{% trans "Cookies analytiques" %}</h3>
+    <p>{% trans "Ces cookies nous aident à analyser le trafic et à comprendre comment les utilisateurs interagissent avec notre site. Vous pouvez les désactiver à tout moment." %}</p>
+
+    <h3>{% trans "Cookies tiers (Stripe)" %}</h3>
+    <p>{% trans "Nous utilisons Stripe pour sécuriser les paiements en ligne. Stripe peut utiliser des cookies pour détecter et prévenir les fraudes lors des transactions. Ces cookies sont utilisés uniquement pour garantir la sécurité des paiements et ne suivent pas votre activité en dehors de ce contexte." %}</p>
+
+    <h2>{% trans "3. Durée de conservation des cookies" %}</h2>
+    <p>{% trans "Les cookies déposés sur votre appareil sont conservés pour une durée limitée, selon leur type :" %}</p>
+    <ul>
+        <li>{% trans "Cookies essentiels (obligatoires pour le fonctionnement du site) : conservés uniquement le temps de votre session et supprimés automatiquement lorsque vous fermez votre navigateur." %}</li>
+        <li>{% trans "Cookies analytiques (Google Analytics, si accepté) : conservés pendant 13 mois maximum puis supprimés automatiquement." %}</li>
+        <li>{% trans "Cookies de paiement (Stripe) : Stripe conserve ces cookies jusqu'à 24 mois afin de sécuriser les transactions et détecter les fraudes." %}</li>
+        <li>{% trans "Cookies de personnalisation (si activés) : conservés jusqu'à 6 mois pour enregistrer vos préférences." %}</li>
+    </ul>
+
+    <h2>{% trans "4. Comment gérer et supprimer vos cookies ?" %}</h2>
+    <p>{% trans "Vous pouvez à tout moment modifier vos préférences en matière de cookies via notre Gestion des cookies ou supprimer les cookies enregistrés sur votre appareil via les paramètres de votre navigateur :" %}</p>
+    <ul>
+        <li><a href="https://support.google.com/chrome/answer/95647" target="_blank">Google Chrome</a></li>
+        <li><a href="https://support.mozilla.org/fr/kb/effacer-les-cookies-pour-supprimer-les-information" target="_blank">Mozilla Firefox</a></li>
+        <li><a href="https://support.microsoft.com/fr-fr/windows/supprimer-et-g%C3%A9rer-les-cookies-168dab11-0753-043d-7c16-ede5947fc64d" target="_blank">Microsoft Edge</a></li>
+        <li><a href="https://support.apple.com/fr-fr/HT201265" target="_blank">Safari</a></li>
+    </ul>
+
+    <h2>{% trans "5. Que se passe-t-il si vous refusez les cookies ?" %}</h2>
+    <p>{% trans "Si vous refusez certains cookies, voici les conséquences :" %}</p>
+    <ul>
+        <li>{% trans "Si vous refusez les cookies analytiques, nous ne collectons aucune donnée sur votre navigation." %}</li>
+        <li>{% trans "Si vous refusez les cookies de paiement (Stripe), les transactions resteront sécurisées, mais Stripe pourra toujours appliquer ses propres règles de cookies lors du paiement." %}</li>
+        <li>{% trans "Si vous refusez tous les cookies non essentiels, seuls les cookies strictement nécessaires resteront activés." %}</li>
+    </ul>
+
+    <h2>{% trans "6. Paiement avec Stripe" %}</h2>
+    <p>{% trans "Nos paiements sont sécurisés avec Stripe. Lors du paiement, Stripe peut utiliser des cookies pour garantir la sécurité des transactions et prévenir la fraude. Vous pouvez refuser les cookies Stripe sur notre site, mais Stripe pourra toujours appliquer ses propres règles de cookies lors du paiement." %}</p>
+
+    <h2>{% trans "7. Contact" %}</h2>
+    <p>{% trans "Si vous avez des questions sur notre politique en matière de cookies, vous pouvez nous contacter à :" %}</p>
+    <p><strong>Email :</strong> sweetyworld1180@gmail.com</p>
+    <p><strong>{% trans "Téléphone" %} :</strong> +32 485 56 87 56</p>
+</div>
+
+{% endblock %}
+
+
+<style>
+    .container {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    h1, h2, h3 {
+        color: #ff9800;
+    }
+    p, ul {
+        color: #333;
+        font-size: 1rem;
+    }
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+    ul li {
+        margin: 5px 0;
+    }
+    ul li a {
+        color: #ff9800;
+        text-decoration: none;
+    }
+    ul li a:hover {
+        text-decoration: underline;
+    }
+</style>
+

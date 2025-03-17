@@ -1,5 +1,6 @@
 {% load static %}
 {% load i18n %}
+
 <footer class="bg-dark text-white py-4">
     <div class="container">
         <div class="row">
@@ -18,6 +19,7 @@
                     <li><a href="{% url 'about_view' %}" class="text-white">{% trans "À propos" %}</a></li>
                     <li><a href="{% url 'contact_view' %}" class="text-white">{% trans "Contact" %}</a></li>
                     <li><a href="{% url 'CGV_view' %}" class="text-white">{% trans "Nos conditions générales de vente" %}</a></li>
+                    <li><a href="{% url 'cookies_policy' %}" class="text-white">{% trans "Politique des cookies" %}</a></li>
                     <li><a href="#" onclick="showCookieSettings()" class="text-white">{% trans "Gestion des cookies" %}</a></li>
                 </ul>
             </div>
@@ -52,10 +54,11 @@
     </div>
 </footer>
 
-<!-- Footer End -->
-
 <style>
     h5 {
         color: grey;
     }
+
 </style>
+
+

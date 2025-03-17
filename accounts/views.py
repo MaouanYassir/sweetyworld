@@ -1,8 +1,38 @@
-from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect
+from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from .models import Shopper
 
+# def signup(request):
+#     if request.method == "POST":
+#         email = request.POST.get("email")
+#         username = request.POST.get("username")
+#         password = request.POST.get("password")
+#
+#         user = Shopper.objects.create_user(email=email, username=username, password=password)
+#
+#         # Connexion automatique après inscription
+#         login(request, user)
+#
+#     return render(request, 'accounts/signup.html')
+#
+#
+# def signin(request):
+#     if request.method == "POST":
+#         email = request.POST.get("email")
+#         password = request.POST.get("password")
+#
+#         user = authenticate(request, username=email, password=password)
+#
+#         if user:
+#             login(request, user)
+#
+#
+#         else:
+#             messages.error(request, "Email ou mot de passe incorrect")
+#             return render(request, 'accounts/signin.html')
+#
+#     return render(request, 'accounts/signin.html')
 
 def signup(request):
     # Si la requête est de type POST, cela signifie que l'utilisateur a soumis le formulaire d'inscription

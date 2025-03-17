@@ -6,4 +6,3 @@ def CGV_view(request):
 
 
 
-#!!!!!!!!!faire la traduction des CGV!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

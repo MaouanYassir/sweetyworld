@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-13 17:59+0100\n"
+"POT-Creation-Date: 2025-03-17 11:58+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,7 +30,7 @@ msgstr "E-mailadres"
 msgid "Mot de passe"
 msgstr "Wachtwoord"
 
-#: .\templates\accounts\signin.html:26 .\templates\partials\header.html:17
+#: .\templates\accounts\signin.html:26 .\templates\partials\header.html:21
 msgid "Se connecter"
 msgstr "Inloggen"
 
@@ -50,7 +50,7 @@ msgstr "Registratie"
 msgid "Nom d'utilisateur"
 msgstr "Gebruikersnaam"
 
-#: .\templates\accounts\signup.html:32 .\templates\partials\header.html:18
+#: .\templates\accounts\signup.html:32 .\templates\partials\header.html:28
 msgid "S'inscrire"
 msgstr "Registreren"
 
@@ -62,11 +62,11 @@ msgstr "Heeft u al een account?"
 msgid "Connectez-vous ici"
 msgstr "Log hier in"
 
-#: .\templates\partials\footer.html:8
+#: .\templates\partials\footer.html:9
 msgid "À propos de nous"
 msgstr "Over ons"
 
-#: .\templates\partials\footer.html:9
+#: .\templates\partials\footer.html:10
 msgid ""
 "Nous créons des gâteaux artisanaux faits avec des ingrédients frais et de "
 "qualité. Chaque bouchée est une explosion de saveurs authentiques, parfaite "
@@ -78,51 +78,104 @@ msgstr ""
 "het leven, of het nu is om jezelf te verwennen of om een smakelijk moment te "
 "delen met je dierbaren."
 
-#: .\templates\partials\footer.html:14
+#: .\templates\partials\footer.html:15
 msgid "Liens rapides"
 msgstr "Snelle links"
 
-#: .\templates\partials\footer.html:16 .\templates\partials\header.html:7
+#: .\templates\partials\footer.html:17 .\templates\partials\header.html:7
 msgid "Accueil"
 msgstr "Home"
 
-#: .\templates\partials\footer.html:17 .\templates\partials\header.html:8
+#: .\templates\partials\footer.html:18 .\templates\partials\header.html:8
 msgid "Nos Gâteaux"
 msgstr "Onze Taarten"
 
-#: .\templates\partials\footer.html:18 .\templates\partials\header.html:9
+#: .\templates\partials\footer.html:19 .\templates\partials\header.html:9
 msgid "À propos"
 msgstr "Over"
 
-#: .\templates\partials\footer.html:19 .\templates\partials\header.html:10
+#: .\templates\partials\footer.html:20 .\templates\partials\header.html:10
 msgid "Contact"
 msgstr "Contact"
 
-#: .\templates\partials\footer.html:20
+#: .\templates\partials\footer.html:21
 msgid "Nos conditions générales de vente"
 msgstr "Onze algemene verkoopvoorwaarden"
 
-#: .\templates\partials\footer.html:26 .\templates\shop\contact.html:8
+#: .\templates\partials\footer.html:22
+msgid "Gestion des cookies"
+msgstr "Cookiebeheer"
+
+#: .\templates\partials\footer.html:23
+msgid "Politique des cookies"
+msgstr "Cookiebeleid"
+
+#: .\templates\partials\footer.html:30 .\templates\shop\contact.html:8
 msgid "Contactez-nous"
 msgstr "Contacteer ons"
 
-#: .\templates\partials\footer.html:28
+#: .\templates\partials\footer.html:32
 msgid "123 Rue des Gâteaux, Bruxelles"
 msgstr "123 Taartenstraat, 1180 Brussel, België"
 
-#: .\templates\partials\footer.html:49
+#: .\templates\partials\footer.html:52
 msgid "Tous droits réservés."
 msgstr "Alle rechten voorbehouden."
 
-#: .\templates\partials\header.html:20
+#: .\templates\partials\footer.html:60
+msgid "Nous utilisons des cookies pour améliorer votre expérience."
+msgstr "Wij gebruiken cookies om uw ervaring te verbeteren."
+
+#: .\templates\partials\footer.html:61
+msgid "Accepter tout"
+msgstr "Alles accepteren"
+
+#: .\templates\partials\footer.html:62
+msgid "Refuser"
+msgstr "Weigeren"
+
+#: .\templates\partials\footer.html:63
+msgid "Personnaliser"
+msgstr "Personaliseren"
+
+#: .\templates\partials\footer.html:70
+msgid "Paramètres des cookies"
+msgstr "Cookie-instellingen"
+
+#: .\templates\partials\footer.html:73
+msgid "Cookies de paiement (Stripe)"
+msgstr "Betaalcookies (Stripe)"
+
+#: .\templates\partials\footer.html:77 .\templates\shop\cookies.html:19
+msgid "Cookies analytiques"
+msgstr "Analytische cookies"
+
+#: .\templates\partials\footer.html:82
+msgid "Enregistrer mes choix"
+msgstr "Mijn keuzes opslaan"
+
+#: .\templates\partials\footer.html:83
+msgid "Supprimer mes cookies"
+msgstr "Mijn cookies verwijderen"
+
+#: .\templates\partials\footer.html:84
+msgid "Fermer"
+msgstr "Sluiten"
+
+#: .\templates\partials\footer.html:255
+msgid "Tous vos cookies ont été supprimés."
+msgstr "Al uw cookies zijn verwijderd."
+
+
+#: .\templates\partials\header.html:35
 msgid "Se déconnecter"
 msgstr "Uitloggen"
 
-#: .\templates\partials\header.html:21
+#: .\templates\partials\header.html:42
 msgid "Mon panier"
 msgstr "Mijn winkelwagentje"
 
-#: .\templates\partials\header.html:22
+#: .\templates\partials\header.html:49
 msgid "Mes commandes"
 msgstr "Mijn bestellingen"
 
@@ -159,9 +212,14 @@ msgid "Dernière mise à jour : 13/03/2025"
 msgstr "Laatste update: 13/03/2025"
 
 #: .\templates\shop\CGV.html:18
-msgid "Les présentes Conditions Générales de Vente (CGV) régissent les relations contractuelles entre SweetyWorld et tout utilisateur effectuant une commande sur le site  http://www.sweetyworld.be."
-msgstr "Deze Algemene Verkoopvoorwaarden (AVV) regelen de contractuele relaties tussen SweetyWorld en elke gebruiker die een bestelling plaatst op de website http://www.sweetyworld.be."
-
+msgid ""
+"Les présentes Conditions Générales de Vente (CGV) régissent les relations "
+"contractuelles entre SweetyWorld et tout utilisateur effectuant une commande "
+"sur le site  http://www.sweetyworld.be."
+msgstr ""
+"Deze Algemene Verkoopvoorwaarden (AVV) regelen de contractuele relaties "
+"tussen SweetyWorld en elke gebruiker die een bestelling plaatst op de "
+"website http://www.sweetyworld.be."
 
 #: .\templates\shop\CGV.html:20
 msgid "1. Objet"
@@ -185,7 +243,8 @@ msgstr "2. Producten"
 msgid ""
 "Les gâteaux proposés sont fabriqués de manière artisanale avec des "
 "ingrédients frais."
-msgstr "De aangeboden taarten worden ambachtelijk gemaakt met verse ingrediënten."
+msgstr ""
+"De aangeboden taarten worden ambachtelijk gemaakt met verse ingrediënten."
 
 #: .\templates\shop\CGV.html:26
 msgid "Les produits ne sont ni personnalisables ni modifiables."
@@ -220,7 +279,8 @@ msgid ""
 "Un e-mail de confirmation avec facture est envoyé après validation de la "
 "commande."
 msgstr ""
-"Een bevestigingsmail met factuur wordt verzonden na validatie van de bestelling."
+"Een bevestigingsmail met factuur wordt verzonden na validatie van de "
+"bestelling."
 
 #: .\templates\shop\CGV.html:37
 msgid "4. Prix et Paiement"
@@ -231,14 +291,16 @@ msgid ""
 "Les prix affichés sur le site sont en euros et incluent toutes taxes "
 "applicables."
 msgstr ""
-"De op de website vermelde prijzen zijn in euro en inclusief alle toepasselijke belastingen."
+"De op de website vermelde prijzen zijn in euro en inclusief alle "
+"toepasselijke belastingen."
 
 #: .\templates\shop\CGV.html:40
 msgid ""
 "Les paiements sont sécurisés et s’effectuent exclusivement via Stripe avec "
 "une carte bancaire."
 msgstr ""
-"Betalingen zijn beveiligd en worden uitsluitend via Stripe met een bankkaart uitgevoerd."
+"Betalingen zijn beveiligd en worden uitsluitend via Stripe met een bankkaart "
+"uitgevoerd."
 
 #: .\templates\shop\CGV.html:43
 msgid "5. Retrait des Commandes"
@@ -246,21 +308,24 @@ msgstr "5. Afhaling van Bestellingen"
 
 #: .\templates\shop\CGV.html:45
 msgid "Le client doit choisir une date de retrait au moment de la commande."
-msgstr "De klant moet een afhaaldatum kiezen bij het plaatsen van de bestelling."
+msgstr ""
+"De klant moet een afhaaldatum kiezen bij het plaatsen van de bestelling."
 
 #: .\templates\shop\CGV.html:46
 msgid ""
 "La disponibilité des dates de retrait dépend du quota journalier fixé à 30 "
 "gâteaux."
 msgstr ""
-"De beschikbaarheid van afhaaldatums is afhankelijk van het dagquotum van 30 taarten."
+"De beschikbaarheid van afhaaldatums is afhankelijk van het dagquotum van 30 "
+"taarten."
 
 #: .\templates\shop\CGV.html:47
 msgid ""
 "Une fois la date choisie et la commande validée, elle ne peut plus être "
 "modifiée."
 msgstr ""
-"Zodra de datum is gekozen en de bestelling is gevalideerd, kan deze niet meer worden gewijzigd."
+"Zodra de datum is gekozen en de bestelling is gevalideerd, kan deze niet "
+"meer worden gewijzigd."
 
 #: .\templates\shop\CGV.html:50
 msgid "5.1 Non-retrait des Commandes"
@@ -270,7 +335,8 @@ msgstr "5.1 Niet-afgehaalde Bestellingen"
 msgid ""
 "Le client est tenu de récupérer sa commande à la date et au lieu convenus."
 msgstr ""
-"De klant is verplicht zijn bestelling op de afgesproken datum en plaats af te halen."
+"De klant is verplicht zijn bestelling op de afgesproken datum en plaats af "
+"te halen."
 
 #: .\templates\shop\CGV.html:53
 msgid ""
@@ -280,25 +346,49 @@ msgstr ""
 "Indien de bestelling niet op de afgesproken datum wordt afgehaald, kan deze "
 "niet worden terugbetaald of verplaatst naar een latere datum."
 
-msgid "SweetyWorld ne pourra être tenu responsable de la détérioration du produit due au non-retrait dans les délais impartis."
-msgstr "SweetyWorld kan niet verantwoordelijk worden gehouden voor de verslechtering van het product als gevolg van niet-afhaling binnen de gestelde termijnen."
+#: .\templates\shop\CGV.html:54
+msgid ""
+"SweetyWorld ne pourra être tenu responsable de la détérioration du produit "
+"due au non-retrait dans les délais impartis."
+msgstr ""
+"SweetyWorld kan niet verantwoordelijk worden gehouden voor de verslechtering "
+"van het product als gevolg van niet-afhaling binnen de gestelde termijnen."
 
-msgid "Pour toute situation exceptionnelle, le client doit contacter SweetyWorld au moins 24 heures avant la date de retrait afin d’envisager une solution alternative dans la mesure du possible."
-msgstr "Voor elke uitzonderlijke situatie moet de klant SweetyWorld minstens 24 uur voor de afhaaldatum contacteren om, indien mogelijk, een alternatieve oplossing te overwegen."
-
+#: .\templates\shop\CGV.html:55
+msgid ""
+"Pour toute situation exceptionnelle, le client doit contacter SweetyWorld au "
+"moins 24 heures avant la date de retrait afin d’envisager une solution "
+"alternative dans la mesure du possible."
+msgstr ""
+"Voor elke uitzonderlijke situatie moet de klant SweetyWorld minstens 24 uur "
+"voor de afhaaldatum contacteren om, indien mogelijk, een alternatieve "
+"oplossing te overwegen."
 
 #: .\templates\shop\CGV.html:58
 msgid "6. Annulation et Remboursement"
 msgstr "6. Annulering en Terugbetaling"
 
 #: .\templates\shop\CGV.html:60
-msgid "Les produits commercialisés par SweetyWorld étant des produits alimentaires périssables, aucune annulation ni remboursement ne sera accordé après validation de la commande, quel que soit le délai avant la date de retrait choisie par le client."
-msgstr "De producten die door SweetyWorld worden verkocht, zijn bederfelijke voedingsmiddelen. Daarom is annulering of terugbetaling niet mogelijk na bevestiging van de bestelling, ongeacht de termijn voor de gekozen afhaaldatum."
+msgid ""
+"Les produits commercialisés par SweetyWorld étant des produits alimentaires "
+"périssables, aucune annulation ni remboursement ne sera accordé après "
+"validation de la commande, quel que soit le délai avant la date de retrait "
+"choisie par le client."
+msgstr ""
+"De producten die door SweetyWorld worden verkocht, zijn bederfelijke "
+"voedingsmiddelen. Daarom is annulering of terugbetaling niet mogelijk na "
+"bevestiging van de bestelling, ongeacht de termijn voor de gekozen "
+"afhaaldatum."
 
 #: .\templates\shop\CGV.html:61
-msgid "Toutefois, si l’annulation intervient au moins 30 jours avant la date de retrait par email, une commande directement en magasin qui respecte toutes les conditions de vente pourra être proposée au client."
-msgstr "Als de annulering echter minstens 30 dagen voor de afhaaldatum per e-mail plaatsvindt, kan een directe bestelling in de winkel worden aangeboden, mits deze aan alle verkoopvoorwaarden voldoet."
-
+msgid ""
+"Toutefois, si l’annulation intervient au moins 30 jours avant la date de "
+"retrait par email, une commande directement en magasin qui respecte toutes "
+"les conditions de vente pourra être proposée au client."
+msgstr ""
+"Als de annulering echter minstens 30 dagen voor de afhaaldatum per e-mail "
+"plaatsvindt, kan een directe bestelling in de winkel worden aangeboden, mits "
+"deze aan alle verkoopvoorwaarden voldoet."
 
 #: .\templates\shop\CGV.html:64
 msgid "7. Droit de Rétractation"
@@ -312,9 +402,10 @@ msgid ""
 "commande. Toutefois, une modification de commande en magasin peut être "
 "envisagée sous certaines conditions."
 msgstr ""
-"Volgens de geldende wetgeving geldt er geen herroepingsrecht voor bederfelijke voedingsproducten. "
-"Bijgevolg is annulering of terugbetaling na bevestiging van de bestelling niet mogelijk. "
-"Een wijziging van de bestelling in de winkel kan echter onder bepaalde voorwaarden worden overwogen."
+"Volgens de geldende wetgeving geldt er geen herroepingsrecht voor "
+"bederfelijke voedingsproducten. Bijgevolg is annulering of terugbetaling na "
+"bevestiging van de bestelling niet mogelijk. Een wijziging van de bestelling "
+"in de winkel kan echter onder bepaalde voorwaarden worden overwogen."
 
 #: .\templates\shop\CGV.html:67
 msgid "8. Responsabilité"
@@ -325,8 +416,8 @@ msgid ""
 "SweetyWorld ne peut être tenu responsable des dommages résultant d’une "
 "mauvaise conservation des produits après leur retrait."
 msgstr ""
-"SweetyWorld kan niet verantwoordelijk worden gehouden voor schade die het gevolg is "
-"van een slechte bewaring van de producten na afhaling."
+"SweetyWorld kan niet verantwoordelijk worden gehouden voor schade die het "
+"gevolg is van een slechte bewaring van de producten na afhaling."
 
 #: .\templates\shop\CGV.html:70
 msgid ""
@@ -350,8 +441,8 @@ msgid ""
 "personnelles."
 msgstr ""
 "De persoonsgegevens van klanten worden uitsluitend verzameld voor het beheer "
-"van bestellingen en worden in geen geval doorverkocht aan derden. "
-"In overeenstemming met de geldende regelgeving heeft de klant het recht op "
+"van bestellingen en worden in geen geval doorverkocht aan derden. In "
+"overeenstemming met de geldende regelgeving heeft de klant het recht op "
 "toegang, rectificatie en verwijdering van zijn persoonsgegevens."
 
 #: .\templates\shop\CGV.html:76
@@ -365,9 +456,9 @@ msgid ""
 "les tribunaux compétents seront ceux du siège social de SweetyWorld."
 msgstr ""
 "Deze AVV zijn onderworpen aan het Belgische recht. In geval van een geschil "
-"wordt een minnelijke schikking vooropgesteld alvorens juridische stappen te ondernemen. "
-"Bij gebrek aan een oplossing zijn de bevoegde rechtbanken die van de zetel van SweetyWorld."
-
+"wordt een minnelijke schikking vooropgesteld alvorens juridische stappen te "
+"ondernemen. Bij gebrek aan een oplossing zijn de bevoegde rechtbanken die "
+"van de zetel van SweetyWorld."
 
 #: .\templates\shop\about.html:8
 msgid "À propos de Ouassima"
@@ -512,6 +603,198 @@ msgstr "Bericht:"
 #: .\templates\shop\contact.html:39
 msgid "Envoyer"
 msgstr "Versturen"
+
+#: .\templates\shop\cookies.html:7
+msgid "Politique des Cookies"
+msgstr "Cookiebeleid"
+
+#: .\templates\shop\cookies.html:9
+msgid ""
+"Cette page explique comment nous utilisons les cookies sur SweetyWorld afin "
+"d'améliorer votre expérience utilisateur et de garantir le bon "
+"fonctionnement du site."
+msgstr ""
+"Deze pagina legt uit hoe we cookies gebruiken op SweetyWorld om uw "
+"gebruikerservaring te verbeteren en de goede werking van de site te garanderen."
+
+#: .\templates\shop\cookies.html:11
+msgid "1. Qu'est-ce qu'un cookie ?"
+msgstr "1. Wat is een cookie?"
+
+#: .\templates\shop\cookies.html:12
+msgid ""
+"Un cookie est un petit fichier texte stocké sur votre appareil lorsque vous "
+"visitez un site Web. Il permet au site de se souvenir de vos préférences et "
+"d'améliorer votre navigation."
+msgstr ""
+"Een cookie is een klein tekstbestand dat op uw apparaat wordt opgeslagen "
+"wanneer u een website bezoekt. Het stelt de site in staat uw voorkeuren te onthouden "
+"en uw browsen te verbeteren."
+
+#: .\templates\shop\cookies.html:14
+msgid "2. Quels types de cookies utilisons-nous ?"
+msgstr "2. Welke soorten cookies gebruiken we?"
+
+#: .\templates\shop\cookies.html:16
+msgid "Cookies essentiels"
+msgstr "Essentiële cookies"
+
+#: .\templates\shop\cookies.html:17
+msgid ""
+"Ces cookies sont nécessaires au bon fonctionnement du site. Ils permettent "
+"de gérer votre connexion, votre panier et votre session utilisateur."
+msgstr ""
+"Deze cookies zijn noodzakelijk voor de goede werking van de site. Ze helpen "
+"bij het beheren van uw login, uw winkelwagen en uw gebruikerssessie."
+
+#: .\templates\shop\cookies.html:20
+msgid ""
+"Ces cookies nous aident à analyser le trafic et à comprendre comment les "
+"utilisateurs interagissent avec notre site. Vous pouvez les désactiver à "
+"tout moment."
+msgstr ""
+"Deze cookies helpen ons het verkeer te analyseren en te begrijpen hoe gebruikers "
+"met onze site omgaan. U kunt ze op elk moment uitschakelen."
+
+#: .\templates\shop\cookies.html:22
+msgid "Cookies tiers (Stripe)"
+msgstr "Cookies van derden (Stripe)"
+
+#: .\templates\shop\cookies.html:23
+msgid ""
+"Nous utilisons Stripe pour sécuriser les paiements en ligne. Stripe peut "
+"utiliser des cookies pour détecter et prévenir les fraudes lors des "
+"transactions. Ces cookies sont utilisés uniquement pour garantir la sécurité "
+"des paiements et ne suivent pas votre activité en dehors de ce contexte."
+msgstr ""
+"We gebruiken Stripe om online betalingen te beveiligen. Stripe kan cookies "
+"gebruiken om fraude op te sporen en te voorkomen bij transacties. Deze cookies worden "
+"alleen gebruikt om de veiligheid van betalingen te garanderen en volgen uw activiteit "
+"buiten deze context niet."
+
+#: .\templates\shop\cookies.html:25
+msgid "3. Durée de conservation des cookies"
+msgstr "3. Bewaartermijn van cookies"
+
+#: .\templates\shop\cookies.html:26
+msgid ""
+"Les cookies déposés sur votre appareil sont conservés pour une durée "
+"limitée, selon leur type :"
+msgstr ""
+"De cookies die op uw apparaat worden geplaatst, worden bewaard voor een "
+"beperkte tijd, afhankelijk van hun type:"
+
+#: .\templates\shop\cookies.html:28
+msgid ""
+"Cookies essentiels (obligatoires pour le fonctionnement du site) : conservés "
+"uniquement le temps de votre session et supprimés automatiquement lorsque "
+"vous fermez votre navigateur."
+msgstr ""
+"Essentiële cookies (verplicht voor de werking van de site): bewaard "
+"alleen voor de duur van uw sessie en automatisch verwijderd wanneer "
+"u uw browser sluit."
+
+#: .\templates\shop\cookies.html:29
+msgid ""
+"Cookies analytiques (Google Analytics, si accepté) : conservés pendant 13 "
+"mois maximum puis supprimés automatiquement."
+msgstr ""
+"Analytische cookies (Google Analytics, indien geaccepteerd): worden maximaal 13 "
+"maanden bewaard en vervolgens automatisch verwijderd."
+
+#: .\templates\shop\cookies.html:30
+msgid ""
+"Cookies de paiement (Stripe) : Stripe conserve ces cookies jusqu'à 24 mois "
+"afin de sécuriser les transactions et détecter les fraudes."
+msgstr ""
+"Betaalcookies (Stripe): Stripe bewaart deze cookies tot 24 maanden "
+"om transacties te beveiligen en fraude op te sporen."
+
+#: .\templates\shop\cookies.html:31
+msgid ""
+"Cookies de personnalisation (si activés) : conservés jusqu'à 6 mois pour "
+"enregistrer vos préférences."
+msgstr ""
+"Personalisatiecookies (indien ingeschakeld): bewaard tot 6 maanden om "
+"uw voorkeuren op te slaan."
+
+#: .\templates\shop\cookies.html:34
+msgid "4. Comment gérer et supprimer vos cookies ?"
+msgstr "4. Hoe uw cookies beheren en verwijderen?"
+
+#: .\templates\shop\cookies.html:35
+msgid ""
+"Vous pouvez à tout moment modifier vos préférences en matière de cookies via "
+"notre Gestion des cookies ou supprimer les cookies enregistrés sur votre "
+"appareil via les paramètres de votre navigateur :"
+msgstr ""
+"U kunt op elk moment uw cookievoorkeuren wijzigen via ons Cookiebeheer "
+"of de opgeslagen cookies op uw apparaat verwijderen via de browserinstellingen:"
+
+#: .\templates\shop\cookies.html:43
+msgid "5. Que se passe-t-il si vous refusez les cookies ?"
+msgstr "5. Wat gebeurt er als u cookies weigert?"
+
+#: .\templates\shop\cookies.html:44
+msgid "Si vous refusez certains cookies, voici les conséquences :"
+msgstr "Als u bepaalde cookies weigert, zijn dit de gevolgen:"
+
+#: .\templates\shop\cookies.html:46
+msgid ""
+"Si vous refusez les cookies analytiques, nous ne collectons aucune donnée "
+"sur votre navigation."
+msgstr ""
+"Als u analytische cookies weigert, verzamelen we geen gegevens "
+"over uw browsegedrag."
+
+#: .\templates\shop\cookies.html:47
+msgid ""
+"Si vous refusez les cookies de paiement (Stripe), les transactions resteront "
+"sécurisées, mais Stripe pourra toujours appliquer ses propres règles de "
+"cookies lors du paiement."
+msgstr ""
+"Als u de betaalcookies (Stripe) weigert, blijven de transacties veilig, "
+"maar Stripe kan nog steeds zijn eigen cookieregels toepassen tijdens de betaling."
+
+#: .\templates\shop\cookies.html:48
+msgid ""
+"Si vous refusez tous les cookies non essentiels, seuls les cookies "
+"strictement nécessaires resteront activés."
+msgstr ""
+"Als u alle niet-essentiële cookies weigert, blijven alleen de strikt "
+"noodzakelijke cookies ingeschakeld."
+
+#: .\templates\shop\cookies.html:51
+msgid "6. Paiement avec Stripe"
+msgstr "6. Betaling met Stripe"
+
+#: .\templates\shop\cookies.html:52
+msgid ""
+"Nos paiements sont sécurisés avec Stripe. Lors du paiement, Stripe peut "
+"utiliser des cookies pour garantir la sécurité des transactions et prévenir "
+"la fraude. Vous pouvez refuser les cookies Stripe sur notre site, mais "
+"Stripe pourra toujours appliquer ses propres règles de cookies lors du "
+"paiement."
+msgstr ""
+"Onze betalingen zijn beveiligd met Stripe. Tijdens de betaling kan Stripe "
+"cookies gebruiken om de veiligheid van transacties te garanderen en "
+"fraude te voorkomen. U kunt Stripe-cookies op onze site weigeren, maar "
+"Stripe kan nog steeds zijn eigen cookieregels toepassen tijdens de betaling."
+
+#: .\templates\shop\cookies.html:54
+msgid "7. Contact"
+msgstr "7. Contact"
+
+#: .\templates\shop\cookies.html:55
+msgid ""
+"Si vous avez des questions sur notre politique en matière de cookies, vous "
+"pouvez nous contacter à :"
+msgstr ""
+"Als u vragen heeft over ons cookiebeleid, kunt u contact met ons opnemen via:"
+
+#: .\templates\shop\cookies.html:57
+msgid "Téléphone"
+msgstr "Telefoon"
 
 #: .\templates\shop\index.html:12
 msgid "Bienvenue"
