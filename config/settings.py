@@ -26,7 +26,8 @@ INSTALLED_APPS = [
     'accounts',
     'shop',
     'rest_framework',
-    'drf_yasg'
+    'drf_yasg',
+    'django_extensions'
 ]
 
 MIDDLEWARE = [

@@ -4,62 +4,85 @@
 
 {% block content %}
 
-    <h2>{% trans "Mes Commandes" %}</h2>
+<h2>{% trans "Mes Commandes" %}</h2>
 
-    {% if orders %}
-        <ul>
-            {% for order in orders %}
-                <li class="order-item" style="margin-bottom: 20px; border: 1px solid #ccc; padding: 10px; border-radius: 5px;">
+{% if orders %}
+    <ul>
+        {% for order in orders %}
+            <li class="order-item" style="margin-bottom: 20px; border: 1px solid #ccc; padding: 10px; border-radius: 5px;">
 
-                    <strong>
-                        {% trans "Commande n°" %}{{ order.id }} - {% trans "date de création de la commande" %}: {{ order.order_date|date:"d/m/Y" }}<br>
-                        {% trans "Total" %} : {{ order.total_price }} €<br>
-                        {% trans "Date de retrait" %} : {{ order.pick_up_date|date:"d/m/Y" }}
-                    </strong>
+                <strong>
+                    {% trans "Commande n°" %}{{ order.id }} - {% trans "date de création de la commande" %}: {{ order.order_date|date:"d/m/Y" }}<br>
+                    {% trans "Total" %} : {{ order.total_price }} €<br>
+                    {% trans "Date de retrait" %} : {{ order.pick_up_date|date:"d/m/Y" }}
+                </strong>
 
+                <p>
+                    <button class="orange-button toggle-details" data-target="details-{{ order.id }}" style="margin-top: 10px;">
+                        {% trans "Voir détails" %}
+                    </button>
+                </p>
+
+                <div class="order-details" id="details-{{ order.id }}" style="display: none;">
+                    <strong>{% trans "Articles" %} :</strong>
+                    <ul>
+                        {% for item in order.order_items.all %}
+                            <li>{% get_current_language as LANGUAGE %}
+                                {% if LANGUAGE == 'fr' %}
+                                    {{ item.product.name }}
+                                {% else %}
+                                    {{ item.product.name_nl }}
+                                {% endif %} - {% trans "Quantité" %} : {{ item.quantity }}</li>
+                        {% endfor %}
+                    </ul>
                     <p>
-                        <button class="btn btn-info toggle-details" data-target="details-{{ order.id }}" style="margin-top: 10px;">{% trans "Voir détails" %}</button>
+                        <a href="{% url 'generate_invoice' order.id %}" class="orange-button">{% trans "Télécharger ma facture" %}</a>
                     </p>
-
-                    <div class="order-details" id="details-{{ order.id }}" style="display: none;">
-                        <strong>{% trans "Articles" %} :</strong>
-                        <ul>
-                            {% for item in order.order_items.all %}
-                                <li>{% get_current_language as LANGUAGE %}
-                                    {% if LANGUAGE == 'fr' %}
-                                        {{ item.product.name }}  <!-- Affiche le nom du produit en français -->
-                                    {% else %}
-                                        {{ item.product.name_nl }}  <!-- Affiche le nom du produit en néerlandais -->
-                                    {% endif %} - {% trans "Quantité" %} : {{ item.quantity }}</li>
-                            {% endfor %}
-                        </ul>
-                        <p>
-                        <a href="{% url 'generate_invoice' order.id %}" class="btn btn-primary">{% trans "Télécharger ma facture" %}</a>
-                        </p>
-                    </div>
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>{% trans "Vous n'avez pas encore passé de commandes." %}</p>
-    {% endif %}
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>{% trans "Vous n'avez pas encore passé de commandes." %}</p>
+{% endif %}
 {% endblock %}
 
 {% block styles %}
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Récupérer tous les boutons qui permettent de basculer l'affichage des détails
-        const toggleButtons = document.querySelectorAll(".toggle-details");
+<style>
+    .orange-button {
+        background-color: #ff9800;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-decoration: none;
+        display: inline-block;
+    }
 
-        // Ajouter un écouteur d'événements "click" à chaque bouton
+    .orange-button:hover {
+        background-color: #e68900;
+        transform: scale(1.05);
+    }
+
+    .orange-button:active {
+        transform: scale(0.95);
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const toggleButtons = document.querySelectorAll(".toggle-details");
         toggleButtons.forEach(button => {
-            button.addEventListener("click", function() {
-                // Récupérer l'ID de la div cible à partir de l'attribut "data-target" du bouton
+            button.addEventListener("click", function () {
                 const targetId = button.getAttribute("data-target");
                 const detailsDiv = document.getElementById(targetId);
 
                 if (detailsDiv) {
-                    // Bascule entre "block" et "none" pour afficher ou masquer les détails
                     if (detailsDiv.style.display === "none" || detailsDiv.style.display === "") {
                         detailsDiv.style.display = "block";
                         button.textContent = "Masquer détails";
@@ -73,21 +96,14 @@
     });
 </script>
 
-
-
-
-
-
 <script src="https://js.stripe.com/v3/"></script>
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
         const paymentButton = document.querySelector(".payment-button");
         if (paymentButton) {
-            paymentButton.addEventListener("click", function() {
-                // Créer une nouvelle instance de Stripe avec la clé publique
+            paymentButton.addEventListener("click", function () {
                 var stripe = Stripe("{{ stripe_publishable_key }}");
 
-                // Envoyer la requête pour créer la session de paiement
                 fetch("/create-checkout-session/{{ order.id }}/", {
                     method: "POST",
                     headers: {
@@ -95,17 +111,16 @@
                         "X-CSRFToken": "{{ csrf_token }}"
                     }
                 })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.sessionId) {
-                        stripe.redirectToCheckout({ sessionId: data.sessionId });
-                    } else {
-                        console.error("Erreur : Aucune session Stripe trouvée.");
-                    }
-                });
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.sessionId) {
+                            stripe.redirectToCheckout({ sessionId: data.sessionId });
+                        } else {
+                            console.error("Erreur : Aucune session Stripe trouvée.");
+                        }
+                    });
             });
         }
     });
 </script>
-
 {% endblock %}

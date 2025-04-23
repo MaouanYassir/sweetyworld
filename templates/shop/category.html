@@ -3,7 +3,15 @@
 {% load i18n %}
 
 {% block content %}
-<h1>{% trans "Nos" %} {{ category_name|title }}</h1>
+<h1>
+    {% get_current_language as LANGUAGE %}
+    {% if LANGUAGE == 'fr' %}
+        Nos {{ category.name }}
+    {% else %}
+        Onze {{ category.name_nl }}
+    {% endif %}
+</h1>
+
 
 <div class="category-grid">
     {% for product in products %}
@@ -46,7 +54,7 @@
 {% block styles %}
 <style>
     body {
-        font-family: Arial, sans-serif;
+
         margin: 0;
         padding: 0;
         background-color: #f7f7f7;

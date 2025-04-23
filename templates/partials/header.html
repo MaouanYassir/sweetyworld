@@ -1,84 +1,81 @@
 {% load static %}
 {% load i18n %}
-<header style="background-color: #ff9800; padding: 20px; position: relative;">
-    <div style="display: flex; justify-content: space-between; align-items: center;">
-        <nav>
-            <ul style="list-style: none; display: flex; margin: 0; padding: 0;">
-                <li style="margin-right: 20px;"><a href="{% url 'home' %}" style="color: white; text-decoration: none; font-size: 1rem; font-weight: 500;">{% trans "Accueil" %}</a></li>
-                <li style="margin-right: 20px;"><a href="{% url 'categories_view' %}" style="color: white; text-decoration: none; font-size: 1rem; font-weight: 500;">{% trans "Nos Gâteaux" %}</a></li>
-                <li style="margin-right: 20px;"><a href="{% url 'about_view' %}" style="color: white; text-decoration: none; font-size: 1rem; font-weight: 500;">{% trans "À propos" %}</a></li>
-                <li><a href="{% url 'contact_view' %}" style="color: white; text-decoration: none; font-size: 1rem; font-weight: 500;">{% trans "Contact" %}</a></li>
-            </ul>
-        </nav>
+<header style="background-color: #ff9800; padding: 20px 0;">
+    <div style="max-width: 1300px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
 
-        <!-- Buttons for Sign Up and Login --><!-- Section des boutons Connexion, Panier et Commandes -->
-<div style="display: flex; justify-content: flex-end; margin-top: 10px;">
-    {% if not user.is_authenticated %}
-        <a href="{% url 'signin' %}"
-           style="background-color: white; color: #ff9800; padding: 12px 24px; text-decoration: none; font-weight: 500; border-radius: 30px; margin-right: 15px; border: 2px solid #ff9800; cursor: pointer; font-size: 1rem; transition: background-color 0.3s, color 0.3s; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"
-           onmouseover="this.style.backgroundColor='#ff9800'; this.style.color='white';"
-           onmouseout="this.style.backgroundColor='white'; this.style.color='#ff9800';">
-           {% trans "Se connecter" %}
-        </a>
+        <!-- Logo à gauche -->
+        <div style="flex-shrink: 0; display: flex; align-items: center;">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'assets/images/logoSweetyworldTransparant.png' %}" alt="SweetyWorld Logo" style="height: 120px;">
+            </a>
+        </div>
 
-        <a href="{% url 'signup' %}"
-           style="background-color: white; color: #ff9800; padding: 12px 24px; text-decoration: none; font-weight: 500; border-radius: 30px; margin-right: 15px; border: 2px solid #ff9800; cursor: pointer; font-size: 1rem; transition: background-color 0.3s, color 0.3s; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"
-           onmouseover="this.style.backgroundColor='#ff9800'; this.style.color='white';"
-           onmouseout="this.style.backgroundColor='white'; this.style.color='#ff9800';">
-           {% trans "S'inscrire" %}
-        </a>
-    {% else %}
-        <a href="{% url 'logout_user' %}"
-           style="background-color: white; color: #ff9800; padding: 12px 24px; text-decoration: none; font-weight: 500; border-radius: 30px; margin-right: 15px; border: 2px solid #ff9800; cursor: pointer; font-size: 1rem; transition: background-color 0.3s, color 0.3s; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"
-           onmouseover="this.style.backgroundColor='#ff9800'; this.style.color='white';"
-           onmouseout="this.style.backgroundColor='white'; this.style.color='#ff9800';">
-           {% trans "Se déconnecter" %}
-        </a>
+        <!-- Boutons de navigation et utilisateur -->
+        <div style="display: flex; flex-wrap: wrap; gap: 15px; align-items: center; justify-content: flex-end; flex: 1;">
+            <a href="{% url 'home' %}" class="menu-btn">{% trans "Accueil" %}</a>
+            <a href="{% url 'categories_view' %}" class="menu-btn">{% trans "Nos Gâteaux" %}</a>
+            <a href="{% url 'about_view' %}" class="menu-btn">{% trans "À propos" %}</a>
+            <a href="{% url 'contact_view' %}" class="menu-btn">{% trans "Contact" %}</a>
 
-        <a href="{% url 'cart_view' %}"
-           style="background-color: white; color: #ff9800; padding: 12px 24px; text-decoration: none; font-weight: 500; border-radius: 30px; margin-right: 15px; border: 2px solid #ff9800; cursor: pointer; font-size: 1rem; transition: background-color 0.3s, color 0.3s; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"
-           onmouseover="this.style.backgroundColor='#ff9800'; this.style.color='white';"
-           onmouseout="this.style.backgroundColor='white'; this.style.color='#ff9800';">
-           {% trans "Mon panier" %}
-        </a>
-
-        <a href="{% url 'user_orders_view' %}"
-           style="background-color: white; color: #ff9800; padding: 12px 24px; text-decoration: none; font-weight: 500; border-radius: 30px; margin-right: 15px; border: 2px solid #ff9800; cursor: pointer; font-size: 1rem; transition: background-color 0.3s, color 0.3s; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"
-           onmouseover="this.style.backgroundColor='#ff9800'; this.style.color='white';"
-           onmouseout="this.style.backgroundColor='white'; this.style.color='#ff9800';">
-           {% trans "Mes commandes" %}
-        </a>
-    {% endif %}
-</div>
-
+            {% if not user.is_authenticated %}
+                <a href="{% url 'signin' %}" class="menu-btn">{% trans "Se connecter" %}</a>
+                <a href="{% url 'signup' %}" class="menu-btn">{% trans "S'inscrire" %}</a>
+            {% else %}
+                <a href="{% url 'logout_user' %}" class="menu-btn">{% trans "Se déconnecter" %}</a>
+                <a href="{% url 'cart_view' %}" class="menu-btn">{% trans "Mon panier" %}</a>
+                <a href="{% url 'user_orders_view' %}" class="menu-btn">{% trans "Mes commandes" %}</a>
+            {% endif %}
+        </div>
     </div>
 
-    <!-- Language Buttons Section -->
-    <div style="display: flex; margin-top: 10px; justify-content: flex-end;">
-        <!-- Formulaire pour changer de langue vers le français -->
+    <!-- Langues centrées en dessous -->
+    <div style="text-align: center; margin-top: 15px;">
         <form action="{% url 'set_language' %}" method="post" style="display: inline;">
             {% csrf_token %}
             <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" />
             <input name="language" type="hidden" value="fr" />
-            <input type="submit" value="Français" style="background-color: white; color: #ff9800; padding: 12px 24px; text-decoration: none; font-weight: 500; border-radius: 30px; margin-right: 15px; border: 2px solid #ff9800; cursor: pointer; font-size: 1rem; transition: background-color 0.3s, color 0.3s; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"
-                onmouseover="this.style.backgroundColor='#ff9800'; this.style.color='white';" onmouseout="this.style.backgroundColor='white'; this.style.color='#ff9800';" />
+            <input type="submit" value="Français" class="menu-btn" />
         </form>
-
-        <!-- Formulaire pour changer de langue vers le néerlandais -->
         <form action="{% url 'set_language' %}" method="post" style="display: inline;">
             {% csrf_token %}
             <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}" />
             <input name="language" type="hidden" value="nl" />
-            <input type="submit" value="Nederlands" style="background-color: white; color: #ff9800; padding: 12px 24px; text-decoration: none; font-weight: 500; border-radius: 30px; margin-right: 15px; border: 2px solid #ff9800; cursor: pointer; font-size: 1rem; transition: background-color 0.3s, color 0.3s; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"
-                onmouseover="this.style.backgroundColor='#ff9800'; this.style.color='white';" onmouseout="this.style.backgroundColor='white'; this.style.color='#ff9800';" />
+            <input type="submit" value="Nederlands" class="menu-btn" />
         </form>
     </div>
 </header>
 
+<style>
+    .menu-btn {
+        background-color: white;
+        color: #ff9800;
+        padding: 12px 24px;
+        text-decoration: none;
+        font-weight: 500;
+        border-radius: 30px;
+        border: 2px solid #ff9800;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background-color 0.3s, color 0.3s;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        display: inline-block;
+    }
 
-<script>
-    document.getElementById('menu-btn').addEventListener('click', function() {
-        const dropdown = document.getElementById('dropdown-menu');
-        dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
-    });
-</script>
+    .menu-btn:hover {
+        background-color: #ff9800;
+        color: white;
+    }
+
+    @media (max-width: 768px) {
+        header div[style*="display: flex;"] {
+            flex-direction: column;
+            align-items: center !important;
+        }
+
+        .menu-btn {
+            margin: 5px;
+            width: 100%;
+            text-align: center;
+        }
+    }
+</style>
