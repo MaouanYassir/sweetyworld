@@ -2,37 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from .models import Shopper
+from django.contrib.auth.decorators import login_required
 
-# def signup(request):
-#     if request.method == "POST":
-#         email = request.POST.get("email")
-#         username = request.POST.get("username")
-#         password = request.POST.get("password")
-#
-#         user = Shopper.objects.create_user(email=email, username=username, password=password)
-#
-#         # Connexion automatique après inscription
-#         login(request, user)
-#
-#     return render(request, 'accounts/signup.html')
-#
-#
-# def signin(request):
-#     if request.method == "POST":
-#         email = request.POST.get("email")
-#         password = request.POST.get("password")
-#
-#         user = authenticate(request, username=email, password=password)
-#
-#         if user:
-#             login(request, user)
-#
-#
-#         else:
-#             messages.error(request, "Email ou mot de passe incorrect")
-#             return render(request, 'accounts/signin.html')
-#
-#     return render(request, 'accounts/signin.html')
+
 
 def signup(request):
     # Si la requête est de type POST, cela signifie que l'utilisateur a soumis le formulaire d'inscription
@@ -91,5 +63,20 @@ def logout_user(request):
     # Redirection vers la page d'accueil (ou une autre page de ton choix)
     return redirect('home')
 
+
+
+
+@login_required
+def delete_account(request):
+    user = request.user
+
+    # Supprimer aussi les CartItem liés manuellement si nécessaire
+    from shop.models import CartItem  # adapte ce chemin si ton app s'appelle différemment
+    CartItem.objects.filter(cart__user=user).delete()
+
+    # Supprime l'utilisateur (les Cart et Order seront supprimés automatiquement)
+    user.delete()
+    messages.success(request, "Votre compte et toutes vos données ont été supprimés avec succès.")
+    return redirect('home')
 
 # Create your views here.

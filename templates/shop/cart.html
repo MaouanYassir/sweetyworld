@@ -54,6 +54,7 @@
             </p>
         </form>
 
+
         {% if messages %}
             <div class="alert-container">
                 {% for message in messages %}
@@ -186,27 +187,4 @@
         }
     }
 </style>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const tableRows = document.querySelectorAll('tbody tr');
-        tableRows.forEach(row => {
-            row.addEventListener('mouseover', function() {
-                row.style.backgroundColor = '#eaeaea';
-            });
-            row.addEventListener('mouseout', function() {
-                row.style.backgroundColor = '';
-            });
-        });
-
-        const totalPriceElement = document.querySelector('.total-price');
-        if (totalPriceElement) {
-            totalPriceElement.style.opacity = 0;
-            setTimeout(() => {
-                totalPriceElement.style.transition = 'opacity 1s';
-                totalPriceElement.style.opacity = 1;
-            }, 500);
-        }
-    });
-</script>
 {% endblock %}

@@ -5,7 +5,6 @@ from config import settings
 from shop.models import Product
 
 
-# from . import Product
 
 
 class Cart(models.Model):
