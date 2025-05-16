@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-17 11:58+0100\n"
+"POT-Creation-Date: 2025-05-16 10:57+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,7 +50,7 @@ msgstr "Registratie"
 msgid "Nom d'utilisateur"
 msgstr "Gebruikersnaam"
 
-#: .\templates\accounts\signup.html:32 .\templates\partials\header.html:28
+#: .\templates\accounts\signup.html:32 .\templates\partials\header.html:22
 msgid "S'inscrire"
 msgstr "Registreren"
 
@@ -61,6 +61,27 @@ msgstr "Heeft u al een account?"
 #: .\templates\accounts\signup.html:37
 msgid "Connectez-vous ici"
 msgstr "Log hier in"
+
+#: .\templates\base.html:67
+msgid "Ce site utilise des cookies pour améliorer votre expérience et sécuriser les paiements."
+msgstr "Deze website gebruikt cookies om uw ervaring te verbeteren en betalingen te beveiligen."
+
+#: .\templates\base.html:68
+msgid "En savoir plus"
+msgstr "Meer informatie"
+
+#: .\templates\base.html:76
+msgid "Tout accepter"
+msgstr "Alles accepteren"
+
+#: .\templates\base.html:81
+msgid "Tout refuser"
+msgstr "Alles weigeren"
+
+
+#: .\templates\base.html:84
+msgid "Personnaliser"
+msgstr "Personaliseren"
 
 #: .\templates\partials\footer.html:9
 msgid "À propos de nous"
@@ -82,19 +103,19 @@ msgstr ""
 msgid "Liens rapides"
 msgstr "Snelle links"
 
-#: .\templates\partials\footer.html:17 .\templates\partials\header.html:7
+#: .\templates\partials\footer.html:17 .\templates\partials\header.html:15
 msgid "Accueil"
 msgstr "Home"
 
-#: .\templates\partials\footer.html:18 .\templates\partials\header.html:8
+#: .\templates\partials\footer.html:18 .\templates\partials\header.html:16
 msgid "Nos Gâteaux"
 msgstr "Onze Taarten"
 
-#: .\templates\partials\footer.html:19 .\templates\partials\header.html:9
+#: .\templates\partials\footer.html:19 .\templates\partials\header.html:17
 msgid "À propos"
 msgstr "Over"
 
-#: .\templates\partials\footer.html:20 .\templates\partials\header.html:10
+#: .\templates\partials\footer.html:20 .\templates\partials\header.html:18
 msgid "Contact"
 msgstr "Contact"
 
@@ -103,79 +124,34 @@ msgid "Nos conditions générales de vente"
 msgstr "Onze algemene verkoopvoorwaarden"
 
 #: .\templates\partials\footer.html:22
-msgid "Gestion des cookies"
-msgstr "Cookiebeheer"
-
-#: .\templates\partials\footer.html:23
 msgid "Politique des cookies"
 msgstr "Cookiebeleid"
 
-#: .\templates\partials\footer.html:30 .\templates\shop\contact.html:8
+#: .\templates\partials\footer.html:23 .\templates\shop\cookies_settings.html:7
+msgid "Gestion des cookies"
+msgstr "Cookiebeheer"
+
+#: .\templates\partials\footer.html:29 .\templates\shop\contact.html:8
 msgid "Contactez-nous"
 msgstr "Contacteer ons"
 
-#: .\templates\partials\footer.html:32
+#: .\templates\partials\footer.html:31
 msgid "123 Rue des Gâteaux, Bruxelles"
 msgstr "123 Taartenstraat, 1180 Brussel, België"
 
-#: .\templates\partials\footer.html:52
+#: .\templates\partials\footer.html:51
 msgid "Tous droits réservés."
 msgstr "Alle rechten voorbehouden."
 
-#: .\templates\partials\footer.html:60
-msgid "Nous utilisons des cookies pour améliorer votre expérience."
-msgstr "Wij gebruiken cookies om uw ervaring te verbeteren."
-
-#: .\templates\partials\footer.html:61
-msgid "Accepter tout"
-msgstr "Alles accepteren"
-
-#: .\templates\partials\footer.html:62
-msgid "Refuser"
-msgstr "Weigeren"
-
-#: .\templates\partials\footer.html:63
-msgid "Personnaliser"
-msgstr "Personaliseren"
-
-#: .\templates\partials\footer.html:70
-msgid "Paramètres des cookies"
-msgstr "Cookie-instellingen"
-
-#: .\templates\partials\footer.html:73
-msgid "Cookies de paiement (Stripe)"
-msgstr "Betaalcookies (Stripe)"
-
-#: .\templates\partials\footer.html:77 .\templates\shop\cookies.html:19
-msgid "Cookies analytiques"
-msgstr "Analytische cookies"
-
-#: .\templates\partials\footer.html:82
-msgid "Enregistrer mes choix"
-msgstr "Mijn keuzes opslaan"
-
-#: .\templates\partials\footer.html:83
-msgid "Supprimer mes cookies"
-msgstr "Mijn cookies verwijderen"
-
-#: .\templates\partials\footer.html:84
-msgid "Fermer"
-msgstr "Sluiten"
-
-#: .\templates\partials\footer.html:255
-msgid "Tous vos cookies ont été supprimés."
-msgstr "Al uw cookies zijn verwijderd."
-
-
-#: .\templates\partials\header.html:35
+#: .\templates\partials\header.html:24
 msgid "Se déconnecter"
 msgstr "Uitloggen"
 
-#: .\templates\partials\header.html:42
+#: .\templates\partials\header.html:25
 msgid "Mon panier"
 msgstr "Mijn winkelwagentje"
 
-#: .\templates\partials\header.html:49
+#: .\templates\partials\header.html:26
 msgid "Mes commandes"
 msgstr "Mijn bestellingen"
 
@@ -464,11 +440,7 @@ msgstr ""
 msgid "À propos de Ouassima"
 msgstr "Over Ouassima"
 
-#: .\templates\shop\about.html:11
-msgid "Ouassima"
-msgstr "Ouassima"
-
-#: .\templates\shop\about.html:13
+#: .\templates\shop\about.html:12
 msgid ""
 "Bonjour ! Je suis Ouassima, passionnée par la pâtisserie depuis mon plus "
 "jeune âge. L'amour pour les gâteaux et les douceurs m'a conduite à créer mon "
@@ -480,7 +452,7 @@ msgstr ""
 "patisserie te starten. Elke taart die ik maak is een meesterwerk van liefde, "
 "zorgvuldig en met toewijding gemaakt."
 
-#: .\templates\shop\about.html:16
+#: .\templates\shop\about.html:15
 msgid ""
 "Après avoir passé des années à perfectionner mes recettes et à explorer les "
 "subtilités de la pâtisserie, j'ai décidé de partager ma passion avec vous. "
@@ -492,7 +464,7 @@ msgstr ""
 "doel is om heerlijke en elegante creaties aan te bieden, perfect voor elke "
 "speciale gelegenheid."
 
-#: .\templates\shop\about.html:19
+#: .\templates\shop\about.html:18
 msgid ""
 "Chaque gâteau que vous trouverez ici est fabriqué avec les meilleurs "
 "ingrédients et un soupçon de magie. J'espère que mes créations ajouteront "
@@ -512,7 +484,7 @@ msgstr "Mijn winkelwagentje"
 msgid "Produit"
 msgstr "Product"
 
-#: .\templates\shop\cart.html:13 .\templates\shop\user_orders.html:33
+#: .\templates\shop\cart.html:13 .\templates\shop\user_orders.html:35
 msgid "Quantité"
 msgstr "Hoeveelheid"
 
@@ -528,23 +500,23 @@ msgstr "Totale prijs"
 msgid "Modifier Quantité"
 msgstr "Hoeveelheid aanpassen"
 
-#: .\templates\shop\cart.html:44
+#: .\templates\shop\cart.html:42
 msgid "Montant Total"
 msgstr "Totaalbedrag"
 
-#: .\templates\shop\cart.html:53
+#: .\templates\shop\cart.html:50
 msgid "Choisissez la date de retrait :"
 msgstr "Kies de afhaaldatum:"
 
-#: .\templates\shop\cart.html:56
+#: .\templates\shop\cart.html:53
 msgid "Paiement"
 msgstr "Betaling"
 
-#: .\templates\shop\cart.html:80
+#: .\templates\shop\cart.html:76
 msgid "Vider mon panier"
 msgstr "Leeg mijn winkelwagentje"
 
-#: .\templates\shop\cart.html:84
+#: .\templates\shop\cart.html:79
 msgid "Il n'y a aucun article dans votre panier."
 msgstr "Er zit geen product in je winkelwagentje."
 
@@ -552,15 +524,11 @@ msgstr "Er zit geen product in je winkelwagentje."
 msgid "Nos Catégories de Gâteaux"
 msgstr "Onze Taartcategorieën"
 
-#: .\templates\shop\category.html:6
-msgid "Nos"
-msgstr "Onze"
-
-#: .\templates\shop\category.html:35
+#: .\templates\shop\category.html:43
 msgid "Ajouter au panier"
 msgstr "Toevoegen aan winkelwagentje"
 
-#: .\templates\shop\category.html:41
+#: .\templates\shop\category.html:49
 msgid "Aucun produit disponible dans cette catégorie."
 msgstr "Geen producten beschikbaar in deze categorie."
 
@@ -615,7 +583,8 @@ msgid ""
 "fonctionnement du site."
 msgstr ""
 "Deze pagina legt uit hoe we cookies gebruiken op SweetyWorld om uw "
-"gebruikerservaring te verbeteren en de goede werking van de site te garanderen."
+"gebruikerservaring te verbeteren en de goede werking van de site te "
+"garanderen."
 
 #: .\templates\shop\cookies.html:11
 msgid "1. Qu'est-ce qu'un cookie ?"
@@ -628,14 +597,14 @@ msgid ""
 "d'améliorer votre navigation."
 msgstr ""
 "Een cookie is een klein tekstbestand dat op uw apparaat wordt opgeslagen "
-"wanneer u een website bezoekt. Het stelt de site in staat uw voorkeuren te onthouden "
-"en uw browsen te verbeteren."
+"wanneer u een website bezoekt. Het stelt de site in staat uw voorkeuren te "
+"onthouden en uw browsen te verbeteren."
 
 #: .\templates\shop\cookies.html:14
 msgid "2. Quels types de cookies utilisons-nous ?"
 msgstr "2. Welke soorten cookies gebruiken we?"
 
-#: .\templates\shop\cookies.html:16
+#: .\templates\shop\cookies.html:16 .\templates\shop\cookies_settings.html:14
 msgid "Cookies essentiels"
 msgstr "Essentiële cookies"
 
@@ -647,14 +616,18 @@ msgstr ""
 "Deze cookies zijn noodzakelijk voor de goede werking van de site. Ze helpen "
 "bij het beheren van uw login, uw winkelwagen en uw gebruikerssessie."
 
+#: .\templates\shop\cookies.html:19 .\templates\shop\cookies_settings.html:20
+msgid "Cookies analytiques"
+msgstr "Analytische cookies"
+
 #: .\templates\shop\cookies.html:20
 msgid ""
 "Ces cookies nous aident à analyser le trafic et à comprendre comment les "
 "utilisateurs interagissent avec notre site. Vous pouvez les désactiver à "
 "tout moment."
 msgstr ""
-"Deze cookies helpen ons het verkeer te analyseren en te begrijpen hoe gebruikers "
-"met onze site omgaan. U kunt ze op elk moment uitschakelen."
+"Deze cookies helpen ons het verkeer te analyseren en te begrijpen hoe "
+"gebruikers met onze site omgaan. U kunt ze op elk moment uitschakelen."
 
 #: .\templates\shop\cookies.html:22
 msgid "Cookies tiers (Stripe)"
@@ -668,9 +641,9 @@ msgid ""
 "des paiements et ne suivent pas votre activité en dehors de ce contexte."
 msgstr ""
 "We gebruiken Stripe om online betalingen te beveiligen. Stripe kan cookies "
-"gebruiken om fraude op te sporen en te voorkomen bij transacties. Deze cookies worden "
-"alleen gebruikt om de veiligheid van betalingen te garanderen en volgen uw activiteit "
-"buiten deze context niet."
+"gebruiken om fraude op te sporen en te voorkomen bij transacties. Deze "
+"cookies worden alleen gebruikt om de veiligheid van betalingen te garanderen "
+"en volgen uw activiteit buiten deze context niet."
 
 #: .\templates\shop\cookies.html:25
 msgid "3. Durée de conservation des cookies"
@@ -690,33 +663,33 @@ msgid ""
 "uniquement le temps de votre session et supprimés automatiquement lorsque "
 "vous fermez votre navigateur."
 msgstr ""
-"Essentiële cookies (verplicht voor de werking van de site): bewaard "
-"alleen voor de duur van uw sessie en automatisch verwijderd wanneer "
-"u uw browser sluit."
+"Essentiële cookies (verplicht voor de werking van de site): bewaard alleen "
+"voor de duur van uw sessie en automatisch verwijderd wanneer u uw browser "
+"sluit."
 
 #: .\templates\shop\cookies.html:29
 msgid ""
 "Cookies analytiques (Google Analytics, si accepté) : conservés pendant 13 "
 "mois maximum puis supprimés automatiquement."
 msgstr ""
-"Analytische cookies (Google Analytics, indien geaccepteerd): worden maximaal 13 "
-"maanden bewaard en vervolgens automatisch verwijderd."
+"Analytische cookies (Google Analytics, indien geaccepteerd): worden maximaal "
+"13 maanden bewaard en vervolgens automatisch verwijderd."
 
 #: .\templates\shop\cookies.html:30
 msgid ""
 "Cookies de paiement (Stripe) : Stripe conserve ces cookies jusqu'à 24 mois "
 "afin de sécuriser les transactions et détecter les fraudes."
 msgstr ""
-"Betaalcookies (Stripe): Stripe bewaart deze cookies tot 24 maanden "
-"om transacties te beveiligen en fraude op te sporen."
+"Betaalcookies (Stripe): Stripe bewaart deze cookies tot 24 maanden om "
+"transacties te beveiligen en fraude op te sporen."
 
 #: .\templates\shop\cookies.html:31
 msgid ""
 "Cookies de personnalisation (si activés) : conservés jusqu'à 6 mois pour "
 "enregistrer vos préférences."
 msgstr ""
-"Personalisatiecookies (indien ingeschakeld): bewaard tot 6 maanden om "
-"uw voorkeuren op te slaan."
+"Personalisatiecookies (indien ingeschakeld): bewaard tot 6 maanden om uw "
+"voorkeuren op te slaan."
 
 #: .\templates\shop\cookies.html:34
 msgid "4. Comment gérer et supprimer vos cookies ?"
@@ -728,8 +701,8 @@ msgid ""
 "notre Gestion des cookies ou supprimer les cookies enregistrés sur votre "
 "appareil via les paramètres de votre navigateur :"
 msgstr ""
-"U kunt op elk moment uw cookievoorkeuren wijzigen via ons Cookiebeheer "
-"of de opgeslagen cookies op uw apparaat verwijderen via de browserinstellingen:"
+"U kunt op elk moment uw cookievoorkeuren wijzigen via ons Cookiebeheer of de "
+"opgeslagen cookies op uw apparaat verwijderen via de browserinstellingen:"
 
 #: .\templates\shop\cookies.html:43
 msgid "5. Que se passe-t-il si vous refusez les cookies ?"
@@ -744,8 +717,8 @@ msgid ""
 "Si vous refusez les cookies analytiques, nous ne collectons aucune donnée "
 "sur votre navigation."
 msgstr ""
-"Als u analytische cookies weigert, verzamelen we geen gegevens "
-"over uw browsegedrag."
+"Als u analytische cookies weigert, verzamelen we geen gegevens over uw "
+"browsegedrag."
 
 #: .\templates\shop\cookies.html:47
 msgid ""
@@ -753,8 +726,8 @@ msgid ""
 "sécurisées, mais Stripe pourra toujours appliquer ses propres règles de "
 "cookies lors du paiement."
 msgstr ""
-"Als u de betaalcookies (Stripe) weigert, blijven de transacties veilig, "
-"maar Stripe kan nog steeds zijn eigen cookieregels toepassen tijdens de betaling."
+"Als u de betaalcookies (Stripe) weigert, blijven de transacties veilig, maar "
+"Stripe kan nog steeds zijn eigen cookieregels toepassen tijdens de betaling."
 
 #: .\templates\shop\cookies.html:48
 msgid ""
@@ -777,9 +750,9 @@ msgid ""
 "paiement."
 msgstr ""
 "Onze betalingen zijn beveiligd met Stripe. Tijdens de betaling kan Stripe "
-"cookies gebruiken om de veiligheid van transacties te garanderen en "
-"fraude te voorkomen. U kunt Stripe-cookies op onze site weigeren, maar "
-"Stripe kan nog steeds zijn eigen cookieregels toepassen tijdens de betaling."
+"cookies gebruiken om de veiligheid van transacties te garanderen en fraude "
+"te voorkomen. U kunt Stripe-cookies op onze site weigeren, maar Stripe kan "
+"nog steeds zijn eigen cookieregels toepassen tijdens de betaling."
 
 #: .\templates\shop\cookies.html:54
 msgid "7. Contact"
@@ -795,6 +768,50 @@ msgstr ""
 #: .\templates\shop\cookies.html:57
 msgid "Téléphone"
 msgstr "Telefoon"
+
+#: .\templates\shop\cookies_settings.html:8
+msgid ""
+"Ce site utilise différents types de cookies pour vous offrir la meilleure "
+"expérience possible."
+msgstr ""
+"Deze website gebruikt verschillende soorten cookies om u de best mogelijke "
+"ervaring te bieden."
+
+#: .\templates\shop\cookies_settings.html:15
+msgid ""
+"Ces cookies sont nécessaires au bon fonctionnement du site (connexion, "
+"panier, session...). Ils ne peuvent pas être désactivés."
+msgstr ""
+"Deze cookies zijn noodzakelijk voor de goede werking van de website "
+"(aanmelden, winkelmandje, sessie...). Ze kunnen niet worden uitgeschakeld."
+
+#: .\templates\shop\cookies_settings.html:16
+msgid "Activés (obligatoires)"
+msgstr "Ingeschakeld (verplicht)"
+
+#: .\templates\shop\cookies_settings.html:24
+msgid "Autoriser les cookies analytiques (ex : Google Analytics)"
+msgstr "Analytische cookies toestaan (bijv. Google Analytics)"
+
+#: .\templates\shop\cookies_settings.html:29
+msgid "Cookies de paiement (Stripe)"
+msgstr "Betaalcookies (Stripe)"
+
+#: .\templates\shop\cookies_settings.html:33
+msgid "Autoriser les cookies Stripe (sécurisation des paiements)"
+msgstr "Stripe-cookies toestaan (beveiliging van betalingen)"
+
+#: .\templates\shop\cookies_settings.html:38
+msgid "Cookies de personnalisation"
+msgstr "Personalisatiecookies"
+
+#: .\templates\shop\cookies_settings.html:42
+msgid "Autoriser les cookies de personnalisation (préférences d’interface)"
+msgstr "Personalisatiecookies toestaan (interfacevoorkeuren)"
+
+#: .\templates\shop\cookies_settings.html:47
+msgid "Enregistrer mes préférences"
+msgstr "Mijn voorkeuren opslaan"
 
 #: .\templates\shop\index.html:12
 msgid "Bienvenue"
@@ -884,19 +901,19 @@ msgstr "Totaal"
 msgid "Date de retrait"
 msgstr "Afhaaldatum"
 
-#: .\templates\shop\user_orders.html:21
+#: .\templates\shop\user_orders.html:22
 msgid "Voir détails"
 msgstr "Bekijk details"
 
-#: .\templates\shop\user_orders.html:25
+#: .\templates\shop\user_orders.html:27
 msgid "Articles"
 msgstr "Artikelen"
 
-#: .\templates\shop\user_orders.html:37
+#: .\templates\shop\user_orders.html:39
 msgid "Télécharger ma facture"
 msgstr "Download mijn factuur"
 
-#: .\templates\shop\user_orders.html:44
+#: .\templates\shop\user_orders.html:46
 msgid "Vous n'avez pas encore passé de commandes."
 msgstr "Je hebt nog geen bestellingen geplaatst."
 
@@ -2123,3 +2140,24 @@ msgstr ""
 #: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:236
 msgid "Connect, get help, or contribute"
 msgstr ""
+
+#~ msgid "Accepter tout"
+#~ msgstr "Alles accepteren"
+
+#~ msgid "Paramètres des cookies"
+#~ msgstr "Cookie-instellingen"
+
+#~ msgid "Supprimer mes cookies"
+#~ msgstr "Mijn cookies verwijderen"
+
+#~ msgid "Fermer"
+#~ msgstr "Sluiten"
+
+#~ msgid "Tous vos cookies ont été supprimés."
+#~ msgstr "Al uw cookies zijn verwijderd."
+
+#~ msgid "Ouassima"
+#~ msgstr "Ouassima"
+
+#~ msgid "Nos"
+#~ msgstr "Onze"

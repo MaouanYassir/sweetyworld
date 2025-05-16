@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load i18n %}
 <html lang="en">
 
 <head>
@@ -59,29 +60,32 @@
 
     {% block scripts %}
     {% endblock %}
-{% if not request.COOKIES.cookies_choice_made %}
-<div id="cookie-banner" style="position: fixed; bottom: 0; width: 100%; background: #fff3cd; padding: 20px; border-top: 1px solid #ffecb5; text-align: center; z-index: 9999; box-shadow: 0 -2px 6px rgba(0,0,0,0.1);">
-  <p style="margin-bottom: 10px;">
-    🍪 Ce site utilise des cookies pour améliorer votre expérience et sécuriser les paiements.
-    <a href="{% url 'cookies_policy' %}" style="text-decoration: underline;">En savoir plus</a>
-  </p>
 
-  <form method="post" action="{% url 'cookies_settings' %}" style="display: inline;">
-    {% csrf_token %}
-    <input type="hidden" name="analytics" value="true">
-    <input type="hidden" name="stripe" value="true">
-    <input type="hidden" name="personalization" value="true">
-    <button type="submit" class="btn btn-sm btn-success mx-1">✅ Tout accepter</button>
-  </form>
+    <!-- Début du bandeau des cookies -->
+        {% if not request.COOKIES.cookies_choice_made %}
+        <div id="cookie-banner" style="position: fixed; bottom: 0; width: 100%; background: #fff3cd; padding: 20px; border-top: 1px solid #ffecb5; text-align: center; z-index: 9999; box-shadow: 0 -2px 6px rgba(0,0,0,0.1);">
+          <p style="margin-bottom: 10px;">
+            🍪 {% trans "Ce site utilise des cookies pour améliorer votre expérience et sécuriser les paiements." %}
+            <a href="{% url 'cookies_policy' %}" style="text-decoration: underline;">{% trans "En savoir plus" %}</a>
+          </p>
 
-  <form method="post" action="{% url 'cookies_settings' %}" style="display: inline;">
-    {% csrf_token %}
-    <button type="submit" class="btn btn-sm btn-outline-secondary mx-1">❌ Tout refuser</button>
-  </form>
+          <form method="post" action="{% url 'cookies_settings' %}" style="display: inline;">
+            {% csrf_token %}
+            <input type="hidden" name="analytics" value="true">
+            <input type="hidden" name="stripe" value="true">
+            <input type="hidden" name="personalization" value="true">
+            <button type="submit" class="btn btn-sm btn-success mx-1">✅ {% trans "Tout accepter" %}</button>
+          </form>
 
-  <a href="{% url 'cookies_settings' %}" class="btn btn-sm btn-warning mx-1">⚙️ Personnaliser</a>
-</div>
-{% endif %}
+          <form method="post" action="{% url 'cookies_settings' %}" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-sm btn-outline-secondary mx-1">❌ {% trans "Tout refuser" %}</button>
+          </form>
+
+          <a href="{% url 'cookies_settings' %}" class="btn btn-sm btn-warning mx-1">⚙️ {% trans "Personnaliser" %}</a>
+        </div>
+        {% endif %}
+<!-- Fin du bandeau des cookies -->
 
 
 
