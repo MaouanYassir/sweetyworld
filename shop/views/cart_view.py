@@ -165,8 +165,6 @@ def check_quota(request):   # fonction qui contrôle le quota sans créer l'orde
     })
 
 
-
-
 def add_to_cart_view(request, slug):
     # Récupérer ou créer un panier pour l'utilisateur connecté
     cart_user, cart_user_created = Cart.objects.get_or_create(user=request.user)
@@ -190,6 +188,7 @@ def add_to_cart_view(request, slug):
     else:
         # Redirection classique si ce n'est pas une requête AJAX
         return redirect("cart_view")
+
 
 
 def remove_from_cart_view(request, slug):

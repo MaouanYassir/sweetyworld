@@ -4,6 +4,7 @@ from rest_framework.routers import DefaultRouter
 from shop.views.API_view import OrderListView, ProductViewSet, OrderDetailView
 from shop.views.CGV_view import CGV_view
 from shop.views.cookie_view import cookies_policy
+from shop.views.cookies_settings_view import cookies_settings_view
 from shop.views.generate_invoice_view import generate_invoice
 from shop.views.payment_cancel_view import payment_cancel
 from shop.views.payment_success_confirmation_view import payment_success_confirmation
@@ -55,6 +56,7 @@ urlpatterns = [
     path('invoice/<int:order_id>/', generate_invoice, name='generate_invoice'),
     path('CGV/', CGV_view, name='CGV_view'),
     path('cookies/', cookies_policy, name='cookies_policy'),
+    path('cookies_settings/', cookies_settings_view, name='cookies_settings'),
 
     # api des commandes http://127.0.0.1:8000/api/orders/
     path('api/orders/', OrderListView.as_view(), name='order_list'),

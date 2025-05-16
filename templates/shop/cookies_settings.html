@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<div class="container py-5">
+  <h2>Gestion des cookies</h2>
+  <p>Ce site utilise différents types de cookies pour vous offrir la meilleure expérience possible.</p>
+
+  <form method="post">
+    {% csrf_token %}
+
+    <div class="mb-3">
+      <h5>Cookies essentiels</h5>
+      <p>Ces cookies sont nécessaires au bon fonctionnement du site (connexion, panier, session...). Ils ne peuvent pas être désactivés.</p>
+      <input type="checkbox" checked disabled> Activés (obligatoires)
+    </div>
+
+    <div class="mb-3">
+      <h5>Cookies analytiques</h5>
+      <label>
+        <input type="checkbox" name="analytics"
+          {% if request.COOKIES.analytics == 'true' %}checked{% endif %}>
+        Autoriser les cookies analytiques (ex : Google Analytics)
+      </label>
+    </div>
+
+    <div class="mb-3">
+      <h5>Cookies de paiement (Stripe)</h5>
+      <label>
+        <input type="checkbox" name="stripe"
+          {% if request.COOKIES.stripe == 'true' %}checked{% endif %}>
+        Autoriser les cookies Stripe (sécurisation des paiements)
+      </label>
+    </div>
+
+    <div class="mb-3">
+      <h5>Cookies de personnalisation</h5>
+      <label>
+        <input type="checkbox" name="personalization"
+          {% if request.COOKIES.personalization == 'true' %}checked{% endif %}>
+        Autoriser les cookies de personnalisation (préférences d’interface)
+      </label>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Enregistrer mes préférences</button>
+  </form>
+</div>
+{% endblock %}
