@@ -4,6 +4,7 @@
 
 {% block content %}
 <div class="home-section">
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="overlay"></div>
@@ -16,6 +17,14 @@
         </div>
     </section>
 
+    <!-- Info Commande Section -->
+    <section class="order-info fade-in">
+        <div class="container-info">
+            <h2>📣 {% trans "Informations importantes" %}</h2>
+            <p>{% trans "Pour garantir la qualité de nos produits et une organisation optimale, toutes les commandes doivent être passées au minimum 3 jours à l’avance." %}</p>
+            <p>{% trans "Nous acceptons un maximum de 30 gâteaux par jour, toutes commandes confondues. N'attendez pas pour réserver votre date !" %}</p>
+        </div>
+    </section>
 
     <!-- Featured Cakes Section -->
     <section class="featured-cakes">
@@ -24,38 +33,26 @@
         <div class="cake-grid">
             {% for product in products %}
             <div class="cake-item">
-
                 <img src="{{ product.image.url }}" alt="{{ product.name }}" class="cake-img">
-
                 <h3>
-                {% get_current_language as LANGUAGE %}
-                {% if LANGUAGE == 'fr' %}
-                    {{ product.name }}  <!-- Affiche le nom du produit en français -->
-                {% else %}
-                    {{ product.name_nl }}  <!-- Affiche le nom du produit en néerlandais -->
-                {% endif %}
+                    {% get_current_language as LANGUAGE %}
+                    {% if LANGUAGE == 'fr' %}
+                        {{ product.name }}
+                    {% else %}
+                        {{ product.name_nl }}
+                    {% endif %}
                 </h3>
-
-                <p class="cake-price">
-                    {{ product.price }}€
-                </p>
-
-                <p class="cake-sales">
-                    {% trans "Ventes totales" %} : {{ product.total_sales_combined }}
-                </p>  <!-- Affiche les ventes totales -->
-
+                <p class="cake-price">{{ product.price }}€</p>
+                <p class="cake-sales">{% trans "Ventes totales" %} : {{ product.total_sales_combined }}</p>
             </div>
             {% endfor %}
         </div>
     </section>
 
 </div>
-
-
-
 {% endblock %}
+
 {% block styles %}
-<!-- Styles -->
 <style>
     .home-section {
         font-family: Arial, sans-serif;
@@ -89,13 +86,12 @@
         animation: fadeIn 1.5s ease-in-out;
     }
 
-    /* Welcome message styling */
-.welcome-message {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #ffdd57; /* Bright color for contrast */
-    margin-bottom: 10px;
-}
+    .welcome-message {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #ffdd57;
+        margin-bottom: 10px;
+    }
 
     .hero-content h1 {
         font-size: 4rem;
@@ -107,21 +103,6 @@
         font-size: 1.8rem;
         text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
         margin: 10px 0 20px;
-    }
-
-    .cta-button {
-        background-color: #ff9800;
-        color: white;
-        padding: 15px 30px;
-        text-decoration: none;
-        border-radius: 5px;
-        font-size: 1.2rem;
-        transition: background-color 0.3s ease-in-out;
-        display: inline-block;
-    }
-
-    .cta-button:hover {
-        background-color: #e68900;
     }
 
     .featured-cakes {
@@ -168,27 +149,31 @@
         border-bottom: 3px solid #ff9800;
     }
 
-    .cake-title {
-        color: #333;
-        font-size: 1.5rem;
-        padding: 10px 0;
-    }
-
     .cake-price {
         color: #ff9800;
         font-size: 1.2rem;
         padding-bottom: 10px;
     }
 
-    .about {
-        padding: 50px 20px;
-        background-color: #f9f9f9;
+    .order-info {
+        background-color: #fff8e1;
+        padding: 40px 20px;
         text-align: center;
+        border-top: 2px solid #ff9800;
+        border-bottom: 2px solid #ff9800;
+        margin-top: 30px;
     }
 
-    .cta {
-        padding: 50px 20px;
-        text-align: center;
+    .order-info h2 {
+        color: #e65100;
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+
+    .order-info p {
+        color: #5d4037;
+        font-size: 1.1rem;
+        margin-bottom: 5px;
     }
 
     @keyframes fadeIn {
@@ -201,18 +186,9 @@
             transform: translateY(0);
         }
     }
-</style>
 
-<!-- JavaScript for smooth scroll effect (optional) -->
-<script>
-    // If you need to add smooth scrolling for anchors
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
-    });
-</script>
+    .fade-in {
+        animation: fadeIn 1.5s ease-in-out;
+    }
+</style>
 {% endblock %}
