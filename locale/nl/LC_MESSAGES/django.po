@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-17 11:02+0200\n"
+"POT-Creation-Date: 2025-05-17 12:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -829,23 +829,34 @@ msgid "Informations importantes"
 msgstr "Belangrijke informatie"
 
 #: .\templates\shop\index.html:24
-msgid "Pour garantir la qualité de nos produits et une organisation optimale, toutes les commandes doivent être passées au minimum 3 jours à l’avance."
-msgstr "Om de kwaliteit van onze producten en een vlotte organisatie te garanderen, moeten alle bestellingen minstens 3 dagen op voorhand worden geplaatst."
+msgid ""
+"Pour garantir la qualité de nos produits et une organisation optimale, "
+"toutes les commandes doivent être passées au minimum 3 jours à l’avance."
+msgstr ""
+"Om de kwaliteit van onze producten en een vlotte organisatie te garanderen, "
+"moeten alle bestellingen minstens 3 dagen op voorhand worden geplaatst."
 
 #: .\templates\shop\index.html:25
-msgid "Nous acceptons un maximum de 30 gâteaux par jour, toutes commandes confondues. N'attendez pas pour réserver votre date !"
-msgstr "We aanvaarden maximaal 30 taarten per dag, alle bestellingen samen. Wacht niet te lang om uw datum te reserveren!"
+msgid ""
+"Nous acceptons un maximum de 30 gâteaux par jour, toutes commandes "
+"confondues. N'attendez pas pour réserver votre date !"
+msgstr ""
+"We aanvaarden maximaal 30 taarten per dag, alle bestellingen samen. Wacht "
+"niet te lang om uw datum te reserveren!"
+
+msgid "Vérifier les disponibilités par date"
+msgstr "Beschikbaarheid per datum controleren"
 
 
-#: .\templates\shop\index.html:31
+#: .\templates\shop\index.html:40
 msgid "Nos Gâteaux Vedettes"
 msgstr "Onze Beste Taarten"
 
-#: .\templates\shop\index.html:32
+#: .\templates\shop\index.html:41
 msgid "Découvrez nos meilleures ventes"
 msgstr "Ontdek onze bestsellers"
 
-#: .\templates\shop\index.html:46
+#: .\templates\shop\index.html:55
 msgid "Ventes totales"
 msgstr "Totale verkopen"
 

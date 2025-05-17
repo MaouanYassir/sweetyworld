@@ -3,6 +3,7 @@ from rest_framework.permissions import IsAdminUser
 from rest_framework.routers import DefaultRouter
 from shop.views.API_view import OrderListView, ProductViewSet, OrderDetailView
 from shop.views.CGV_view import CGV_view
+from shop.views.check_quota_index_view import check_quota_index
 from shop.views.cookie_view import cookies_policy
 from shop.views.cookies_settings_view import cookies_settings_view
 from shop.views.generate_invoice_view import generate_invoice
@@ -39,6 +40,7 @@ router.register(r'products', ProductViewSet, basename='product')  # Route pour l
 
 urlpatterns = [
     path('', index_view, name='home'),
+    path('check-quota-index/', check_quota_index, name='check_quota_index'),
     path('categories/', categories_view, name='categories_view'),
     path('categories/<slug:slug>/', category_view, name='category_view'),
     path('about/', about_view, name='about_view'),
