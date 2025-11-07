@@ -52,7 +52,7 @@
                     {% endif %}
                 </h3>
                 <p class="cake-price">{{ product.price }}€</p>
-                <p class="cake-sales">{% trans "Ventes totales" %} : {{ product.total_sales_combined }}</p>
+
             </div>
             {% endfor %}
         </div>
@@ -65,12 +65,13 @@
 <style>
     .home-section {
         font-family: Arial, sans-serif;
+
     }
 
     .hero {
         background-image: url('{% static 'images/hero-bg.jpg' %}');
         background-size: cover;
-        height: 500px;
+        height: 200px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -79,8 +80,9 @@
         text-align: center;
     }
 
+
     .overlay {
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: transparent;
         position: absolute;
         top: 0;
         left: 0;
@@ -175,9 +177,11 @@
 
     .cake-img {
         width: 100%;
-        height: auto;
+        height: 220px; /* ✅ hauteur fixe */
+        object-fit: cover; /* ✅ recadre proprement sans déformer */
         border-bottom: 3px solid #ff9800;
     }
+
 
     .cake-price {
         color: #ff9800;
@@ -201,6 +205,7 @@
     }
 </style>
 {% endblock %}
+
 
 {% block scripts %}
 <script>

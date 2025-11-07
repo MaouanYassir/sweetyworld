@@ -16,16 +16,16 @@
                 <h3>
                     {% get_current_language as LANGUAGE %}
                     {% if LANGUAGE == 'fr' %}
-                        {{ category.name }}  <!-- Affiche le nom en français -->
+                        {{ category.name }}
                     {% else %}
-                        {{ category.name_nl }}  <!-- Affiche le nom en néerlandais -->
+                        {{ category.name_nl }}
                     {% endif %}
                 </h3>
                 <p>
                     {% if LANGUAGE == 'fr' %}
-                        {{ category.description }}  <!-- Affiche la description en français -->
+                        {{ category.description }}
                     {% else %}
-                        {{ category.description_nl }}  <!-- Affiche la description en néerlandais -->
+                        {{ category.description_nl }}
                     {% endif %}
                 </p>
             </div>
@@ -36,22 +36,30 @@
 
 {% endblock %}
 
-
 {% block styles %}
-
 <style>
     .categories-section {
         padding: 50px;
         background-color: #f9f9f9;
     }
 
+    /* ✅ Grille centrée proprement */
     .categories-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; /* centre toutes les lignes */
         gap: 20px;
     }
 
+    /* ✅ Chaque lien prend la largeur de la carte */
+    .categories-grid > a {
+        display: block;
+    }
+
+
     .category-item {
+        width: 280px;
+        height: 450px;
         text-align: center;
         background-color: white;
         padding: 20px;
@@ -66,8 +74,9 @@
     }
 
     .category-image img {
-        max-width: 250px;
-        height: auto;
+        width: 100%;
+        height: 200px;
+        object-fit: cover; /* ✅ images harmonisées */
         border-radius: 8px;
         transition: filter 0.3s ease;
     }
@@ -111,5 +120,4 @@
         });
     });
 </script>
-
 {% endblock %}
