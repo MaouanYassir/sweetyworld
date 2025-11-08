@@ -152,71 +152,158 @@ class CategoryAdmin(admin.ModelAdmin):
 
 class ProductAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
-    list_filter = ('categories',)  # Appliquer un filtre pour les catégories
+    list_filter = ('categories',)
     list_display = (
-        'name', 'categories', 'price', 'total_sales_last_month', 'total_sales_last_6_months', 'total_sales_future')
+        'name',
+        'categories',
+        'price',
+        'total_sales_last_month',
+        'total_sales_last_6_months',
+        'total_sales_future',
+        'total_sales_all_time',
+    )
     list_display_links = ('name',)
 
+    # --- Ventes sur 30 jours ---
     def total_sales_last_month(self, obj):
-        # Calculer les ventes du dernier mois, en comptant la quantité vendue
         start_date = timezone.now() - timezone.timedelta(days=30)
-        # Se limiter aux commandes passées avant le début de la période actuelle et sans retrait futur
         return CartItem.objects.filter(
             product=obj,
             order__order_date__gte=start_date,
             order__order_date__lte=timezone.now(),
-            order__pick_up_date__lte=timezone.now()  # Exclure les commandes futures (retail des produits)
+            order__pick_up_date__lte=timezone.now()
         ).aggregate(total_sales=Sum('quantity'))['total_sales'] or 0
 
+    # --- Ventes sur 6 mois ---
     def total_sales_last_6_months(self, obj):
-        # Calculer les ventes des 6 derniers mois, en comptant la quantité vendue
         start_date = timezone.now() - timezone.timedelta(days=180)
-        # Se limiter aux commandes passées avant le début de la période actuelle et sans retrait futur
         return CartItem.objects.filter(
             product=obj,
             order__order_date__gte=start_date,
             order__order_date__lte=timezone.now(),
-            order__pick_up_date__lte=timezone.now()  # Exclure les commandes futures (retail des produits)
+            order__pick_up_date__lte=timezone.now()
         ).aggregate(total_sales=Sum('quantity'))['total_sales'] or 0
 
+    # --- Ventes futures ---
     def total_sales_future(self, obj):
-        # Calculer les ventes futures, en comptant la quantité vendue
         now = timezone.now()
-        # Se limiter aux ventes dont la date de retrait est dans le futur
         return CartItem.objects.filter(
             product=obj,
-            order__pick_up_date__gte=now  # Inclure seulement les futures ventes (retrait à venir)
+            order__pick_up_date__gte=now
         ).aggregate(total_sales=Sum('quantity'))['total_sales'] or 0
 
-    total_sales_last_month.short_description = "Ventes des 30 derniers jours"
-    total_sales_last_6_months.short_description = "Ventes des 180 derniers jours"
+    # --- ✅ Ventes totales cumulées (passées + futures, sans double comptage) ---
+    def total_sales_all_time(self, obj):
+        now = timezone.now()
+        total = CartItem.objects.filter(
+            product=obj,
+            order__pick_up_date__isnull=False  # on ne prend que les commandes avec une date de retrait
+        ).aggregate(total_sales=Sum('quantity'))['total_sales'] or 0
+        return total
+
+    total_sales_last_month.short_description = "Ventes (30 derniers jours)"
+    total_sales_last_6_months.short_description = "Ventes (180 derniers jours)"
     total_sales_future.short_description = "Ventes futures"
+    total_sales_all_time.short_description = "Ventes totales (passées + futures)"
 
+    # --- Optimisation du queryset ---
     def get_queryset(self, request):
-        # Récupérer le queryset de base
         queryset = super().get_queryset(request)
+        now = timezone.now()
 
-        # Annoter le queryset avec les données de ventes, en sommant les quantités pour chaque produit
         queryset = queryset.annotate(
             last_month_sales=Sum(
                 'cartitem__quantity',
-                filter=Q(cartitem__order__order_date__gte=timezone.now() - timezone.timedelta(days=30),
-                         cartitem__order__order_date__lte=timezone.now(),
-                         cartitem__order__pick_up_date__lte=timezone.now())
+                filter=Q(cartitem__order__order_date__gte=now - timezone.timedelta(days=30),
+                         cartitem__order__order_date__lte=now,
+                         cartitem__order__pick_up_date__lte=now)
             ),
             last_6_months_sales=Sum(
                 'cartitem__quantity',
-                filter=Q(cartitem__order__order_date__gte=timezone.now() - timezone.timedelta(days=180),
-                         cartitem__order__order_date__lte=timezone.now(),
-                         cartitem__order__pick_up_date__lte=timezone.now())
+                filter=Q(cartitem__order__order_date__gte=now - timezone.timedelta(days=180),
+                         cartitem__order__order_date__lte=now,
+                         cartitem__order__pick_up_date__lte=now)
             ),
             future_sales=Sum(
                 'cartitem__quantity',
-                filter=Q(cartitem__order__pick_up_date__gte=timezone.now())
+                filter=Q(cartitem__order__pick_up_date__gte=now)
+            ),
+            all_time_sales=Sum(
+                'cartitem__quantity',
+                filter=Q(cartitem__order__pick_up_date__isnull=False)
             )
-        ).order_by('-last_month_sales')  # Trier par les ventes du dernier mois
+        ).order_by('-last_month_sales')
 
         return queryset
+
+
+# class ProductAdmin(admin.ModelAdmin):
+#     prepopulated_fields = {'slug': ('name',)}
+#     list_filter = ('categories',)  # Appliquer un filtre pour les catégories
+#     list_display = (
+#         'name', 'categories', 'price', 'total_sales_last_month', 'total_sales_last_6_months', 'total_sales_future')
+#     list_display_links = ('name',)
+#
+#     def total_sales_last_month(self, obj):
+#         # Calculer les ventes du dernier mois, en comptant la quantité vendue
+#         start_date = timezone.now() - timezone.timedelta(days=30)
+#         # Se limiter aux commandes passées avant le début de la période actuelle et sans retrait futur
+#         return CartItem.objects.filter(
+#             product=obj,
+#             order__order_date__gte=start_date,
+#             order__order_date__lte=timezone.now(),
+#             order__pick_up_date__lte=timezone.now()  # Exclure les commandes futures (retail des produits)
+#         ).aggregate(total_sales=Sum('quantity'))['total_sales'] or 0
+#
+#     def total_sales_last_6_months(self, obj):
+#         # Calculer les ventes des 6 derniers mois, en comptant la quantité vendue
+#         start_date = timezone.now() - timezone.timedelta(days=180)
+#         # Se limiter aux commandes passées avant le début de la période actuelle et sans retrait futur
+#         return CartItem.objects.filter(
+#             product=obj,
+#             order__order_date__gte=start_date,
+#             order__order_date__lte=timezone.now(),
+#             order__pick_up_date__lte=timezone.now()  # Exclure les commandes futures (retail des produits)
+#         ).aggregate(total_sales=Sum('quantity'))['total_sales'] or 0
+#
+#     def total_sales_future(self, obj):
+#         # Calculer les ventes futures, en comptant la quantité vendue
+#         now = timezone.now()
+#         # Se limiter aux ventes dont la date de retrait est dans le futur
+#         return CartItem.objects.filter(
+#             product=obj,
+#             order__pick_up_date__gte=now  # Inclure seulement les futures ventes (retrait à venir)
+#         ).aggregate(total_sales=Sum('quantity'))['total_sales'] or 0
+#
+#     total_sales_last_month.short_description = "Ventes des 30 derniers jours"
+#     total_sales_last_6_months.short_description = "Ventes des 180 derniers jours"
+#     total_sales_future.short_description = "Ventes futures"
+#
+#     def get_queryset(self, request):
+#         # Récupérer le queryset de base
+#         queryset = super().get_queryset(request)
+#
+#         # Annoter le queryset avec les données de ventes, en sommant les quantités pour chaque produit
+#         queryset = queryset.annotate(
+#             last_month_sales=Sum(
+#                 'cartitem__quantity',
+#                 filter=Q(cartitem__order__order_date__gte=timezone.now() - timezone.timedelta(days=30),
+#                          cartitem__order__order_date__lte=timezone.now(),
+#                          cartitem__order__pick_up_date__lte=timezone.now())
+#             ),
+#             last_6_months_sales=Sum(
+#                 'cartitem__quantity',
+#                 filter=Q(cartitem__order__order_date__gte=timezone.now() - timezone.timedelta(days=180),
+#                          cartitem__order__order_date__lte=timezone.now(),
+#                          cartitem__order__pick_up_date__lte=timezone.now())
+#             ),
+#             future_sales=Sum(
+#                 'cartitem__quantity',
+#                 filter=Q(cartitem__order__pick_up_date__gte=timezone.now())
+#             )
+#         ).order_by('-last_month_sales')  # Trier par les ventes du dernier mois
+#
+#         return queryset
 
 
 class ContactMessageAdmin(admin.ModelAdmin):
