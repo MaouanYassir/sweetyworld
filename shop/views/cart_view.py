@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta
 from django.contrib.auth.decorators import login_required
+from django.db.models import Sum
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
@@ -165,30 +166,53 @@ def check_quota(request):   # fonction qui contrôle le quota sans créer l'orde
     })
 
 
-def add_to_cart_view(request, slug):
-    # Récupérer ou créer un panier pour l'utilisateur connecté
-    cart_user, cart_user_created = Cart.objects.get_or_create(user=request.user)
-    # Récupérer le produit basé sur le slug
-    product = get_object_or_404(Product, slug=slug)
-    # Récupérer ou créer l'élément du panier pour ce produit
-    cart_item, cart_item_created = CartItem.objects.get_or_create(cart=cart_user, product=product)
+# def add_to_cart_view(request, slug):
+#     # Récupérer ou créer un panier pour l'utilisateur connecté
+#     cart_user, cart_user_created = Cart.objects.get_or_create(user=request.user)
+#     # Récupérer le produit basé sur le slug
+#     product = get_object_or_404(Product, slug=slug)
+#     # Récupérer ou créer l'élément du panier pour ce produit
+#     cart_item, cart_item_created = CartItem.objects.get_or_create(cart=cart_user, product=product)
+#
+#     # Si l'élément existe déjà, incrémenter la quantité
+#     if not cart_item_created:  # Si l'élément n'est pas nouvellement créé
+#         cart_item.quantity += 1
+#         cart_item.save()
+#
+#         # Afficher le contenu du panier pour le débogage
+#         cart_items = CartItem.objects.filter(cart=cart_user)
+#
+#     # Vérifier si la requête est une requête AJAX
+#     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+#         # Retourner une réponse JSON si la requête est faite avec AJAX
+#         return JsonResponse({'success': True, 'cart_item_count': cart_item.quantity})
+#     else:
+#         # Redirection classique si ce n'est pas une requête AJAX
+#         return redirect("cart_view")
 
-    # Si l'élément existe déjà, incrémenter la quantité
-    if not cart_item_created:  # Si l'élément n'est pas nouvellement créé
+
+@login_required
+def add_to_cart_view(request, slug):
+    cart_user, _ = Cart.objects.get_or_create(user=request.user)
+    product = get_object_or_404(Product, slug=slug)
+    cart_item, created = CartItem.objects.get_or_create(cart=cart_user, product=product)
+
+    if not created:
         cart_item.quantity += 1
         cart_item.save()
 
-        # Afficher le contenu du panier pour le débogage
-        cart_items = CartItem.objects.filter(cart=cart_user)
+    # ✅ Calcul du total de toutes les quantités dans le panier
+    total_quantity = (
+        CartItem.objects.filter(cart=cart_user)
+        .aggregate(total=Sum("quantity"))["total"]
+        or 0
+    )
 
-    # Vérifier si la requête est une requête AJAX
-    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-        # Retourner une réponse JSON si la requête est faite avec AJAX
-        return JsonResponse({'success': True, 'cart_item_count': cart_item.quantity})
-    else:
-        # Redirection classique si ce n'est pas une requête AJAX
-        return redirect("cart_view")
+    # ✅ Si c’est une requête AJAX → renvoie un JSON
+    if request.headers.get("x-requested-with") == "XMLHttpRequest":
+        return JsonResponse({"success": True, "count": total_quantity})
 
+    return redirect("cart_view")
 
 
 def remove_from_cart_view(request, slug):

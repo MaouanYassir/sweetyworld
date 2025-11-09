@@ -40,9 +40,15 @@
 
         {% if user.is_authenticated %}
             <div class="button-container">
-                <button type="button" onclick="addToCart('{{ product.slug }}')">{% trans "Ajouter au panier" %}</button>
+                <button
+                    type="button"
+                    class="add-to-cart-btn"
+                    data-product-slug="{{ product.slug }}">
+                    {% trans "Ajouter au panier" %}
+                </button>
             </div>
         {% endif %}
+
 
     </div>
     {% empty %}
