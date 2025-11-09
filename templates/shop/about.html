@@ -3,22 +3,95 @@
 {% load i18n %}
 
 {% block content %}
+<section class="about">
+    <div class="about-container">
+        <h2 class="section-title">{% trans "À propos de Ouassima" %}</h2>
 
-<section class="about" style="padding: 50px 0; background-color: #f9f9f9; text-align: center;">
-    <h2 class="section-title">{% trans "À propos de Ouassima" %}</h2>
-    <div class="about-content" style="max-width: 800px; margin: 0 auto;">
+        <div class="about-content">
+            <p>
+                {% trans "Bonjour ! Je suis Ouassima, passionnée par la pâtisserie depuis mon plus jeune âge. L'amour pour les gâteaux et les douceurs m'a conduite à créer mon propre atelier de pâtisserie. Chaque gâteau que je prépare est une œuvre d'amour, conçue avec soin et dévouement." %}
+            </p>
+            <p>
+                {% trans "Après avoir passé des années à perfectionner mes recettes et à explorer les subtilités de la pâtisserie, j'ai décidé de partager ma passion avec vous. Mon objectif est de vous offrir des créations délicieuses et élégantes, idéales pour toutes les occasions spéciales." %}
+            </p>
+            <p>
+                {% trans "Chaque gâteau que vous trouverez ici est fabriqué avec les meilleurs ingrédients et un soupçon de magie. J'espère que mes créations ajouteront une touche de douceur à vos moments précieux. Merci de me permettre de faire partie de vos célébrations !" %}
+            </p>
 
-        <p style="font-size: 1.2rem; color: #666; line-height: 1.6;">
-            {% trans "Bonjour ! Je suis Ouassima, passionnée par la pâtisserie depuis mon plus jeune âge. L'amour pour les gâteaux et les douceurs m'a conduite à créer mon propre atelier de pâtisserie. Chaque gâteau que je prépare est une œuvre d'amour, conçue avec soin et dévouement." %}
-        </p>
-        <p style="font-size: 1.2rem; color: #666; line-height: 1.6;">
-            {% trans "Après avoir passé des années à perfectionner mes recettes et à explorer les subtilités de la pâtisserie, j'ai décidé de partager ma passion avec vous. Mon objectif est de vous offrir des créations délicieuses et élégantes, idéales pour toutes les occasions spéciales." %}
-        </p>
-        <p style="font-size: 1.2rem; color: #666; line-height: 1.6;">
-            {% trans "Chaque gâteau que vous trouverez ici est fabriqué avec les meilleurs ingrédients et un soupçon de magie. J'espère que mes créations ajouteront une touche de douceur à vos moments précieux. Merci de me permettre de faire partie de vos célébrations !" %}
-        </p>
-
+            <div class="signature">Ouassima</div>
+        </div>
     </div>
 </section>
+{% endblock %}
 
+{% block styles %}
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap');
+
+.about {
+    background-color: white;
+    padding: 70px 20px;
+    text-align: center;
+    border-top: 3px solid #ff9800;
+}
+
+.about-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 5px 15px rgba(255, 152, 0, 0.15);
+}
+
+.section-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 2.5rem;
+    color: #ff9800; /* ✅ Orange SweetyWorld */
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.section-title::after {
+    content: "";
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to right, #ffb74d, #ff9800);
+    display: block;
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+.about-content p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.signature {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3rem;
+    color: #ff9800; /* ✅ même orange que le logo */
+    margin-top: 40px;
+    text-align: right;
+    padding-right: 30px;
+    text-shadow: 2px 2px 4px rgba(255, 152, 0, 0.25);
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .signature {
+        text-align: center;
+        padding-right: 0;
+    }
+}
+</style>
 {% endblock %}
