@@ -29,7 +29,7 @@
     <!-- Calendrier pour vérifier le quota -->
     <section class="quota-check fade-in">
         <div class="text-center mt-5">
-            <h4>{% trans "Vérifier les disponibilités par date" %}</h4>
+            <h4 class="orange-title">{% trans "Vérifier les disponibilités par date" %}</h4>
             <input type="date" id="date-picker" class="form-control mx-auto" style="max-width: 300px;">
             <p id="quota-message" class="mt-3" style="font-size: 1.1rem;"></p>
         </div>
@@ -43,7 +43,7 @@
             {% for product in products %}
             <div class="cake-item">
                 <img src="{{ product.image.url }}" alt="{{ product.name }}" class="cake-img">
-                <h3>
+                <h3 class="cake-name">
                     {% get_current_language as LANGUAGE %}
                     {% if LANGUAGE == 'fr' %}
                         {{ product.name }}
@@ -96,7 +96,7 @@
     animation: fadeIn 1.5s ease-in-out;
 }
 
-/* ✅ Bienvenue admin - plus visible et doré */
+
 .welcome-message {
     font-size: 1.7rem;
     font-weight: 700;
@@ -105,7 +105,7 @@
     margin-bottom: 10px;
 }
 
-/* ✅ Titre calligraphié avec effet de brillance */
+
 .shiny-text {
     font-family: 'Great Vibes', cursive;
     font-size: 5rem;
@@ -118,7 +118,7 @@
     animation: fadeInDown 1.2s ease-out;
 }
 
-/* ✨ Brillance animée */
+
 .shiny-text::before {
     content: "";
     position: absolute;
@@ -136,7 +136,21 @@
     100% { left: 125%; }
 }
 
-/* ✅ Slogan plus chaud et contrasté */
+.orange-title {
+    color: #ff9800;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.cake-name {
+    color: #ff9800;
+    font-weight: 600;
+    font-size: 1.4rem;
+    margin: 10px 0;
+}
+
+
+
 .subtitle {
     font-family: 'Poppins', sans-serif;
     font-size: 1.5rem;
@@ -158,7 +172,7 @@
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* ✅ Section infos commandes */
+
 .order-info {
     background-color: #fff8e1;
     padding: 40px 20px;
@@ -175,12 +189,12 @@
 }
 
 .order-info p {
-    color: #5d4037;
+    color: orange;
     font-size: 1.1rem;
     margin-bottom: 5px;
 }
 
-/* ✅ Section gâteaux vedettes */
+
 .featured-cakes {
     padding: 50px 20px;
     text-align: center;
@@ -188,13 +202,13 @@
 
 .section-title {
     font-size: 2.5rem;
-    color: #333;
+    color: orange;
     margin-bottom: 20px;
 }
 
 .section-subtitle {
     font-size: 1.2rem;
-    color: #666;
+    color: orange;
     margin-bottom: 40px;
 }
 
@@ -203,6 +217,7 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
+
 }
 
 .cake-item {
@@ -213,6 +228,7 @@
     transition: transform 0.3s ease-in-out;
     width: 250px;
     text-align: center;
+
 }
 
 .cake-item:hover {

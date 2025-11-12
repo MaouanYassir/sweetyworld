@@ -70,12 +70,15 @@ def logout_user(request):
 
 
 
+
+
+
 @login_required
 def delete_account(request):
     user = request.user
 
     # Supprimer aussi les CartItem liés manuellement si nécessaire
-    from shop.models import CartItem  # adapte ce chemin si ton app s'appelle différemment
+    from shop.models import CartItem
     CartItem.objects.filter(cart__user=user).delete()
 
     # Supprime l'utilisateur (les Cart et Order seront supprimés automatiquement)

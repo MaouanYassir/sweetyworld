@@ -201,20 +201,20 @@ def add_to_cart_view(request, slug):
         cart_item.quantity += 1
         cart_item.save()
 
-    # ✅ Calcul du total de toutes les quantités dans le panier
+    #  Calcul du total de toutes les quantités dans le panier
     total_quantity = (
         CartItem.objects.filter(cart=cart_user)
         .aggregate(total=Sum("quantity"))["total"]
         or 0
     )
 
-    # ✅ Si c’est une requête AJAX → renvoie un JSON
+    # Si c’est une requête AJAX → renvoie un JSON
     if request.headers.get("x-requested-with") == "XMLHttpRequest":
         return JsonResponse({"success": True, "count": total_quantity})
 
     return redirect("cart_view")
 
-
+@login_required()
 def remove_from_cart_view(request, slug):
     # Récupérer le panier de l'utilisateur connecté
     cart_user = get_object_or_404(Cart, user=request.user)
@@ -233,7 +233,7 @@ def remove_from_cart_view(request, slug):
 
     return redirect("cart_view")
 
-
+@login_required()
 def clear_cart_view(request):
     cart_user = get_object_or_404(Cart, user=request.user)
 

@@ -192,7 +192,7 @@ class ProductAdmin(admin.ModelAdmin):
             order__pick_up_date__gte=now
         ).aggregate(total_sales=Sum('quantity'))['total_sales'] or 0
 
-    # --- ✅ Ventes totales cumulées (passées + futures, sans double comptage) ---
+    #  Ventes totales cumulées (passées + futures)
     def total_sales_all_time(self, obj):
         now = timezone.now()
         total = CartItem.objects.filter(
