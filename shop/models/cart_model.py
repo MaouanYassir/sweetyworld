@@ -8,7 +8,7 @@ from shop.models import Product
 
 
 class Cart(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
     created_date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(auto_now=True)
     pick_up_date = models.DateTimeField(blank=True, null=True)
@@ -19,14 +19,17 @@ class Cart(models.Model):
 
 class Order(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.SET_NULL, null=True, blank=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True, related_name='orders')
     order_date = models.DateTimeField(auto_now_add=True)
     is_paid = models.BooleanField(default=False)
     pick_up_date = models.DateTimeField(null=True, blank=True)
     total_price = models.DecimalField(max_digits=10, decimal_places=2, null=True)
 
     def __str__(self):
-        return f"commande de {self.user.email} | date de la commande {self.order_date} | date de retrait{self.pick_up_date}"
+        user_email = self.user.email if self.user else "Utilisateur supprimé"
+        return f"Commande de {user_email} | Commandée le {self.order_date.strftime('%d/%m/%Y')} | Retrait le {self.pick_up_date.strftime('%d/%m/%Y') if self.pick_up_date else 'Non défini'}"
+
+
 
 
 class CartItem(models.Model):
